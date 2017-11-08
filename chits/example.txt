@@ -1,0 +1,23 @@
+TO
+      Name:
+    Billet:
+
+MIDN
+     Name :
+    alpha :
+    class :
+classyear :
+  company :
+     room :
+     SQPR :
+     CQPR :
+     Perf :
+     Cond :
+
+VIA
+    people
+
+Ref
+  references
+
+Type :
