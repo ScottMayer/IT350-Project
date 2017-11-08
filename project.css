@@ -1,0 +1,12 @@
+*{
+  border: 1px black solid;
+  padding: 20px;
+}
+table, div, h1, p{
+  width: 80%;
+  margin: auto;
+}
+body{
+  width: 80%;
+  margin:auto;
+}
