@@ -7,7 +7,7 @@
 
   <body>
 <?php
-  include "nimitz.php";
+  include "../nimitz.php";
 
   function validateUser($user) {
     read_users(); // get /admin/users.txt
