@@ -7,69 +7,31 @@
 
   <body>
 <?php
-  // include "../nimitz.php";
-  // Copied read_users() from nimitz because stopped working
-  function read_users(){
-    $fp = fopen("../admin/users.txt", 'r');
-    if($fp) {
-      while(($line = fgets($fp)) !== false){
-        if(!isset($_SESSION['users'])){
-          $_SESSION['users'] = array($line);
-        }
-        else{
-          if(in_array($line, $_SESSION['users'])){
-            //duplicate user`
-          }
-          else{
-            array_push($_SESSION['users'], $line);
-          }
-        }
-      }
-      fclose($fp);
-    }
-  }
+  include "../nimitz.php";
+  // NOTES:
+  // - Copied read_users() from nimitz because stopped working
+  //   - Working on fixing that so can remove read_users from here
+  // function read_users(){if($fp=fopen("../admin/users.txt", 'r')){while(($line = fgets($fp)) !== false){if(!isset($_SESSION['users'])){$_SESSION['users'] = array($line);}else{if(in_array($line, $_SESSION['users'])){/*duplicate user*/}else{array_push($_SESSION['users'], $line);}}}fclose($fp);}}
+
   function validateUser($user) {
     read_users(); // get /admin/users.txt
 
     if(isset($_SESSION['users'])) {
-      // echo "> SESSION['users'] set<br>";
-      // echo "<pre>";
-      // print_r($_SESSION['users']);
-      // echo "</pre>";
-
       for($i=0; $i<count($_SESSION['users']); $i++) {
-        // echo ">$i: '" . $_SESSION['users'][$i] . "','" . $user ."'<br>";
-
+        // Checks for the username in /admin/users.txt
         $res = strcmp(trim($_SESSION['users'][$i]), $user);
         if($res == 0) {
-          // ob_start();
-          //   echo "Login success. Redirecting you to the landing page...";
-          //   ob_end_flush();
-          //   flush();
-          //   usleep(5000000);
-          //   header("Location: http://midn.cs.usna.edu/~m183990/IT350/IT350-Project/index.php");
-          //   die();
-
           $_SESSION['username'] = $user;
           header("Refresh: 5; url=http://midn.cs.usna.edu/~m183990/IT350/IT350-Project/index.php");
           echo "Login success. Redirecting you to the landing page...";
           die();
-        } 
-        // else {
-        //   echo ">$i MATCH: FALSE $res<br>";
-        // }
+        }
       }
     } else {
       echo "Error: /admin/users.txt not read correctly<br>";
     }
 
-    // ob_start();
-    //       echo "Login failed. Redirecting you to the login page...";
-    //       ob_end_flush();
-    //       flush();
-    //       usleep(5000000);
-    //       header("Location: /~m197116/IT350/IT350-Project/login.php");
-    //       die();
+    // if the input username was not in /admin/users.txt
     header("Refresh: 5; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login/login.php");
     echo "Login failed. Make sure you've registered before attempting to login. Redirecting you to the login page...";
     die();
