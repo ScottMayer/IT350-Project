@@ -70,7 +70,9 @@
     //       usleep(5000000);
     //       header("Location: /~m197116/IT350/IT350-Project/login.php");
     //       die();
-    echo "Login failed. Redirecting you to the login page...";
+    header("Refresh: 5; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login/login.php");
+    echo "Login failed. Make sure you've registered before attempting to login. Redirecting you to the login page...";
+    die();
   }
 
   session_start();
