@@ -1,7 +1,8 @@
-<!-- <?php if(!isset($_SESSION['username'])){
+<?php if(!isset($_SESSION['username'])){
   //if username isn't set send them to a login page
-  // header("Location: http://midn.cs.usna.edu/~m183990/IT350/IT350-Project/login.php");
-} ?> -->
+  header("Location: http://midn.cs.usna.edu/~m183990/IT350/IT350-Project/login.php");
+      }
+ ?>
 <!DOCTYPE html>
 <script type="text/javascript">
   function redirect(location){

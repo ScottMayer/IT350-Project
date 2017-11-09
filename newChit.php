@@ -49,9 +49,9 @@
                       <td colspan="2"><strong>Routed To</strong></td>
                   </tr>
                   <tr>
-                      <td><label for="toName">Name:</label></td>
+                      <td><label for="toName">Name:&nbsp;</label></td>
                       <td><input type="text" class="form-control" id="toName" name="toName" value=""></td>
-                      <td><label for="toBillet">Rank:</label></td>
+                      <td><label for="toBillet">&nbsp;Rank:&nbsp;</label></td>
                       <td><input type="text" class="form-control" id="toBillet" name="toBillet" value=""></td>
                     </tr>
                   <tr></tr>
@@ -59,9 +59,9 @@
                       <td><strong>Your Information</strong></td>
                   </tr>
                   <tr>
-                      <td><label for="MIDNname" class="control-label">Name:</label></td>
+                      <td><label for="MIDNname" class="control-label">&nbsp;Name:&nbsp;</label></td>
                       <td><input type="text" class="form-control" id="MIDNname" name="MIDNname" value=""></td>
-                      <td><label for="MIDNrank" class="control-label">Rank:</label></td>
+                      <td><label for="MIDNrank" class="control-label">&nbsp;Rank:&nbsp;</label></td>
                       <td>
                         <select class="form-control" id="MIDNrank" name="MIDNrank">
                           <option value="NULL"></option>
@@ -71,11 +71,11 @@
                           <option value="1">1/C</option>
                         </select>
                       </td>
-                      <td><label for="MIDNalpha" class="control-label">Alpha:</label></td>
+                      <td><label for="MIDNalpha" class="control-label">&nbsp;Alpha:&nbsp;</label></td>
                       <td><input type="number" class="form-control" id="MIDNalpha" name="MIDNalpha" value=""></td>
                   </tr>
                   <tr>
-                    <td><label for="MIDNclassyr">Graduating Year:</label></td>
+                    <td><label for="MIDNclassyr">&nbsp;Graduating Year:&nbsp;</label></td>
                     <td>
                       <select class="form-control" id="MIDNclassyr" name="MIDNclassyr">
                         <option value="NULL"></option>
@@ -85,7 +85,7 @@
                         <option value="2021">2021</option>
                       </select>
                     </td>
-                    <td><label for="MIDNcompany">Company:</label></td>
+                    <td><label for="MIDNcompany">&nbsp;Company:&nbsp;</label></td>
                     <td>
                       <select class="form-control" id="MIDNcompany" name="MIDNcompany">
                         <option value="NULL"></option>
@@ -102,16 +102,20 @@
                         <option value="11">11</option>
                       </select>
                     </td>
-                    <td><label for="MIDNroom">Room Number:</label></td>
+                    <td><label for="MIDNroom">&nbsp;Room Number:&nbsp;</label></td>
                     <td><input type="number" class="form-control" id="MIDNroom" name="MIDNroom" value=""></td>
                   </tr>
                   <tr>
-                    <td><label for="MIDNSQPR">SQPR:</label></td>
+                    <td><label for="MIDNSQPR">&nbsp; SQPR:&nbsp;</label></td>
                     <td><input type="number" class="form-control" id="MIDNSQPR" name="MIDNSQPR" value=""></td>
-                    <td><label for="MIDNCQPR">CQPR:</label></td>
+                    <td><label for="MIDNCQPR">&nbsp; CQPR:&nbsp;</label></td>
                     <td><input type="number" class="form-control" id="MIDNCQPR" name="MIDNCQPR" value=""></td>
-                    <td><label for="MIDNPerf">Performance Grade:</label></td>
+                    <td><label for="MIDNPerf">&nbsp; Performance Grade:&nbsp;</label></td>
                     <td><input type="text" class="form-control" id="MIDNPerf" name="MIDNPerf" value=""></td>
+                  </tr>
+                  <tr>
+                    <td><label for="MIDNremarks">Remarks</label></td>
+                    <td><textarea name="MIDNremarks" class="form-control" id="MIDNremarks" rows="8" cols="80"></textarea></td>
                   </tr>
                   <tr>
                     <td>
