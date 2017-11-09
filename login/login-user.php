@@ -7,8 +7,27 @@
 
   <body>
 <?php
-  include "../nimitz.php";
-
+  // include "../nimitz.php";
+  // Copied read_users() from nimitz because stopped working
+  function read_users(){
+    $fp = fopen("../admin/users.txt", 'r');
+    if($fp) {
+      while(($line = fgets($fp)) !== false){
+        if(!isset($_SESSION['users'])){
+          $_SESSION['users'] = array($line);
+        }
+        else{
+          if(in_array($line, $_SESSION['users'])){
+            //duplicate user`
+          }
+          else{
+            array_push($_SESSION['users'], $line);
+          }
+        }
+      }
+      fclose($fp);
+    }
+  }
   function validateUser($user) {
     read_users(); // get /admin/users.txt
 
@@ -57,7 +76,6 @@
   session_start();
   if(isset($_SESSION['id'])) {
     // echo $_SESSION['id'] . "<br>";
-    //
     $_SESSION['user'] = $_POST['username'];
     $_SESSION['pw'] = $_POST['password'];
     // echo "Username: " . $_SESSION['user'] . "<br>Password: " . $_SESSION['pw'] . "<br>";
