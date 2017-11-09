@@ -48,6 +48,9 @@ p {
 		/*COLOR Font*/
 }
 
+.navbar-default>li{
+	color: WHITE;
+}
 .navbar-default>li>a, .navbar-nav>li>a {
 	color: #ffffff !important;
 }
