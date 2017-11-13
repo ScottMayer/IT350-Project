@@ -71,7 +71,7 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 	echo "<table class='table table-hover'>";
 	echo "<thead><tr><th>User {$_SESSION['username']} 's chits</th></tr></thead>";
 	foreach ($_SESSION['chits'][$_SESSION['username']] as $chit ){
-		echo "<tr><td>$chit</td></tr>";
+		echo "<tr><td>$chit</td><td>TODO: STATUS</td></tr>";
 	}
 
 	echo "</table>";
