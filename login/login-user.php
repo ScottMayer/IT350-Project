@@ -13,7 +13,12 @@
   //   - Working on fixing that so can remove read_users from here
   // function read_users(){if($fp=fopen("../admin/users.txt", 'r')){while(($line = fgets($fp)) !== false){if(!isset($_SESSION['users'])){$_SESSION['users'] = array($line);}else{if(in_array($line, $_SESSION['users'])){/*duplicate user*/}else{array_push($_SESSION['users'], $line);}}}fclose($fp);}}
 
-  function validateUser($user) {
+  function noneofyourbusiness($string) {
+    $salt = '42sq*$d4841jkg4';
+    return pass_word($salt . $string, PASSWORD_BCRYPT);
+  }
+
+  function validateUser($user, $hash) {
     read_users(); // get /admin/users.txt
 
     if(isset($_SESSION['users'])) {
@@ -39,12 +44,23 @@
 
   session_start();
   if(isset($_SESSION['id'])) {
+    $salt = '42sq*$d4841jkg4';
     // echo $_SESSION['id'] . "<br>";
-    $_SESSION['user'] = $_POST['username'];
-    $_SESSION['pw'] = $_POST['password'];
-    // echo "Username: " . $_SESSION['user'] . "<br>Password: " . $_SESSION['pw'] . "<br>";
 
-    validateUser($_SESSION['user']); // See if username is in /admin/users.txt
+    // $_SESSION['password'] = password_hash('42sq*$d4841jkg4' . $_SESSION['pw'] . $_SESSION['user'] . 'johncena');
+    $_SESSION['password'] = password_hash( $salt . $_POST['password'], PASSWORD_BCRYPT);
+    // $_SESSION['password'] = noneofyourbusiness($_POST['password']);
+
+    echo "\$_SESSION['password']: ".$_SESSION['password']."<br>";
+    echo "\$_POST['password']: "   .$_POST['password'] . "<br>";
+    unset($_POST['password']);
+    echo "Username: " . $_POST['username'] . "<br>Password: " . $_POST['password'] . "<br>";
+
+    $result = password_verify($salt . $_POST['password'], $_SESSION['password']);
+    unset($_POST['password']);
+    if($result) { echo "password_verify() success"; } else { echo "password_verify() fail"; } echo "<br>";
+
+    validateUser($_POST['username'], $_SESSION['password']); // See if username and password match
   }
 ?>
   </body>
