@@ -12,8 +12,8 @@
   <body>
     <h1>E-Chits Login</h1>
     <form method=post action=login-user.php id=form1>
-      Username: <input type=text name=username> <br>
-      Password: <input type=password name=password> <br>
+      Username: <input type=text name=username required> <br>
+      Password: <input type=password name=password required> <br>
       <button type=submit form=form1 value=Login>Login</button>
     </form>
 
