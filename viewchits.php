@@ -13,23 +13,16 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>View Chits</title>
 =======
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Chit-USNA</title>
->>>>>>> 56bf03c477ad3389981d10685a0cd389367f2b15
     <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="includes/bootstrap/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-=======
-    <link rel="stylesheet" href="default.css">
->>>>>>> 56bf03c477ad3389981d10685a0cd389367f2b15
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
@@ -41,13 +34,8 @@
         });
       });
     </script>
-<<<<<<< HEAD
-  </head>
-=======
-
   </head>
 
->>>>>>> 56bf03c477ad3389981d10685a0cd389367f2b15
 <body>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
