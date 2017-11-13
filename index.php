@@ -48,7 +48,7 @@
       <div class="main">
         <div class="row">
           <div class="col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-2">
-            <h3>Welcome [USERNAME] </h3>
+            <?php echo "<h3>Welcome {$_SESSON['USERNAME']} </h3>"; ?>
             <h4> &nbsp; What would you like to do?</h4>
           </div>
         </div>
