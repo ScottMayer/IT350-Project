@@ -1,10 +1,9 @@
-    <?php
+<?php
 #DEBUG
 
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfReader;
 
-include('./includes/php/error.inc.php');
 require_once('./includes/fpdf181/fpdf.php');
 require_once('./includes/fpdi/src/autoload.php');
     
