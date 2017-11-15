@@ -15,8 +15,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>View Chits</title>
-=======
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -136,16 +134,6 @@ if($debug){
 
 
 <!-- <h1>View Chits</h1> -->
-<nav class="navbar navbar-default navbar-fixed-bottom ">
-	<div class="container-fluid ">
-		<li><a href="../../default.html">View All Chits</a></li>
-		<li>You are currently logged in as: USERNAME</li>
-	</div>
-	<ol class="breadcrumb">
-		<li><a href="index.php">Home</a></li>
-		<li>New Chit</li>
-	</ol>
-</nav>
 
 </body>
 
