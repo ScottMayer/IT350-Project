@@ -7,7 +7,7 @@
 
   <body>
     <h1>E-Chits Login Register</h1>
-    <form method=post action="" id=reg-form>
+    <form method=post action="register-user.php" id=reg-form>
       Email:    <input type=email name=email> <br>
       Username: <input type=text name=username required> <br>
       Password: <input type=password name=password required> <br>

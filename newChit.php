@@ -180,6 +180,15 @@
                     <tr>
                       <td><label for="Ref">References: &nbsp;</label></td>
                     </tr>
+                    <tr>
+                      <td><input type="text" name="Ref" id="Ref" value=""></td>
+                    </tr>
+                    <tr>
+                      <td><label for="VIA">VIA:</label></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
                   </div>
                   <tr>
                     <td>

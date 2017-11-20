@@ -135,16 +135,6 @@ if($debug){
 
 
 <!-- <h1>View Chits</h1> -->
-<nav class="navbar navbar-default navbar-fixed-bottom ">
-	<div class="container-fluid ">
-		<li><a href="../../default.html">View All Chits</a></li>
-		<li>You are currently logged in as: USERNAME</li>
-	</div>
-	<ol class="breadcrumb">
-		<li><a href="index.php">Home</a></li>
-		<li>New Chit</li>
-	</ol>
-</nav>
 
 </body>
 
