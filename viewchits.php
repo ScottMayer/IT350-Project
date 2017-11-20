@@ -15,7 +15,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>View Chits</title>
-=======
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
@@ -59,7 +58,7 @@
         </div>
         <button type="submit" class="btn btn-default">Find Chit</button>
       </form>
-</li>  
+</li>
         <li><a href="./AllChits.php">View All Chits</a></li>
 </ul>
     </div><!-- /.navbar-collapse -->
