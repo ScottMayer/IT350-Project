@@ -15,6 +15,7 @@
       Username: <input type=text name=username required> <br>
       Password: <input type=password name=password required> <br>
       <button type=submit form=form1 value=Login>Login</button>
+      <a href=register.php><button type=button>Register</button></a>
     </form>
 
   </body>
