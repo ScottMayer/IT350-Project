@@ -8,6 +8,17 @@
   function redirect(location){
     window.location = location;
   }
+  var i=1;
+</script>
+
+<script type="text/javascript">
+  function newRef(){
+    i++;
+    var x = document.getElementById('ref');
+    var inner=x.innerHTML;
+    x.innerHTML=(inner+"<tr><td>"+i+":<input type='text' name='Ref' id=Ref"+i+" value=''></td></tr>");
+  }
+
 </script>
 <html>
   <head>
@@ -57,7 +68,7 @@
         </div>
         <button type="submit" class="btn btn-default">Find Chit</button>
       </form>
-</li>  
+</li>
         <li><a href="./AllChits.php">View All Chits</a></li>
 </ul>
     </div><!-- /.navbar-collapse -->
@@ -176,18 +187,16 @@
                     </tr>
                   </div>
                   <tr><td><br></td></tr>
-                  <div class="form-group">
+                  <div class="form-group" id="ref">
                     <tr>
                       <td><label for="Ref">References: &nbsp;</label></td>
+                      <td>1: <input type="text" name="Ref" id="Ref1" value=""></td>
+                      <td><input type="button" name="Add Another Reference" value="" onclick="newRef()"></td>
                     </tr>
-                    <tr>
-                      <td><input type="text" name="Ref" id="Ref" value=""></td>
-                    </tr>
+                  </div>
+                  <div class="form-group" id="VIA">
                     <tr>
                       <td><label for="VIA">VIA:</label></td>
-                    </tr>
-                    <tr>
-                      <td></td>
                     </tr>
                   </div>
                   <tr>
