@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<?php if(!isset($_SESSION['username'])){
+<?php session_start();
+  if(!isset($_SESSION['username'])){
   //if username isn't set send them to a login page
-  //header("Location: ./login/login.php");
+  header("Location: ./login/login.php");
       }
  ?>
 <script type="text/javascript">
@@ -59,6 +60,7 @@
       </form>
 </li>  
         <li><a href="./AllChits.php">View All Chits</a></li>
+        <li><a href="./login/logout.php">Logout</a></li>
 </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

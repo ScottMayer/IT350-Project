@@ -59,6 +59,7 @@
       </form>
 </li>  
         <li><a href="./AllChits.php">View All Chits</a></li>
+        <?php if(isset($_SESSION['username'])) echo "<li><a href=\"./logout.php\">Logout</a></li>"; ?>
 </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
