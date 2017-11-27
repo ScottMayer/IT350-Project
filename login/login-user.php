@@ -67,6 +67,11 @@
       while($line=fgets($fp)) { // linear traversal through en-42
         $arr = explode(";", $line);
 
+        // echo "<pre>";
+        // print_r($arr);
+        // echo "</pre>";
+        // echo $user;
+
         if($exists=in_array($user, $arr)) { // users is registered
           // check to see if entered password matches registered password
           if(password_verify($pass, $arr[2])) {
@@ -81,7 +86,7 @@
       }
     }
     header("Refresh: 5; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login/login.php");
-    echo "<h1>Login failed. Make sure you've registered before attempting to login. Redirecting you to the login page...</h1>";
+    echo "<h1>Login failed.</h1><br><h4>Make sure you've <a href=register.php>registered</a> before attempting to login. Redirecting you to the <a href=login.php>login page</a>...</h4>";
     die();
   }
 
