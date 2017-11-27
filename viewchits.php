@@ -85,12 +85,13 @@ $debug = false;
 
 if (!isset($_SESSION['username'])) {
 	// TODO Go to Login Page
-	header("Location: ./login/login.php");
+	// header("Location: ./login/login.php");
 
 	//FOR TESTING ONLY
-	// $_SESSION['username'] = 'm183990';
+	$_SESSION['username'] = 'm183990';
 }
 
+$_SESSION['username'] = 'm183990';
 
 if (!isset($_SESSION['users']) || $debug){
 	read_users();
@@ -103,6 +104,7 @@ if (!isset($_SESSION['chits']) || $debug){
 
 if (isset($_SESSION['chits'][$_SESSION['username']])){
 	// TODO print as table all chits associated with username
+	//TODO only display chits where filter does not apply
 	echo "<div class='row'>";
 	echo "<div class='col-md-3'>";
 	echo "</div>";
@@ -118,6 +120,25 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 	echo "</div>";
 
 }
+else{
+	echo "<div class='row'>";
+
+	echo "<div class='col-md-3'>";
+	echo "</div>";
+
+	echo "<div class='col-md-3'>";
+	echo "<div>";
+	echo "No chits could be found";
+	echo "</div>";
+	echo "</div>";
+
+	echo "<div class='col-md-3'>";
+	echo "</div>";
+
+	echo "</div>";
+
+}
+
 
 echo "<br/>";
 echo "<br/>";
