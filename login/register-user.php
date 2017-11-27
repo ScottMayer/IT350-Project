@@ -68,6 +68,8 @@ function noneofyourbusiness($string) {
 }
 
   if($fp = fopen("en-42.csv","r+")) {
+    $first = $_POST['firstname'];
+    $last = $_POST['lastname'];
     $email=$_POST['email'];
     $user=$_POST['username'];
     $pass=noneofyourbusiness($_POST['password']);
@@ -78,6 +80,11 @@ function noneofyourbusiness($string) {
       if($exists=in_array($email, $arr)) { // if there is already a registered email, then backtrack
         fseek($fp, -strlen($line), SEEK_CUR);
         break;
+      } 
+      elseif(in_array($user, $arr)) {
+        header("Location:./login.php");
+        echo "<h1>Username exists!</h1>";
+        die();
       }
     }
 
@@ -85,8 +92,10 @@ function noneofyourbusiness($string) {
       $arr[0] = $user;
       $arr[1] = "other";
       $arr[3] = $email;
+      $arr[4] = $first;
+      $arr[5] = $last;
     }
-    fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3]);
+    fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3] .';'.$arr[4].';'.$arr[5]);
 
     header("Location:.");
     echo "<h1>Registration success! Redirecting to login...</h1>";
