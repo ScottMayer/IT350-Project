@@ -77,7 +77,7 @@
           if(password_verify($pass, $arr[2])) {
             // entered password matches registered password
             $_SESSION['username'] = $user;
-            header("Refresh: 3;url=../index.php"); //http://midn.cs.usna.edu/~m183990/IT350/IT350-Project/index.php");
+            header("Location:../index.php"); //http://midn.cs.usna.edu/~m183990/IT350/IT350-Project/index.php");
             echo "<h1>Login success. Redirecting you to the landing page...</h1>"; // . $_SESSION['username'];
             die();
           }
@@ -85,7 +85,7 @@
         }
       }
     }
-    header("Refresh: 5; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login/login.php");
+    header("Location:./login.php");
     echo "<h1>Login failed.</h1><br><h4>Make sure you've <a href=register.php>registered</a> before attempting to login. Redirecting you to the <a href=login.php>login page</a>...</h4>";
     die();
   }
