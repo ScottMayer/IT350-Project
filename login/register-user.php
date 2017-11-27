@@ -88,10 +88,10 @@ function noneofyourbusiness($string) {
     }
     fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3]);
 
-    header("Refresh: 3; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login");
+    header("Location:.");
     echo "<h1>Registration success! Redirecting to login...</h1>";
   } else {
-    header("Refresh: 3; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login/register.php");
+    header("Location:./register.php");
     echo "<h1>Error: fopen failed, failed to register\n</h1>";
   }
 

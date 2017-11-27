@@ -61,7 +61,7 @@
 </nav>
     <h1>You are now logged out.</h1>
 <?php
-  header("Refresh: 3; url=../index.php");
+  header("Refresh: 1; url=../index.php");
   die();
 ?>
   </body>
