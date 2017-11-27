@@ -16,8 +16,15 @@
     i++;
     var x = document.getElementById('ref');
     var inner=x.innerHTML;
-    x.innerHTML=(inner+"<tr><td>"+i+":<input type='text' name='Ref' id=Ref"+i+" value=''></td></tr>");
+    x.innerHTML=inner+"<tr><td>"+i+":<input type='text' name='Ref' id=Ref"+i+" value=''></td></tr>";
   }
+  // function newVIA(){
+  //   i++;
+  //   var x = document.getElementById('via');
+  //   var inner=x.innerHTML;
+  //   x.innerHTML=(inner+"<tr><td>"+i+":<input type='text' name='via' id=VIA"+i+" value=''></td></tr>");
+  // }
+
 
 </script>
 <html>
@@ -191,15 +198,20 @@
                   <div class="form-group" id="ref">
                     <tr>
                       <td><label for="Ref">References: &nbsp;</label></td>
-                      <td>1: <input type="text" name="Ref" id="Ref1" value=""></td>
                       <td><input type="button" name="Add Another Reference" value="" onclick="newRef()"></td>
                     </tr>
+                    <tr>
+                      <td>1:&nbsp; <input type="text" name="Ref" id="Ref1" value=""></td>
+                    </tr>
                   </div>
-                  <div class="form-group" id="VIA">
+                  <!-- <div class="form-group" id="VIA">
                     <tr>
                       <td><label for="VIA">VIA:</label></td>
                     </tr>
-                  </div>
+                    <tr>
+                      <td><input type="button" name="Add Another Lj" value="" onclick="newRef()"></td>
+                    </tr>
+                  </div> -->
                   <tr>
                     <td>
                       <input type="button" name="submit" value="submit">
