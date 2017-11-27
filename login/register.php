@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">E-Chits</a>
+          <a class="navbar-brand" href="../index.php">E-Chits</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +57,9 @@
 
     <h1>E-Chits Login Register</h1>
     <form method=post action="register-user.php" id=reg-form>
-      Email:    <input type=email name=email> <br>
+      First name: <input type=text name=firstname required> <br>
+      Last name: <input type=text name=lastname required> <br>
+      User email: <input type=email name=email required> <br>
       Username: <input type=text name=username required> <br>
       Password: <input type=password name=password required> <br>
       <button type=submit form=reg-form value=Register>Register</button>

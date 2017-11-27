@@ -67,35 +67,45 @@ function noneofyourbusiness($string) {
   return password_hash($salt . $string, PASSWORD_BCRYPT);
 }
 
-if($fp = fopen("en-42.csv","r+")) {
-  $email=$_POST['email'];
-  $user=$_POST['username'];
-  $pass=noneofyourbusiness($_POST['password']);
-  unset($_POST['password']);
+  if($fp = fopen("en-42.csv","r+")) {
+    $first = $_POST['firstname'];
+    $last = $_POST['lastname'];
+    $email=$_POST['email'];
+    $user=$_POST['username'];
+    $pass=noneofyourbusiness($_POST['password']);
+    unset($_POST['password']);
 
-  while($line=fgets($fp)) { // linear traversal through en-42
-    $arr = explode(";", $line);
-    if($exists=in_array($email, $arr)) { // if there is already a registered email, then backtrack
-      fseek($fp, -strlen($line), SEEK_CUR);
-      break;
+    while($line=fgets($fp)) { // linear traversal through en-42
+      $arr = explode(";", $line);
+      if($exists=in_array($email, $arr)) { // if there is already a registered email, then backtrack
+        fseek($fp, -strlen($line), SEEK_CUR);
+        break;
+      } 
+      elseif(in_array($user, $arr)) {
+        header("Location:./login.php");
+        echo "<h1>Username exists!</h1>";
+        die();
+      }
     }
+
+    if(!$exists) { // if there is no registered email
+      $arr[0] = $user;
+      $arr[1] = "other";
+      $arr[3] = $email;
+      $arr[4] = $first;
+      $arr[5] = $last;
+    }
+    fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3] .';'.$arr[4].';'.$arr[5]);
+
+    header("Location:.");
+    echo "<h1>Registration success! Redirecting to login...</h1>";
+  } else {
+    header("Location:./register.php");
+    echo "<h1>Error: fopen failed, failed to register\n</h1>";
   }
 
-  if(!$exists) { // if there is no registered email
-    $arr[0] = $user;
-    $arr[1] = "other";
-    $arr[3] = $email;
-  }
-  fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3]);
-
-  header("Refresh: 5; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login");
-  echo "<h1>Registration success! Redirecting to login...</h1>";
-} else {
-  header("Refresh: 5; url=http://midn.cs.usna.edu/~m197116/IT350/IT350-Project/login/register.php");
-  echo "<h1>Error: fopen failed, failed to register\n</h1>";
-}
-fclose($fp);
-die();
+  fclose($fp);
+  die();
 ?>
   </body>
 </html>
