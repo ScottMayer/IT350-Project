@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php require 'includes/php/functions.php'; ?>
+<?php require 'includes/php/error.inc.php'; ?>
 <?php if(!isset($_SESSION['username'])){
   //if username isn't set send them to a login page
   //header("Location: ./login/login.php");
@@ -16,15 +18,14 @@
     i++;
     var x = document.getElementById('ref');
     var inner=x.innerHTML;
-    x.innerHTML=inner+"<tr><td>"+i+":<input type='text' name='Ref' id=Ref"+i+" value=''></td></tr>";
+    x.innerHTML=inner+"  "+i+":<input type='text' name='Ref' id=Ref"+i+" value=''>  ";
   }
   // function newVIA(){
   //   i++;
   //   var x = document.getElementById('via');
   //   var inner=x.innerHTML;
-  //   x.innerHTML=(inner+"<tr><td>"+i+":<input type='text' name='via' id=VIA"+i+" value=''></td></tr>");
+  //   x.innerHTML=(inner+"  "+i+":<input type='text' name='via' id=VIA"+i+" value=''>  ");
   // }
-
 
 </script>
 <html>
@@ -92,138 +93,144 @@
       </div>
       <div class="row">
         <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-            <form class="form-horizontal" action="?" method="post">
-              <table>
-                <thead>
-                  <tr>
-                      <th colspan="3">Make Chit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <div class="form-group">
-                    <tr>
-                        <td colspan="2"><strong>Routed To</strong></td>
-                    </tr>
-                    <tr>
-                        <td><label for="toName">Name:&nbsp;</label></td>
-                        <td><input type="text" class="form-control" id="toName" name="toName" value=""></td>
-                        <td><label for="toBillet">Rank:&nbsp;</label></td>
-                        <td><input type="text" class="form-control" id="toBillet" name="toBillet" value=""></td>
-                    </tr>
-                  </div>
-                  <tr><td><br></td></tr>
-                  <div class="form-group">
-                    <tr>
-                        <td colspan="3"><strong>Your Information</strong></td>
-                    </tr>
-                    <div class="input-group">
-                      <tr>
-                          <td><label for="MIDNname" class="control-label">&nbsp;Name:&nbsp;</label></td>
-                          <td><input type="text" class="form-control" id="MIDNname" name="MIDNname" value=""></td>
-                          <td><label for="MIDNrank" class="control-label">&nbsp;Rank:&nbsp;</label></td>
-                          <td>
-                            <select class="form-control" id="MIDNrank" name="MIDNrank">
-                              <option value="NULL"></option>
-                              <option value="4">4/C</option>
-                              <option value="3">3/C</option>
-                              <option value="2">2/C</option>
-                              <option value="1">1/C</option>
-                            </select>
-                          </td>
-                          <td><label for="MIDNalpha" class="control-label">&nbsp;Alpha:&nbsp;</label></td>
-                          <td><input type="number" class="form-control" id="MIDNalpha" name="MIDNalpha" value=""></td>
-                      </tr>
-                    </div>
-                    <div class="input-group">
-                      <tr>
-                        <td><label for="MIDNclassyr">&nbsp;Graduating Year:&nbsp;</label></td>
-                        <td>
-                          <select class="form-control" id="MIDNclassyr" name="MIDNclassyr">
-                            <option value="NULL"></option>
-                            <?php
-                              for ($i=2018; $i < 2022; $i++) {echo "<option value='$i'>$i</option>";}
-                             ?>
-                          </select>
-                        </td>
-                        <td><label for="MIDNcompany">&nbsp;Company:&nbsp;</label></td>
-                        <td>
-                          <select class="form-control" id="MIDNcompany" name="MIDNcompany">
-                            <option value="NULL"></option>
-                            <?php
-                              for ($i=1; $i < 31; $i++) {echo "<option value='$i'>$i</option>";}
-                             ?>
-                          </select>
-                        </td>
-                        <td><label for="MIDNroom">Room Number:&nbsp;</label></td>
-                        <td><input type="number" class="form-control" id="MIDNroom" name="MIDNroom" value=""></td>
-                      </tr>
-                    </div>
-                    <div class="input-group">
-                      <tr>
-                        <td><label for="MIDNSQPR"> SQPR:&nbsp;</label></td>
-                        <td><input type="number" class="form-control" id="MIDNSQPR" name="MIDNSQPR" value=""></td>
-                        <td><label for="MIDNCQPR"> CQPR:&nbsp;</label></td>
-                        <td><input type="number" class="form-control" id="MIDNCQPR" name="MIDNCQPR" value=""></td>
-                        <td><label for="MIDNPerf"> Performance Grade:&nbsp;</label></td>
-                        <td>
-                          <select class="form-control" id="MIDNPerf" name="MIDNPerf">
-                            <option value="NULL"></option>
-                            <?php
-                              for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
-                             ?>
-                          </select>
-                        </td>
-                      </tr>
-                    </div>
-                    <div class="input-group">
-                      <tr>
-                        <td><label for="MIDNCond">Conduct Grade:&nbsp;</label></td>
-                        <td>
-                          <select class="form-control" id="MIDNCond" name="MIDN">
-                            <option value="NULL"></option>
-                            <?php
-                              for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
-                             ?>
-                          </select>
-                        </td>
-                      </tr>
-                    </div>
+          <form class="form-horizontal" name="chit" action="?" method="post">
 
-                    <tr>
-                      <td><label for="MIDNremarks">Remarks</label></td>
-                      <td><textarea name="MIDNremarks" class="form-control" id="MIDNremarks" rows="8" cols="80"></textarea></td>
-                    </tr>
-                  </div>
-                  <tr><td><br></td></tr>
-                  <div class="form-group" id="ref">
-                    <tr>
-                      <td><label for="Ref">References: &nbsp;</label></td>
-                      <td><input type="button" name="Add Another Reference" value="" onclick="newRef()"></td>
-                    </tr>
-                    <tr>
-                      <td>1:&nbsp; <input type="text" name="Ref" id="Ref1" value=""></td>
-                    </tr>
-                  </div>
-                  <!-- <div class="form-group" id="VIA">
-                    <tr>
-                      <td><label for="VIA">VIA:</label></td>
-                    </tr>
-                    <tr>
-                      <td><input type="button" name="Add Another Lj" value="" onclick="newRef()"></td>
-                    </tr>
-                  </div> -->
-                  <tr>
-                    <td>
-                      <input type="button" name="submit" value="submit">
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
+
+
+                  <th colspan="3">Make Chit</th>
+
+
+
+
+                   <label for="ChitName">Chit Name</label>
+                   <input type="ChitName" name="ChitName" value="">
+
+
+                  <strong>Routed To</strong>
+
+
+                   <label for="toName">Name:&nbsp;</label>
+                   <input type="text" class="form-control" id="toName" name="toName" value="">
+                   <label for="toBillet">Rank:&nbsp;</label>
+                   <input type="text" class="form-control" id="toBillet" name="toBillet" value="">
+
+
+                  <td colspan="3"><strong>Your Information</strong>
+
+                <div class="input-group">
+
+                     <label for="MIDNname" class="control-label">&nbsp;Name:&nbsp;</label>
+                     <input type="text" class="form-control" id="MIDNname" name="MIDNname" value="">
+                     <label for="MIDNrank" class="control-label">&nbsp;Rank:&nbsp;</label>
+
+                      <select class="form-control" id="MIDNrank" name="MIDNrank">
+                            <option value="NULL"></option>
+                            <option value="4">4/C</option>
+                            <option value="3">3/C</option>
+                            <option value="2">2/C</option>
+                            <option value="1">1/C</option>
+                          </select>
+
+                     <label for="MIDNalpha" class="control-label">&nbsp;Alpha:&nbsp;</label>
+                     <input type="number" class="form-control" id="MIDNalpha" name="MIDNalpha" value="">
+
+                </div>
+                <div class="input-group">
+
+                     <label for="MIDNclassyr">&nbsp;Graduating Year:&nbsp;</label>
+
+                      <select class="form-control" id="MIDNclassyr" name="MIDNclassyr">
+                          <option value="NULL"></option>
+                          <?php
+                            for ($i=2018; $i < 2022; $i++) {echo "<option value='$i'>$i</option>";}
+                           ?>
+                        </select>
+
+                     <label for="MIDNcompany">&nbsp;Company:&nbsp;</label>
+
+                      <select class="form-control" id="MIDNcompany" name="MIDNcompany">
+                          <option value="NULL"></option>
+                          <?php
+                            for ($i=1; $i < 31; $i++) {echo "<option value='$i'>$i</option>";}
+                           ?>
+                        </select>
+
+                     <label for="MIDNroom">Room Number:&nbsp;</label>
+                     <input type="number" class="form-control" id="MIDNroom" name="MIDNroom" value="">
+
+                </div>
+                <div class="input-group">
+
+                     <label for="MIDNSQPR"> SQPR:&nbsp;</label>
+                     <input type="number" class="form-control" id="MIDNSQPR" name="MIDNSQPR" value="">
+                     <label for="MIDNCQPR"> CQPR:&nbsp;</label>
+                     <input type="number" class="form-control" id="MIDNCQPR" name="MIDNCQPR" value="">
+                     <label for="MIDNPerf"> Performance Grade:&nbsp;</label>
+
+                      <select class="form-control" id="MIDNPerf" name="MIDNPerf">
+                          <option value="NULL"></option>
+                          <?php
+                            for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
+                           ?>
+                        </select>
+
+
+                </div>
+                <div class="input-group">
+
+                     <label for="MIDNCond">Conduct Grade:&nbsp;</label>
+
+                      <select class="form-control" id="MIDNCond" name="MIDN">
+                          <option value="NULL"></option>
+                          <?php
+                            for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
+                           ?>
+                        </select>
+
+
+                </div>
+
+                   <label for="MIDNremarks">Remarks</label>
+                   <textarea name="MIDNremarks" class="form-control" id="MIDNremarks" rows="8" cols="80"></textarea>
+
+
+                   <br>
+
+                <div class="form-group" id="ref">
+
+                     <label for="Ref">References: &nbsp;</label>
+                     <input type="button" name="Add Another Reference" value="Add Another Reference" onclick="newRef()">
+
+
+                     1:&nbsp; <input type="text" name="Ref" id="Ref1" value="">
+
+                </div>
+                <!-- <div class="form-group" id="VIA">
+
+                     <label for="VIA">VIA:</label>
+
+
+                     <input type="button" name="Add Another Lj" value="" onclick="newRef()">
+
+                </div> -->
+
+
+                    <input type="submit" name="submit" value="submit">
+
+
+
+
+          </form>
         </div>
       </div>
     </div>
-
+    <?php
+      $chit=$_POST();
+      $serChit=serialize($chit);
+      $author=$_SESSION('username');
+      $name=$_POST['ChitName'];
+      writeChit($author, $name, $serChit);
+     ?>
   </body>
 
 </html>
