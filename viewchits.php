@@ -85,13 +85,13 @@ $debug = false;
 
 if (!isset($_SESSION['username'])) {
 	// TODO Go to Login Page
-	// header("Location: ./login/login.php");
+	header("Location: ./login/login.php");
 
 	//FOR TESTING ONLY
-	$_SESSION['username'] = 'm183990';
+	// $_SESSION['username'] = 'm183990';
 }
 
-$_SESSION['username'] = 'm183990';
+// $_SESSION['username'] = 'm183990';
 
 if (!isset($_SESSION['users']) || $debug){
 	read_users();

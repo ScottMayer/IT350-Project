@@ -59,7 +59,7 @@
         <button type="submit" class="btn btn-default">Find Chit</button>
       </form>
 </li>  
-        <li><a href="./AllChits.php">View All Chits</a></li>
+        <li><a href="/AllChits.php">View All Chits</a></li>
         <li><a href="./login/logout.php">Logout</a></li>
 </ul>
     </div><!-- /.navbar-collapse -->
