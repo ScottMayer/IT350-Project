@@ -214,7 +214,7 @@
 
                 </div> -->
 
-
+                    <input type="hidden" name="AlltheData" value="AlltheData">
                     <input type="submit" name="submit" value="submit">
 
 
@@ -225,11 +225,12 @@
       </div>
     </div>
     <?php
-      $chit=$_POST();
-      $serChit=serialize($chit);
-      $author=$_SESSION('username');
-      $name=$_POST['ChitName'];
-      writeChit($author, $name, $serChit);
+      if ($_SERVER['REQUEST_METHOD']==='POST'){
+        $Serializedchit=$_POST('AlltheData');
+        $author=$_SESSION('username');
+        $name=$_POST['ChitName'];
+        writeChit($author, $name, $serChit);
+      }
      ?>
   </body>
 
