@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<?php if(!isset($_SESSION['username'])){
+<?php session_start();
+  if(!isset($_SESSION['username'])){
   //if username isn't set send them to a login page
-  //header("Location: ./login/login.php");
+  header("Location: ./login/login.php");
       }
  ?>
 <script type="text/javascript">
@@ -27,16 +28,21 @@
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-
-<body>
+  <body>
 <?php 
 require('nav.inc.php');
 nav();
 ?>
-<h1>View Chits</h1>
+<div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h1>View Chits</h1>
+          </div>
+        </div>
+      </div>
 
 <?php
-session_start();
 // session_destroy();
 // $_POST = array();
 // $_REQUEST = array();
@@ -124,8 +130,8 @@ if($debug){
 }
 ?>
 
+</div>
 
-<!-- <h1>View Chits</h1> -->
 
 </body>
 
