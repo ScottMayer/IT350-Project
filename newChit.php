@@ -19,7 +19,7 @@
     i++;
     var x = document.getElementById('ref');
     var inner=x.innerHTML;
-    x.innerHTML=inner+"  "+i+":<input type='text' name='Ref' id=Ref"+i+" value=''>  ";
+    x.innerHTML=inner+"<input type='text' name='Ref' id=Ref"+i+" value='' placeholder=\"Reference "+i+"\"><br>";
   }
   // function newVIA(){
   //   i++;
@@ -45,6 +45,8 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+    <style> body { font-family: Raleway; } </style>
   </head>
   <body>
 <?php
@@ -63,114 +65,94 @@ nav();
         <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
           <form class="form-horizontal" name="chit" action="?" method="post">
 
+                  <!-- <th colspan="3">Make Chit</th> -->
+                   <br>
 
-
-                  <th colspan="3">Make Chit</th>
-
-
-
-
-                   <label for="ChitName">Chit Name</label>
-                   <input type="ChitName" name="ChitName" value="">
-
+                   <!-- <label for="ChitName">Chit Name</label> -->
+                   <input type="ChitName" class=form-control name="ChitName" value="" placeholder="Chit Name">
+                   <br>
 
                   <strong>Routed To</strong>
 
-
-                   <label for="toName">Name:&nbsp;</label>
-                   <input type="text" class="form-control" id="toName" name="toName" value="">
-                   <label for="toBillet">Rank:&nbsp;</label>
-                   <input type="text" class="form-control" id="toBillet" name="toBillet" value="">
-
+                   <!-- <label for="toName">Name:&nbsp;</label> -->
+                   <input type="text" class="form-control" id="toName" name="toName" value="" placeholder=Name>
+                   <!-- <label for="toBillet">Rank:&nbsp;</label> -->
+                   <input type="text" class="form-control" id="toBillet" name="toBillet" value="" placeholder=Rank>
+                   <br>
 
                   <td colspan="3"><strong>Your Information</strong>
 
                 <div class="input-group">
+                  <!-- <label for="MIDNname" class="control-label">&nbsp;Name:&nbsp;</label> -->
+                  <input type="text" class="form-control" id="MIDNname" name="MIDNname" value="" placeholder=Name>
 
-                     <label for="MIDNname" class="control-label">&nbsp;Name:&nbsp;</label>
-                     <input type="text" class="form-control" id="MIDNname" name="MIDNname" value="">
-                     <label for="MIDNrank" class="control-label">&nbsp;Rank:&nbsp;</label>
+                  <!-- <label for="MIDNrank" class="control-label">&nbsp;Rank:&nbsp;</label> -->
+                   <select class="form-control" id="MIDNrank" name="MIDNrank">
+                     <option value="NULL">Select Rank</option>
+                     <option value="4">4/C</option>
+                     <option value="3">3/C</option>
+                     <option value="2">2/C</option>
+                     <option value="1">1/C</option>
+                   </select>
 
-                      <select class="form-control" id="MIDNrank" name="MIDNrank">
-                            <option value="NULL"></option>
-                            <option value="4">4/C</option>
-                            <option value="3">3/C</option>
-                            <option value="2">2/C</option>
-                            <option value="1">1/C</option>
-                          </select>
+                  <!-- <label for="MIDNalpha" class="control-label">&nbsp;Alpha:&nbsp;</label> -->
+                  <input type="number" class="form-control" id="MIDNalpha" name="MIDNalpha" value="" placeholder=Alpha>
+                </div>
 
-                     <label for="MIDNalpha" class="control-label">&nbsp;Alpha:&nbsp;</label>
-                     <input type="number" class="form-control" id="MIDNalpha" name="MIDNalpha" value="">
+                <div class="input-group">
+                  <!-- <label for="MIDNclassyr">&nbsp;Graduating Year:&nbsp;</label> -->
+                  <select class="form-control" id="MIDNclassyr" name="MIDNclassyr">
+                    <option value="NULL">Graduating Year</option>
+                    <?php
+                      for ($i=2018; $i < 2022; $i++) {echo "<option value='$i'>$i</option>";}
+                     ?>
+                  </select>
 
+                  <!-- <label for="MIDNcompany">&nbsp;Company:&nbsp;</label> -->
+                  <select class="form-control" id="MIDNcompany" name="MIDNcompany">
+                    <option value="NULL">Company</option>
+                    <?php
+                      for ($i=1; $i < 31; $i++) {echo "<option value='$i'>$i</option>";}
+                     ?>
+                  </select>
+
+                  <!-- <label for="MIDNroom">Room Number:&nbsp;</label> -->
+                  <input type="number" class="form-control" id="MIDNroom" name="MIDNroom" value="" placeholder="Room Number">
                 </div>
                 <div class="input-group">
+                  <!-- <label for="MIDNSQPR"> SQPR:&nbsp;</label> -->
+                  <input type="number" class="form-control" id="MIDNSQPR" name="MIDNSQPR" value="" placeholder="SQPR">
+                  <!-- <label for="MIDNCQPR"> CQPR:&nbsp;</label> -->
+                  <input type="number" class="form-control" id="MIDNCQPR" name="MIDNCQPR" value="" placeholder="CQPR">
+                  <!-- <label for="MIDNPerf"> Performance Grade:&nbsp;</label> -->
 
-                     <label for="MIDNclassyr">&nbsp;Graduating Year:&nbsp;</label>
-
-                      <select class="form-control" id="MIDNclassyr" name="MIDNclassyr">
-                          <option value="NULL"></option>
-                          <?php
-                            for ($i=2018; $i < 2022; $i++) {echo "<option value='$i'>$i</option>";}
-                           ?>
-                        </select>
-
-                     <label for="MIDNcompany">&nbsp;Company:&nbsp;</label>
-
-                      <select class="form-control" id="MIDNcompany" name="MIDNcompany">
-                          <option value="NULL"></option>
-                          <?php
-                            for ($i=1; $i < 31; $i++) {echo "<option value='$i'>$i</option>";}
-                           ?>
-                        </select>
-
-                     <label for="MIDNroom">Room Number:&nbsp;</label>
-                     <input type="number" class="form-control" id="MIDNroom" name="MIDNroom" value="">
-
+                  <select class="form-control" id="MIDNPerf" name="MIDNPerf">
+                    <option value="NULL">Performance</option>
+                    <?php
+                      for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
+                     ?>
+                  </select>
                 </div>
                 <div class="input-group">
-
-                     <label for="MIDNSQPR"> SQPR:&nbsp;</label>
-                     <input type="number" class="form-control" id="MIDNSQPR" name="MIDNSQPR" value="">
-                     <label for="MIDNCQPR"> CQPR:&nbsp;</label>
-                     <input type="number" class="form-control" id="MIDNCQPR" name="MIDNCQPR" value="">
-                     <label for="MIDNPerf"> Performance Grade:&nbsp;</label>
-
-                      <select class="form-control" id="MIDNPerf" name="MIDNPerf">
-                          <option value="NULL"></option>
-                          <?php
-                            for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
-                           ?>
-                        </select>
-
-
-                </div>
-                <div class="input-group">
-
-                     <label for="MIDNCond">Conduct Grade:&nbsp;</label>
-
-                      <select class="form-control" id="MIDNCond" name="MIDN">
-                          <option value="NULL"></option>
-                          <?php
-                            for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
-                           ?>
-                        </select>
-
-
+                  <!-- <label for="MIDNCond">Conduct Grade:&nbsp;</label> -->
+                  <select class="form-control" id="MIDNCond" name="MIDN">
+                    <option value="NULL">Conduct</option>
+                    <?php
+                      for ($i='A'; $i < 'G'; $i++) {echo "<option value='$i'>$i</option>";}
+                     ?>
+                    </select>
                 </div>
 
-                   <label for="MIDNremarks">Remarks</label>
-                   <textarea name="MIDNremarks" class="form-control" id="MIDNremarks" rows="8" cols="80"></textarea>
-
-
-                   <br>
+                <label for="MIDNremarks">Remarks</label>
+                <textarea name="MIDNremarks" class="form-control" id="MIDNremarks" rows="8" cols="80"></textarea>
+                <br>
 
                 <div class="form-group" id="ref">
+                  <label for="Ref">References: &nbsp;</label><br>
+                  <input type="button" name="Add Another Reference" value="Add Another Reference" onclick="newRef()"> <br>
 
-                     <label for="Ref">References: &nbsp;</label>
-                     <input type="button" name="Add Another Reference" value="Add Another Reference" onclick="newRef()">
 
-
-                     1:&nbsp; <input type="text" name="Ref" id="Ref1" value="">
+                     <input type="text" name="Ref" id="Ref1" value="" placeholder="Reference 1"><br>
 
                 </div>
                 <!-- <div class="form-group" id="VIA">
@@ -193,7 +175,7 @@ nav();
       </div>
     </div>
     <?php
-      // if ($_SERVER['REQUEST_METHOD']==='POST'){
+      if ($_SERVER['REQUEST_METHOD']==='POST'){
         $chit=$_POST;
         $author="default";
         if (isset($_SESSION['username'])) {
@@ -202,7 +184,7 @@ nav();
 
         $name=$_POST['ChitName'];
         writeChit($author, $name, $chit);
-      // }
+      }
      ?>
   </body>
 
