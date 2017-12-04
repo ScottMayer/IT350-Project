@@ -51,6 +51,8 @@
       <button type=submit form=form1 value=Login>Login</button>
       <!-- <a href=register.php><button type=button>Register</button></a> -->
       <button type=button onclick="window.location.href='./register.php'">Register</button>
+      <button type=button onclick="window.location.href='./pwchange.php'" disabled>Reset password</button>
+      <?php if($_SESSION['redirect']) { echo "<br><br><div class=\"alert alert-danger\">Login failed!</div>"; unset($_SESSION['redirect']); } ?>
     </form> <br>
     <div id="msg"></div>
   </div>

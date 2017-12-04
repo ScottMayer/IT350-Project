@@ -50,17 +50,31 @@
 
       <!-- <a href=login.php><button type=button>Login</button></a> -->
       <button type=button onclick="window.location.href='./login.php'">Login</button>
-      <button type=submit form=reg-form value=Register>Register</button>
+      <button type=submit id=register-button form=reg-form value=Register>Register</button>
+      <button type=button onclick="window.location.href='./pwchange.php'" disabled>Reset password</button> <br><br>
+      <?php
+        session_start();
+        if(isset($_SESSION['error'])) {
+          echo "<div class=\"alert alert-danger\" id=error>";
+          echo $_SESSION['error'];
+          echo "</div>";
+          unset($_SESSION['error']);
+        } ?>
+      <div class="alert alert-danger" id=inputscrub style="visibility:hidden;">Username should not contain " " or "-"!</div>
     </form>
+
     <!-- Client-side check  -->
     <script type=text/javascript>
       function inputCheck($form) {
         if($form.elements['username'].value.indexOf(" ") != -1 || $form.elements['username'].value.indexOf("-") != -1) {
-          alert("Username should not contain \" \" or \"-\"!");
+          // alert("Username should not contain \" \" or \"-\"!");
+          document.getElementById("inputscrub").style.visibility = "visible";
           return false;
         }
         return true;
       }
+
+      // document.getElementById("register-button").focus();
     </script>
   </div>
 

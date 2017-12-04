@@ -32,6 +32,9 @@ function noneofyourbusiness($string) {
   return password_hash($salt . $string, PASSWORD_BCRYPT);
 }
 
+session_start();
+unset($_SESSION['error']);
+
   if($fp = fopen("en-42.csv","r+")) {
     $first = $_POST['firstname'];
     $last = $_POST['lastname'];
@@ -42,24 +45,36 @@ function noneofyourbusiness($string) {
 
     while($line=fgets($fp)) { // linear traversal through en-42
       $arr = explode(";", $line);
-      if($exists=in_array($email, $arr)) { // if there is already a registered email, then backtrack
-        fseek($fp, -strlen($line), SEEK_CUR);
+      if($exists=in_array($email, $arr)) { // if there is already a registered email
+        /* then backtrack <---- no. forget this. */
+        // fseek($fp, -strlen($line), SEEK_CUR);
+        // break;
+        $_SESSION['error'] = "Email has already registered!";
         break;
-      } 
+      }
       elseif(in_array($user, $arr)) { // this should come before checking email, if user exists stop and redirect to login
-        header("Location:./login.php");
-        echo "<h1>Username exists!</h1>";
-        die();
+        // header("Location:./login.php");
+        // echo "<h1>Username exists!</h1>";
+        // die();
+
+        $_SESSION['error'] = "Username already exists!";
+        break;
       }
     }
 
-    if(!$exists) { // if there is no registered email
+    if(isset($_SESSION['error'])) {
+      header("Location:./register.php");
+      echo "<h1>Error: Registration failed, redirecting to registration page...</h1>";
+      die();
+    }
+
+    //if(!$exists) { // if there is no registered email
       $arr[0] = $user;
       $arr[1] = "other";
       $arr[3] = $email;
       $arr[4] = $first;
       $arr[5] = $last;
-    }
+    //}
     fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3] .';'.$arr[4].';'.$arr[5]);
 
     header("Location:.");
