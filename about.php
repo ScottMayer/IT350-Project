@@ -69,7 +69,7 @@
         if(alpha == "M183990") {
           desc = "MIDN 1/C Scott Mayer is a CS/IT major in 1st Company at USNA and is also the project lead for E-Chits.";
         } else if(alpha == "M190108") {
-          desc = "MIDN 2/C Doug Alpuche has done absolutely nothing to contribute to E-Chits. Seriously, he's done nothing.";
+          desc = "MIDN 2/C Doug Alpuche is a CS/IT major in 13th Company at USNA.";
         } else if(alpha == "M197116") {
           desc = "MIDN 2/C Vincent Xu is a CS/IT major in 13th Company at USNA. He built the login and registration systems for E-Chits. He pleads with E-Chits users, with tears in his eyes, to not mess with or break the system, or he'll be forced to take retaliatory action against them all. He desires a commission into the Marine Corps after graduation. He really enjoys sleep, but Sleep has decided that it'd do both of them some good to take a temporary break.";
         } else if(alpha == "M201656") {
