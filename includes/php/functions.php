@@ -10,8 +10,13 @@
 
   function writeChit($author, $name, $data){
     $dir=fopen("chits/directory.txt", 'a');
-    fwrite($dir, $author . ", " . $name . ", " . $data);
+    fwrite($dir, $author . ", " . $name);
     fclose($dir);
+
+    $filename=$name . ".txt";
+    $newchit=fopen($filename, 'w');
+    fwrite($newchit, $data);
+    fclose($newchit);
   }
 
  ?>
