@@ -63,7 +63,7 @@ unset($_SESSION['error']);
     }
 
     if(isset($_SESSION['error'])) {
-      header("Location:./register.php");
+      header("Location:../register.php");
       echo "<h1>Error: Registration failed, redirecting to registration page...</h1>";
       die();
     }
@@ -80,7 +80,7 @@ unset($_SESSION['error']);
     header("Location:.");
     echo "<h1>Registration success! Redirecting to login...</h1>";
   } else {
-    header("Location:./register.php");
+    header("Location:../register.php");
     echo "<h1>Error: fopen failed, failed to register\n</h1>";
   }
 

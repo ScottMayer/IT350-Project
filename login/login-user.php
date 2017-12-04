@@ -53,7 +53,7 @@
       }
     }
     $_SESSION['redirect'] = true;
-    header("Location:./login.php");
+    header("Location:../login.php");
     echo "<h1>Login failed.</h1><br><h4>Make sure you've <a href=register.php>registered</a> before attempting to login. Redirecting you to the <a href=login.php>login page</a>...</h4>";
     die();
   }

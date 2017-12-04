@@ -27,9 +27,9 @@ function nav($i=0){
           </form>
     </li>  
             <li><a href='./about.php'>About Us</a></li>
-            <li><a href='./login/logout.php'>Logout</a></li>";
+            <li><a href='./logout.php'>Logout</a></li>";
         }else{
-            echo "<li><a href='../about.php'>About Us</a></li>";
+            echo "<li><a href='./about.php'>About Us</a></li>";
             echo "<li><a href='./login.php'>Login</a></li>";
         }
     echo "

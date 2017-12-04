@@ -2,7 +2,7 @@
 <?php session_start();
   if(!isset($_SESSION['username'])){
   //if username isn't set send them to a login page
-  header("Location: ./login/login.php");
+  header("Location: ./login.php");
       }
  ?>
 <script type="text/javascript">
