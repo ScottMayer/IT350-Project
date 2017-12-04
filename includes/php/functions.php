@@ -13,10 +13,10 @@
     $dir=fopen("chits/directory.txt", 'a');
     fwrite($dir, $author . ", " . $filename . ", " .  $data['toName']);
     fclose($dir);
-
+    $serchit=serialize($data);
     $filename=$name . ".txt";
     $newchit=fopen($filename, 'w');
-    fwrite($newchit, $data);
+    fwrite($newchit, $serchit);
     fclose($newchit);
   }
 
