@@ -48,10 +48,10 @@
     <form method=post action=login-user.php id=form1>
       <input type=text class=form-control name=username placeholder=Username required> 
       <input type=password class=form-control name=password placeholder=Password required> 
-      <button type=submit form=form1 value=Login>Login</button>
+      <button type=submit class="btn btn-default" form=form1 value=Login>Login</button>
       <!-- <a href=register.php><button type=button>Register</button></a> -->
-      <button type=button onclick="window.location.href='./register.php'">Register</button>
-      <button type=button onclick="window.location.href='./pwchange.php'" disabled>Reset password</button>
+      <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
+      <button type=button class="btn btn-default" onclick="window.location.href='./pwchange.php'" disabled>Reset password</button>
       <?php if($_SESSION['redirect']) { echo "<br><br><div class=\"alert alert-danger\">Login failed!</div>"; unset($_SESSION['redirect']); } ?>
     </form> <br>
     <div id="msg"></div>
