@@ -51,7 +51,7 @@
       <!-- <a href=login.php><button type=button>Login</button></a> -->
       <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>
       <button type=submit class="btn btn-default" id=register-button form=reg-form value=Register>Register</button>
-      <button type=button class="btn btn-default" onclick="window.location.href='./pwchange.php'" disabled>Reset password</button> <br><br>
+      <button type=button class="btn btn-default" onclick="window.location.href='./change.php'">Change password</button> <br><br>
       <?php
         session_start();
         if(isset($_SESSION['error'])) {

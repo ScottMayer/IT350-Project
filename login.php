@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title>E-Chits Account Login</title>
     <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
@@ -51,7 +51,7 @@
       <button type=submit class="btn btn-default" form=form1 value=Login>Login</button>
       <!-- <a href=register.php><button type=button>Register</button></a> -->
       <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
-      <button type=button class="btn btn-default" onclick="window.location.href='./pwchange.php'" disabled>Reset password</button>
+      <button type=button class="btn btn-default" onclick="window.location.href='./change.php'" >Change password</button>
       <?php if($_SESSION['redirect']) { echo "<br><br><div class=\"alert alert-danger\">Login failed!</div>"; unset($_SESSION['redirect']); } ?>
     </form> <br>
     <div id="msg"></div>
