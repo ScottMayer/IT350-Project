@@ -15,13 +15,6 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#sidebarCollapse').on('click', function() {
-          $('#sidebar').toggleClass('active');
-        });
-      });
-    </script>
   </head>
 
   <body>
@@ -29,7 +22,10 @@
   require('../nav.inc.php');
   nav(1);
 ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 35173b177e021ac0531549231dde47f0d6b6e00c
     <h1>E-Chits Login Register</h1>
     <form method=post action="register-user.php" id=reg-form>
       First name: <input type=text name=firstname required> <br>
