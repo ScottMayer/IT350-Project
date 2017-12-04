@@ -46,7 +46,7 @@ function noneofyourbusiness($string) {
         fseek($fp, -strlen($line), SEEK_CUR);
         break;
       } 
-      elseif(in_array($user, $arr)) {
+      elseif(in_array($user, $arr)) { // this should come before checking email, if user exists stop and redirect to login
         header("Location:./login.php");
         echo "<h1>Username exists!</h1>";
         die();

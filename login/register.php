@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Chits Account Registration</title>
     <link href="../includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -27,7 +28,9 @@
         width: 300px;
         height: 300px;
       }
-
+      h1, body {
+        font-family: Raleway;
+      }
     </style>
   </head>
 
@@ -38,16 +41,27 @@
 ?>
   <div class="center-div">
     <h1>E-Chits Register</h1>
-    <form method=post action="register-user.php" id=reg-form>
+    <form method=post action="register-user.php" id=reg-form onsubmit="return inputCheck(this)">
       <input type=text class=form-control name=firstname placeholder="First name" required> 
       <input type=text class=form-control name=lastname placeholder="Last name" required> 
       <input type=email class=form-control name=email placeholder="Email" required> 
       <input type=text class=form-control name=username placeholder="Username" required> 
       <input type=password class=form-control name=password placeholder="Password" required> 
-      <a href=login.php><button type=button>Login</button></a>
+
+      <!-- <a href=login.php><button type=button>Login</button></a> -->
+      <button type=button onclick="window.location.href='./login.php'">Login</button>
       <button type=submit form=reg-form value=Register>Register</button>
     </form>
-    <!-- JavaScript for client-side to ensure user inputs password twice, both match, before submitting -->
+    <!-- Client-side check  -->
+    <script type=text/javascript>
+      function inputCheck($form) {
+        if($form.elements['username'].value.indexOf(" ") != -1 || $form.elements['username'].value.indexOf("-") != -1) {
+          alert("Username should not contain \" \" or \"-\"!");
+          return false;
+        }
+        return true;
+      }
+    </script>
   </div>
 
   </body>

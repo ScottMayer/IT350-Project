@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="../includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -30,7 +31,11 @@
         width: 300px;
         height: 300px;
       }
+      h1, body {
+        font-family: Raleway;
+      }
     </style>
+
   </head>
 
   <body>
@@ -44,8 +49,10 @@
       <input type=text class=form-control name=username placeholder=Username required> 
       <input type=password class=form-control name=password placeholder=Password required> 
       <button type=submit form=form1 value=Login>Login</button>
-      <a href=register.php><button type=button>Register</button></a>
-    </form>
+      <!-- <a href=register.php><button type=button>Register</button></a> -->
+      <button type=button onclick="window.location.href='./register.php'">Register</button>
+    </form> <br>
+    <div id="msg"></div>
   </div>
 
   </body>
