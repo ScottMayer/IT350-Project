@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php require 'includes/php/functions.php'; ?>
 <?php require 'includes/php/error.inc.php'; ?>
+<?php session_start() ?>
 <?php if(!isset($_SESSION['username'])){
   //if username isn't set send them to a login page
   //header("Location: ./login/login.php");
@@ -46,7 +47,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-<?php 
+<?php
 require('nav.inc.php');
 nav();
 ?>
@@ -181,7 +182,7 @@ nav();
 
                 </div> -->
 
-                    <input type="hidden" name="AlltheData" value="AlltheData">
+                    <!-- <input type="hidden" name="AlltheData" value="AlltheData"> -->
                     <input type="submit" name="submit" value="Submit">
 
 
@@ -192,12 +193,17 @@ nav();
       </div>
     </div>
     <?php
-      if ($_SERVER['REQUEST_METHOD']==='POST'){
-        $Serializedchit=$_POST('AlltheData');
-        $author=$_SESSION('username');
+      // if ($_SERVER['REQUEST_METHOD']==='POST'){
+        $chit=$_POST;
+        $serchit=serialize($chit);
+        $author="default";
+        if (isset($_SESSION['username'])) {
+          $author=$_SESSION['username'];
+        }
+
         $name=$_POST['ChitName'];
-        writeChit($author, $name, $serChit);
-      }
+        writeChit($author, $name, $serchit);
+      // }
      ?>
   </body>
 
