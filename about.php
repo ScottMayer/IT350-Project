@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<?php session_start();
-  if(!isset($_SESSION['username'])){
-  //if username isn't set send them to a login page
-  header("Location: ./login/login.php");
-}
-?>
 <script type="text/javascript">
   function redirect(location){
     window.location = location;
@@ -35,10 +29,14 @@
     </style>
   </head>
   <body>
-    <?php 
-      require('nav.inc.php');
+<?php session_start();
+  require('nav.inc.php');
+  if(isset($_SESSION['username'])){
       nav();
-    ?>
+  }else{
+      nav(1);
+  }
+ ?>
     <div class="container">
       <div class="row">
         <div class="col-md-12">

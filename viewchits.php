@@ -29,7 +29,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-<?php 
+<?php
 require('nav.inc.php');
 nav();
 ?>
@@ -80,38 +80,72 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 	// TODO print as table all chits associated with username
 	//TODO only display chits where filter does not apply
 	echo "<div class='row'>";
-	echo "<div class='col-md-3'>";
+	echo "<div class='col-md-2'>";
 	echo "</div>";
-	echo "<div class='col-md-6'>";
+	echo "<div class='col-md-8'>";
 	echo "<table class='table table-hover'>";
-	echo "<thead><tr><th>User {$_SESSION['username']} 's chits</th></tr></thead>";
+	echo "<thead><tr><th>User {$_SESSION['username']}'s chits</th></tr></thead>";
 	foreach ($_SESSION['chits'][$_SESSION['username']] as $chit ){
-		echo "<tr><td>$chit</td><td>TODO: STATUS</td></tr>";
+		echo "<tr><td>$chit</td><td>TODO: Description</td>";
+
+		echo "<td>TODO: STATUS</td>";
+
+
+
+		//if approved...
+		// echo "<td><button type=\"button\" class=\"btn btn-default\" onclick=\"location.href='generate_pdf.php';\">Print Chit</button></td>";
+
+		//if pending
+		echo "<td><button type=\"button\" class=\"btn btn-default\" onclick=\"location.href='viewchit.php';\">View Chit</button></td>";
+
+		echo "</tr>";
 	}
 
 	echo "</table>";
 	echo "</div>";
+	echo "<div class='col-md-2'>";
+	echo "</div>";
 	echo "</div>";
 
 }
-else{
+
+
+//subordinate Chits
+
+if (isset($_SESSION['chits'][$_SESSION['username']])){
+// if (isset($_SESSION['chits']['subordinates'][$_SESSION['username']])){
+	// TODO print as table all chits associated with username
+	//TODO only display chits where filter does not apply
 	echo "<div class='row'>";
-
-	echo "<div class='col-md-3'>";
+	echo "<div class='col-md-2'>";
 	echo "</div>";
+	echo "<div class='col-md-8'>";
+	echo "<table class='table table-hover'>";
+	echo "<thead><tr><th cospan=2>User {$_SESSION['username']}'s subordinates' chits</th></tr></thead>";
+	foreach ($_SESSION['chits'][$_SESSION['username']] as $chit ){
+		echo "<tr><td>$chit</td><td>TODO: Description</td>";
 
-	echo "<div class='col-md-3'>";
-	echo "<div>";
-	echo "No chits could be found";
-	echo "</div>";
-	echo "</div>";
+		echo "<td>TODO: STATUS</td>";
 
-	echo "<div class='col-md-3'>";
-	echo "</div>";
 
+
+		//if approved...
+		// echo "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"location.href='generate_pdf.php';\">Print Chit</button></td>";
+
+		//if pending
+		echo "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"approve(this);\">Approve</button></td>";
+		echo "<td><button type=\"button\" class=\"btn btn-danger\" onclick=\"deny(this);\">Deny</button></td>";
+		echo "</tr>";
+	}
+
+	echo "</table>";
+	echo "</div>";
+	echo "<div class='col-md-2'>";
+	echo "</div>";
 	echo "</div>";
 
 }
+
 
 
 echo "<br/>";
