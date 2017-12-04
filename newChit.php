@@ -195,14 +195,13 @@ nav();
     <?php
       // if ($_SERVER['REQUEST_METHOD']==='POST'){
         $chit=$_POST;
-        $serchit=serialize($chit);
         $author="default";
         if (isset($_SESSION['username'])) {
           $author=$_SESSION['username'];
         }
 
         $name=$_POST['ChitName'];
-        writeChit($author, $name, $serchit);
+        writeChit($author, $name, $chit);
       // }
      ?>
   </body>

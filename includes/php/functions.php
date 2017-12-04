@@ -9,8 +9,9 @@
   // }
 
   function writeChit($author, $name, $data){
+    $filename=$name . ".txt";
     $dir=fopen("chits/directory.txt", 'a');
-    fwrite($dir, $author . ", " . $name);
+    fwrite($dir, $author . ", " . $filename . ", " .  $data['toName']);
     fclose($dir);
 
     $filename=$name . ".txt";
