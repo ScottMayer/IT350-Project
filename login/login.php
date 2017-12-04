@@ -19,6 +19,18 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      .center-div {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 300px;
+        height: 300px;
+      }
+    </style>
   </head>
 
   <body>
@@ -26,13 +38,15 @@
   require('../nav.inc.php');
   nav(1);
 ?>
+  <div class=center-div>
     <h1>E-Chits Login</h1>
     <form method=post action=login-user.php id=form1>
-      Username: <input type=text name=username required> <br>
-      Password: <input type=password name=password required> <br>
+      <input type=text class=form-control name=username placeholder=Username required> 
+      <input type=password class=form-control name=password placeholder=Password required> 
       <button type=submit form=form1 value=Login>Login</button>
       <a href=register.php><button type=button>Register</button></a>
     </form>
+  </div>
 
   </body>
 </html>

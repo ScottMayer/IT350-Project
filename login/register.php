@@ -15,6 +15,20 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+      .center-div {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 300px;
+        height: 300px;
+      }
+
+    </style>
   </head>
 
   <body>
@@ -22,21 +36,19 @@
   require('../nav.inc.php');
   nav(1);
 ?>
-<<<<<<< HEAD
-
-=======
->>>>>>> 35173b177e021ac0531549231dde47f0d6b6e00c
-    <h1>E-Chits Login Register</h1>
+  <div class="center-div">
+    <h1>E-Chits Register</h1>
     <form method=post action="register-user.php" id=reg-form>
-      First name: <input type=text name=firstname required> <br>
-      Last name: <input type=text name=lastname required> <br>
-      User email: <input type=email name=email required> <br>
-      Username: <input type=text name=username required> <br>
-      Password: <input type=password name=password required> <br>
+      <input type=text class=form-control name=firstname placeholder="First name" required> 
+      <input type=text class=form-control name=lastname placeholder="Last name" required> 
+      <input type=email class=form-control name=email placeholder="Email" required> 
+      <input type=text class=form-control name=username placeholder="Username" required> 
+      <input type=password class=form-control name=password placeholder="Password" required> 
+      <a href=login.php><button type=button>Login</button></a>
       <button type=submit form=reg-form value=Register>Register</button>
     </form>
-
     <!-- JavaScript for client-side to ensure user inputs password twice, both match, before submitting -->
+  </div>
 
   </body>
 </html>
