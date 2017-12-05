@@ -2,6 +2,7 @@
 <?php
   session_start();
   $_SESSION['id'] = session_id();
+  if(isset($_SESSION['username'])) { header("Location: ./index.php"); die(); }
 ?>
 <html>
   <head>
