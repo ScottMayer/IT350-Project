@@ -8,15 +8,34 @@
   //   }
   // }
 
-  function writeChit($author, $name, $data){
+  function writeChit($author, $name, $chit){
+    //Variables from the Chit to write
     $filename=$name . ".txt";
+    $description=$chit['des'];
+    //COC string
+    $coc="";
+    $i=1;
+    while(isset($chit["toName".$i])){
+      $cocName=$chit["toName".$i];
+      $cocRank=$chit["toRank".$i];
+      $cocPerson=$cocRank.$cocName."-0 ";
+      $coc=$coc.$cocPerson;
+      $i++;
+    }
+    //coc should now be populated RankName-0
+
+    //files to open
     $dir=fopen("chits/directory.txt", 'a');
-    fwrite($dir, $author . ", " . $filename . ", " .  $data['toName']);
-    fclose($dir);
-    $serchit=serialize($data);
-    $filename=$name . ".txt";
     $newchit=fopen($filename, 'w');
-    fwrite($newchit, $serchit);
+    //what to write
+    //write to chits/directory.txt uname, filename, coc1-0 coc2-0..etc, 0, description
+    $newDir=$author. ", " . $filename . ", " . $coc . ", 0, " . $description ."\n";
+    fwrite($dir, $newDir);
+    $serializedChit=serialize($chit);
+    fwrite($newchit, $serializedChit);
+
+    //Close Stuff
+    fclose($dir);
     fclose($newchit);
   }
 

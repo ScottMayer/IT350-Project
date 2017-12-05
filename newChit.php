@@ -12,6 +12,7 @@
     window.location = location;
   }
   var i=1;
+  var j=1;
 </script>
 
 <script type="text/javascript">
@@ -21,12 +22,12 @@
     var inner=x.innerHTML;
     x.innerHTML=inner+"<input type='text' name='Ref' id=Ref"+i+" value='' placeholder=\"Reference "+i+"\"><br>";
   }
-  // function newVIA(){
-  //   i++;
-  //   var x = document.getElementById('via');
-  //   var inner=x.innerHTML;
-  //   x.innerHTML=(inner+"  "+i+":<input type='text' name='via' id=VIA"+i+" value=''>  ");
-  // }
+  function newVIA(){
+    j++;
+    var x = document.getElementById('via');
+    var inner=x.innerHTML;
+    x.innerHTML=(inner+"  "+j+":  <input type='text' class='form-control' id='toName'"+j+" name='toName'"+j+" placeholder='Name'><input type='text' class='form-control' id='toBillet'"+j+" name='toBillet'"+j+" placeholder='Rank'>");
+  }
 
 </script>
 <html>
@@ -64,23 +65,30 @@ nav();
       <div class="row">
         <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
           <form class="form-horizontal" name="chit" action="?" method="post">
-
-                  <!-- <th colspan="3">Make Chit</th> -->
+                   <!-- <th colspan="3">Make Chit</th> -->
                    <br>
-
                    <!-- <label for="ChitName">Chit Name</label> -->
-                   <input type="ChitName" class=form-control name="ChitName" value="" placeholder="Chit Name">
+                   <input type="ChitName" class="form-control" name="ChitName" value="" placeholder="Chit Name">
+                   <input type="text" class="form-control" name="des" placeholder="Please enter a brief description of your chit">
                    <br>
-
-                  <strong>Routed To</strong>
-
+                   <strong>Routed To</strong>
                    <!-- <label for="toName">Name:&nbsp;</label> -->
-                   <input type="text" class="form-control" id="toName" name="toName" value="" placeholder=Name>
-                   <!-- <label for="toBillet">Rank:&nbsp;</label> -->
-                   <input type="text" class="form-control" id="toBillet" name="toBillet" value="" placeholder=Rank>
+
                    <br>
 
-                  <td colspan="3"><strong>Your Information</strong>
+                   <div id="via">
+                     <input type="button" value="Add Another Link in the Chain" onclick="newVIA()">
+                     <input type="text" class="form-control" id="toName" name="toName" value="" placeholder=Name>
+                     <!-- <label for="toBillet">Rank:&nbsp;</label> -->
+                     <input type="text" class="form-control" id="toBillet" name="toBillet" value="" placeholder=Rank>
+
+
+                   </div>
+
+
+
+
+                <strong>Your Information</strong>
 
                 <div class="input-group">
                   <!-- <label for="MIDNname" class="control-label">&nbsp;Name:&nbsp;</label> -->
@@ -98,7 +106,6 @@ nav();
                   <!-- <label for="MIDNalpha" class="control-label">&nbsp;Alpha:&nbsp;</label> -->
                   <input type="number" class="form-control" id="MIDNalpha" name="MIDNalpha" value="" placeholder=Alpha>
                 </div>
-
                 <div class="input-group">
                   <!-- <label for="MIDNclassyr">&nbsp;Graduating Year:&nbsp;</label> -->
                   <select class="form-control" id="MIDNclassyr" name="MIDNclassyr">
@@ -155,14 +162,6 @@ nav();
                      <input type="text" name="Ref" id="Ref1" value="" placeholder="Reference 1"><br>
 
                 </div>
-                <!-- <div class="form-group" id="VIA">
-
-                     <label for="VIA">VIA:</label>
-
-
-                     <input type="button" name="Add Another Lj" value="" onclick="newRef()">
-
-                </div> -->
 
                     <!-- <input type="hidden" name="AlltheData" value="AlltheData"> -->
                     <input type="submit" name="submit" value="Submit">
