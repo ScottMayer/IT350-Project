@@ -26,7 +26,7 @@
 
     //files to open
     $dir=fopen("chits/directory.txt", 'a');
-    $newchit=fopen($filename, 'a');
+    $newchit=fopen($filename, 'w');
     //what to write
     //write to chits/directory.txt uname, filename, coc1-0 coc2-0..etc, 0, description
     $newDir=$author. ", " . $filename . ", " . $coc . ", 0, " . $description ."\n";
