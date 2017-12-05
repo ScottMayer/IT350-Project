@@ -43,18 +43,28 @@
             // entered password matches registered password
             $_SESSION['username'] = $user;
             $_SESSION['accesslevel'] = $arr[1];
-            if(isset($_SESSION['redirect'])) unset($_SESSION['redirect']);
+            if(isset($_SESSION['error'])) unset($_SESSION['error']);
+            if(isset($_SESSION['success'])) unset($_SESSION['success']);
+
+            $_SESSION['success'] = "Login success!";
             header("Location:../index.php"); //http://midn.cs.usna.edu/~m183990/IT350/IT350-Project/index.php");
             echo "<h1>Login success. Redirecting you to the landing page...</h1>"; // . $_SESSION['username'];
             die();
+          } else {
+            $_SESSION['error'] = "Incorrect password!";
           }
           break;
         }
       }
+    } else {
+      $_SESSION['error'] = "Error: Login failed!";
+      header("Location:../login.php");
+      echo "<h1>Login failed.</h1><br><h4>Make sure you've <a href=register.php>registered</a> before attempting to login. Redirecting you to the <a href=login.php>login page</a>...</h4>";
     }
-    $_SESSION['redirect'] = true;
+    
+    if(!$exists) $_SESSION['error'] = "User not registered!";
+    
     header("Location:../login.php");
-    echo "<h1>Login failed.</h1><br><h4>Make sure you've <a href=register.php>registered</a> before attempting to login. Redirecting you to the <a href=login.php>login page</a>...</h4>";
     die();
   }
 

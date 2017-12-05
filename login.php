@@ -52,7 +52,15 @@
       <!-- <a href=register.php><button type=button>Register</button></a> -->
       <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
       <button type=button class="btn btn-default" onclick="window.location.href='./change.php'" >Change password</button>
-      <?php if($_SESSION['redirect']) { echo "<br><br><div class=\"alert alert-danger\">Login failed!</div>"; unset($_SESSION['redirect']); } ?>
+      <?php 
+        if(isset($_SESSION['error'])) {
+          echo "<br><br><div class=\"alert alert-danger\">".$_SESSION['error']."</div>";
+          unset($_SESSION['error']);
+        } else if(isset($_SESSION['success'])) {
+          echo "<br><br><div class=\"alert alert-success\">".$_SESSION['success']."</div>";
+          unset($_SESSION['success']);
+        }
+       ?>
     </form> <br>
     <div id="msg"></div>
   </div>

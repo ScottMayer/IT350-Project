@@ -22,7 +22,7 @@
 <?php
   require('../nav.inc.php');
   nav(1);
-
+  
   function noneofyourbusiness($string) {
     $salt = '42sq*$d4841jkg4';
     return password_hash($salt . $string, PASSWORD_BCRYPT);
@@ -30,11 +30,12 @@
 
   session_start();
   unset($_SESSION['error']);
+  unset($_SESSION['success']);
 
   if($fp = fopen("en-42.csv","r+")) {
     $user=$_POST['username'];
-    $cur_pass=noneofyourbusiness($_POST['cur_pass']);
-    $new_pass=noneofyourbusiness($_POST['new_pass']);
+    $cur_pass=$_POST['cur_pass'];
+    $new_pass=$_POST['new_pass'];
     unset($_POST['username']);
     unset($_POST['cur_pass']);
     unset($_POST['new_pass']);
@@ -46,11 +47,11 @@
       if($exists=in_array($user, $arr)) { // if user exists
         fseek($fp, -strlen($line), SEEK_CUR); // then backtrack in file to beginning of entry
 
-        if(password_verify($cur_pass, $arr[2])) { // if current password does not match, then set $_SESSION['error']
-          $_SESSION['error'] = "Entered password does not match!"; // . $cur_pass . "<br>" . $arr[2];
+        if(!password_verify('42sq*$d4841jkg4'.$cur_pass, $arr[2])) { // if current password does not match, then set $_SESSION['error']
+          $_SESSION['error'] = "Entered password does not match!"; //. $cur_pass . "<br>" . $arr[2];
           break;
         } else { // else current password matches, rewrite the entry with the new password
-          fwrite($fp, $arr[0].';'.$arr[1].';'.$new_pass.';'.$arr[3] .';'.$arr[4].';'.$arr[5]);
+          fwrite($fp, $arr[0].';'.$arr[1].';'.noneofyourbusiness($new_pass).';'.$arr[3] .';'.$arr[4].';'.$arr[5]);
           break;
         }
       }
@@ -64,9 +65,11 @@
       die();
     }
 
+    $_SESSION['success'] = "Password change success!";
     header("Location:../login.php");
     echo "<h1>Password change success. Redirecting to login page...</h1>";
   } else {
+    $_SESSION['error'] = "fopen failed";
     header("Location:../change.php");
     echo "<h1>Error: fopen failed, failed to change password\n</h1>";
   }

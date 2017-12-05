@@ -53,7 +53,11 @@
           if(isset($_SESSION['error'])) {
             echo "<div class=\"alert alert-danger\" id=error>" . $_SESSION['error'] . "</div>";
             unset($_SESSION['error']);
-          } ?>
+          } else if(isset($_SESSION['success'])) {
+            echo "<br><br><div class=\"alert alert-success\">".$_SESSION['success']."</div>";
+            unset($_SESSION['success']);
+          }
+         ?>
         <div class="alert alert-danger" id=errormsg style="visibility:hidden;"></div>
       </form>
       <script type=text/javascript>

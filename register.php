@@ -55,11 +55,13 @@
       <?php
         session_start();
         if(isset($_SESSION['error'])) {
-          echo "<div class=\"alert alert-danger\" id=error>";
-          echo $_SESSION['error'];
-          echo "</div>";
+          echo "<div class=\"alert alert-danger\" id=error>" . $_SESSION['error'] . "</div>";
           unset($_SESSION['error']);
-        } ?>
+        } else if(isset($_SESSION['success'])) {
+          echo "<br><br><div class=\"alert alert-success\">".$_SESSION['success']."</div>";
+          unset($_SESSION['success']);
+        }
+       ?>
       <div class="alert alert-danger" id=error style="visibility:hidden;"></div>
     </form>
 

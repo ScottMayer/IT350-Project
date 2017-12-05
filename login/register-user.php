@@ -34,6 +34,7 @@ function noneofyourbusiness($string) {
 
 session_start();
 unset($_SESSION['error']);
+unset($_SESSION['success']);
 
   if($fp = fopen("en-42.csv","r+")) {
     $first = $_POST['firstname'];
@@ -77,6 +78,7 @@ unset($_SESSION['error']);
     //}
     fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3] .';'.$arr[4].';'.$arr[5]);
 
+    $_SESSION['success'] = "Registration success!";
     header("Location:.");
     echo "<h1>Registration success! Redirecting to login...</h1>";
   } else {
