@@ -24,7 +24,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        width: 300px;
+        width: 331px;
         height: 300px;
       }
       h1, body {
@@ -38,16 +38,18 @@
   nav(1);
 ?>
   <div class="center-div">
-    <h1>E-Chits Change Password</h1>
       <form method=post action="login/change-pw.php" id=change-form onsubmit="return check(this)">
-        <input type=text class=form-control name=username placeholder="Username" required> 
-        <input type=password class=form-control name=cur_pass placeholder="Current password" required> 
-        <input type=password class=form-control name=new_pass placeholder="New password" required> 
-        <input type=password class=form-control name=chk_pass placeholder="Re-enter new password" required>
+        <div class=well>
+          <h1>E-Chits Change Password</h1>
+          <input type=text class=form-control name=username placeholder="Username" required> 
+          <input type=password class=form-control name=cur_pass placeholder="Current password" required> 
+          <input type=password class=form-control name=new_pass placeholder="New password" required> 
+          <input type=password class=form-control name=chk_pass placeholder="Re-enter new password" required>
 
-        <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>
-        <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
-        <button type=submit class="btn btn-default" id=change-button form=change-form value=Change>Change password</button> <br><br>
+          <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>
+          <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
+          <button type=submit class="btn btn-default" id=change-button form=change-form value=Change>Change password</button> <br><br>
+        </div>
         <?php
           session_start();
           if(isset($_SESSION['error'])) {

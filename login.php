@@ -29,7 +29,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        width: 300px;
+        width: 331px;
         height: 300px;
       }
       h1, body {
@@ -45,14 +45,16 @@
   nav(1);
 ?>
   <div class=center-div>
-    <h1>E-Chits Login</h1>
     <form method=post action=login/login-user.php id=form1>
-      <input type=text class=form-control name=username placeholder=Username required> 
-      <input type=password class=form-control name=password placeholder=Password required> 
-      <button type=submit class="btn btn-default" form=form1 value=Login>Login</button>
-      <!-- <a href=register.php><button type=button>Register</button></a> -->
-      <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
-      <button type=button class="btn btn-default" onclick="window.location.href='./change.php'" >Change password</button>
+      <div class=well>
+        <h1>E-Chits Login</h1>
+        <input type=text class=form-control name=username placeholder=Username required> 
+        <input type=password class=form-control name=password placeholder=Password required> 
+        <button type=submit class="btn btn-default" form=form1 value=Login>Login</button>
+        <!-- <a href=register.php><button type=button>Register</button></a> -->
+        <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
+        <button type=button class="btn btn-default" onclick="window.location.href='./change.php'" >Change password</button>
+      </div>
       <?php 
         if(isset($_SESSION['error'])) {
           echo "<br><br><div class=\"alert alert-danger\">".$_SESSION['error']."</div>";

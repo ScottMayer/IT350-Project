@@ -25,7 +25,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        width: 300px;
+        width: 331px;
         height: 300px;
       }
       h1, body {
@@ -40,18 +40,20 @@
   nav(1);
 ?>
   <div class="center-div">
-    <h1>E-Chits Register</h1>
     <form method=post action="login/register-user.php" id=reg-form onsubmit="return inputCheck(this)">
-      <input type=text class=form-control name=firstname placeholder="First name" required> 
-      <input type=text class=form-control name=lastname placeholder="Last name" required> 
-      <input type=email class=form-control name=email placeholder="Email" required> 
-      <input type=text class=form-control name=username placeholder="Username" required> 
-      <input type=password class=form-control name=password placeholder="Password" required> 
+      <div class=well>
+        <h1>E-Chits Register</h1>
+        <input type=text class=form-control name=firstname placeholder="First name" required> 
+        <input type=text class=form-control name=lastname placeholder="Last name" required> 
+        <input type=email class=form-control name=email placeholder="Email" required> 
+        <input type=text class=form-control name=username placeholder="Username" required> 
+        <input type=password class=form-control name=password placeholder="Password" required> 
 
-      <!-- <a href=login.php><button type=button>Login</button></a> -->
-      <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>
-      <button type=submit class="btn btn-default" id=register-button form=reg-form value=Register>Register</button>
-      <button type=button class="btn btn-default" onclick="window.location.href='./change.php'">Change password</button> <br><br>
+        <!-- <a href=login.php><button type=button>Login</button></a> -->
+        <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>
+        <button type=submit class="btn btn-default" id=register-button form=reg-form value=Register>Register</button>
+        <button type=button class="btn btn-default" onclick="window.location.href='./change.php'">Change password</button> <br><br>
+      </div>
       <?php
         session_start();
         if(isset($_SESSION['error'])) {
