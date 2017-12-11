@@ -53,8 +53,8 @@ require_once("error.inc.php");
 //
 // $v = 1/ 0;
 
-$debug = false;
-
+// $debug = false;
+$debug = true;
 
 
 if (!isset($_SESSION['username'])) {
@@ -75,6 +75,15 @@ if (!isset($_SESSION['chits']) || $debug){
 	read_chits();
 }
 
+if(isset($_SESSION['username']) && !isset($_SESSION['name']) || $debug){
+  $_SESSION['name'] = get_name($_SESSION['username']);
+
+}
+
+
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 
 if (isset($_SESSION['chits'][$_SESSION['username']])){
 	// TODO print as table all chits associated with username
@@ -84,7 +93,7 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 	echo "</div>";
 	echo "<div class='col-md-8'>";
 	echo "<table class='table table-hover'>";
-	echo "<thead><tr><th>User {$_SESSION['username']}'s chits</th></tr></thead>";
+	echo "<thead><tr><th>{$_SESSION['name']}'s chits</th></tr></thead>";
 	foreach ($_SESSION['chits'][$_SESSION['username']] as $chit ){
 		echo "<tr><td>$chit</td><td>TODO: Description</td>";
 
@@ -121,7 +130,7 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 	echo "</div>";
 	echo "<div class='col-md-8'>";
 	echo "<table class='table table-hover'>";
-	echo "<thead><tr><th cospan=2>User {$_SESSION['username']}'s subordinates' chits</th></tr></thead>";
+	echo "<thead><tr><th cospan=2>{$_SESSION['name']}'s subordinates' chits</th></tr></thead>";
 	foreach ($_SESSION['chits'][$_SESSION['username']] as $chit ){
 		echo "<tr><td>$chit</td><td>TODO: Description</td>";
 

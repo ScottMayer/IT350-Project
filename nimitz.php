@@ -68,6 +68,19 @@ function read_users(){
 
 }
 
+function get_name($username){
+  $fp = fopen("./login/en-42.csv", "r");
+  if($fp){
+    while(($line = fgets($fp)) !== false){
+			$split = explode(";", $line);
+      if($split[0] == $username){
+        $name = $split[4] . " " . $split[5];
+        fclose($fp);
+        return $name;
+      }
+    }
+  }
+}
 function read_chits(){
 	$fp = fopen("./chits/directory.txt", "r");
 	if($fp){
