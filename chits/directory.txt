@@ -1,4 +1,5 @@
-
-m183990,m183990_chit0.txt,sdf-0,sdf-0,0,Test
-m183990,m183990_chit0.txt,sdf-0,sdf-0,0,Test
-m183990,m183990_chit0.txt,sdf-0,sdf-0,0,dsf
+m183990,m183990_chit1.txt,M190000-0,0,testing
+m183990,m183990_chit2.txt,M190000-0,0,testing
+m183990,m183990_chit3.txt,M190000-0,0,testing
+m183990,m183990_chit4.txt,m190001-0,0,sdf
+m190001,m190001_chit1.txt,m183990-0,0,asdf

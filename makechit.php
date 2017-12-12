@@ -81,42 +81,31 @@ if($debug){
 if(
     isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
 
-      $fp = fopen("./chits/directory.txt", "r");
-      if($fp){
-        $new_chit_num = 0;
-        while(($line = fgets($fp)) !== false){
+      if(!is_file("./chits/directory.txt")){
+        //Some simple example content.
+        $contents = '';
+        //Save our content to the file.
+        file_put_contents("./chits/directory.txt", $contents);
+        chmod("./chits/directory.txt", 0777);
 
-          $split = explode(",", $line);
-          if($split[0] == $_SESSION['username']){
-            $cur_chit_num = explode("_", $split[1]);
-
-            $cur_chit_num = $cur_chit_num[1];
-            $cur_chit_num = str_replace("chit", "", $cur_chit_num);
-            $num = str_replace(".txt", "", $cur_chit_num);
-
-            if((int)$num >= int($new_chit_num)){
-              $new_chit_num = $num;
-
-            }
-            $new_chit_num = (int)$new_chit_num + 1;
-
-            echo "<pre>";
-            print_r($line);
-            print_r($cur_chit_num);
-            print_r($num);
-            print_r($new_chit_num);
-            echo "</pre>";
-
-
-          }
-          fclose($fp);
-        }
       }
 
+      $count = 1;
+      $filename = "./chits/" . $_SESSION['username'] . "_chit" . $count . ".txt";
 
+      while(is_file($filename)){
+        $count += 1;
+        $filename = "./chits/" . $_SESSION['username'] . "_chit" . $count . ".txt";
+
+      }
+
+      $data = serialize($_POST);
+      file_put_contents($filename, $data);
+
+      chmod("./chits/directory.txt", 0777);
       $fp = fopen("./chits/directory.txt", "a");
       if($fp){
-        $out = $_SESSION['username'] . "," . $_SESSION['username'] . "_chit" . $new_chit_num . ".txt,";
+        $out = $_SESSION['username'] . "," . $_SESSION['username'] . "_chit" . $count . ".txt,";
 
         if(isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])){
           $out = $out . "{$_POST['COC_1_USERNAME']}" . "-0,";
@@ -153,12 +142,9 @@ if(
         fclose($fp);
       }
 
-      $filename = "./chits/" . $_SESSION['username'] . "_chit" . $new_chit_num . ".txt";
-      $fp = fopen($filename, "w");
-      $data = serialize($_POST);
-      fwrite($fp, $data . "\n");
 
-      fclose($fp);
+
+
 
       echo "<div class=\"alert alert-success\">Success! Chit has been submitted!</div>";
 
