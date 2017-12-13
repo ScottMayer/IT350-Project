@@ -57,14 +57,14 @@
       </div>
       <?php 
         if(isset($_SESSION['error'])) {
-          echo "<br><br><div class=\"alert alert-danger\">".$_SESSION['error']."</div>";
+          echo "<div class=\"alert alert-danger\">".$_SESSION['error']."</div>";
           unset($_SESSION['error']);
         } else if(isset($_SESSION['success'])) {
-          echo "<br><br><div class=\"alert alert-success\">".$_SESSION['success']."</div>";
+          echo "<div class=\"alert alert-success\">".$_SESSION['success']."</div>";
           unset($_SESSION['success']);
         }
        ?>
-    </form> <br>
+    </form>
     <div id="msg"></div>
   </div>
 
