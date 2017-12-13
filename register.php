@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Chits Account Registration</title>
     <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="./imgs/icon.ico"/>
+
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -43,11 +45,11 @@
     <form method=post action="login/register-user.php" id=reg-form onsubmit="return inputCheck(this)">
       <div class=well>
         <h1>E-Chits Register</h1>
-        <input type=text class=form-control name=firstname placeholder="First name" required> 
-        <input type=text class=form-control name=lastname placeholder="Last name" required> 
-        <input type=email class=form-control name=email placeholder="Email" required> 
-        <input type=text class=form-control name=username placeholder="Username" required> 
-        <input type=password class=form-control name=password placeholder="Password" required> 
+        <input type=text class=form-control name=firstname placeholder="First name" required>
+        <input type=text class=form-control name=lastname placeholder="Last name" required>
+        <input type=email class=form-control name=email placeholder="Email" required>
+        <input type=text class=form-control name=username placeholder="Username" required>
+        <input type=password class=form-control name=password placeholder="Password" required>
 
         <!-- <a href=login.php><button type=button>Login</button></a> -->
         <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>

@@ -7,6 +7,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="./imgs/icon.ico"/>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Chits Account Login</title>
@@ -48,14 +50,14 @@
     <form method=post action=login/login-user.php id=form1>
       <div class=well>
         <h1>E-Chits Login</h1>
-        <input type=text class=form-control name=username placeholder=Username required> 
-        <input type=password class=form-control name=password placeholder=Password required> 
+        <input type=text class=form-control name=username placeholder=Username required>
+        <input type=password class=form-control name=password placeholder=Password required>
         <button type=submit class="btn btn-default" form=form1 value=Login>Login</button>
         <!-- <a href=register.php><button type=button>Register</button></a> -->
         <button type=button class="btn btn-default" onclick="window.location.href='./register.php'">Register</button>
         <button type=button class="btn btn-default" onclick="window.location.href='./change.php'" >Change password</button>
       </div>
-      <?php 
+      <?php
         if(isset($_SESSION['error'])) {
           echo "<br><br><div class=\"alert alert-danger\">".$_SESSION['error']."</div>";
           unset($_SESSION['error']);

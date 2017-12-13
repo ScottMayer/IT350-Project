@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="./imgs/icon.ico"/>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Chits Account Change Password</title>
@@ -41,9 +43,9 @@
       <form method=post action="login/change-pw.php" id=change-form onsubmit="return check(this)">
         <div class=well>
           <h1>E-Chits Change Password</h1>
-          <input type=text class=form-control name=username placeholder="Username" required> 
-          <input type=password class=form-control name=cur_pass placeholder="Current password" required> 
-          <input type=password class=form-control name=new_pass placeholder="New password" required> 
+          <input type=text class=form-control name=username placeholder="Username" required>
+          <input type=password class=form-control name=cur_pass placeholder="Current password" required>
+          <input type=password class=form-control name=new_pass placeholder="New password" required>
           <input type=password class=form-control name=chk_pass placeholder="Re-enter new password" required>
 
           <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>

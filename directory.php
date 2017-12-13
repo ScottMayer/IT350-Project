@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Chit-USNA</title>
+    <link rel="icon" href="./imgs/icon.ico"/>
+
     <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- <link type="text/css" rel="stylesheet" href="style.css" /> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
