@@ -127,7 +127,7 @@ if($debug){
 }
 
 //IF EVERYTHING IS SET AND COC VALIDATES
-//STATUS: FUCKY PERMISSIONS
+//STATUS:  PERMISSIONS are weird
 if(
     isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) && validateCOC() ){
 
@@ -286,15 +286,15 @@ if(
 
     <div class="col-sm-6" style="border-right: 1px solid #000000; border-top: 1px solid #000000; ">
       <div class="row">
-        <div class="col-sm-9"  style="border-left: 1px solid #000000;">FUCKY
+        <div class="col-sm-9"  style="border-left: 1px solid #000000;">
           <div class="row">
             <div class="col-sm-12">
               From:
-            </div>FUCKY
+            </div>
           </div>
           <div class="row">
             <div class="col-sm-1">
-              MIDNFUCKY
+              MIDN
             </div>
             <div class="col-sm-2">
               <select type="text" class="form-control-sm" name="FROM_CLASS">
