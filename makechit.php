@@ -31,7 +31,7 @@
     <style>
     .box {
       padding: 0;
-      border: 1px soliMIDN ENSd #000000 !important;
+      border: 1px solid #000000 !important;
       margin: 0;
     }
 
@@ -65,7 +65,7 @@ else{
 ?>
 <div class="container">
   <div class="row">
-    <div class="col-mdMIDN ENS-12">
+    <div class="col-md-12">
       <div class="page-header">
         <h1><em>Make Chit</em></h1>
       </div>
@@ -85,9 +85,7 @@ if($debug){
 
 
 if(
-    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME'])
-    && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR'])
-    && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
+    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
 
       if(!is_file("./chits/directory.txt")){
 
@@ -175,7 +173,7 @@ if(
   <div class="row" style="border-left: 1px solid #000000; border-right:1px solid #000000; border-top: 1px solid #000000;">
     <div class="col-sm-12">
       <strong>Special Request (Midshipman)</strong>
-      <input required type="text" name="SHORT_DESCRIPTION" class="form-control-sm" placeholder="Briefly describe your request in one sentance." size="60" value="<?php if(isset($_POST['SHORT_DESCRIPTION'])){echo "{$_POST['SHORT_DESCRIPTION']}";}?>" required/>
+      <input type="text" name="SHORT_DESCRIPTION" class="form-control-sm" placeholder="Briefly describe your request in one sentance." size="60" value="<?php if(isset($_POST['SHORT_DESCRIPTION'])){echo "{$_POST['SHORT_DESCRIPTION']}";}?>"/>
     </div>
   </div>
 
@@ -183,19 +181,7 @@ if(
   <div class="row" style="border-bottom:1px solid #000000;">
 
     <div class="col-sm-6" style="border-left: 1px solid #000000; border-top: 1px solid #000000; ">
-      <div class="row">if(
-    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
-
-      if(!is_file("./chits/directory.txt")){
-
-        $contents = '';
-
-        file_put_contents("./chits/directory.txt", $contents);
-        chmod("./chits/directory.txt", 0777);
-
-      }
-
-      $c
+      <div class="row">
         <div class="col-sm-1">
           To:
         </div>
@@ -228,7 +214,7 @@ if(
           </select>
         </div>
         <div class="col-sm-7">
-          <input required required type="text" class="form-control-sm" name="TO_NAME" placeholder="Lastname" value="<?php if(isset($_POST['TO_NAME'])){echo "{$_POST['TO_NAME']}";}?>"/>
+          <input type="text" class="form-control-sm" name="TO_NAME" placeholder="Lastname" value="<?php if(isset($_POST['TO_NAME'])){echo "{$_POST['TO_NAME']}";}?>"/>
         </div>
         <div class="col-sm-2">
           <select type="text" class="form-control-sm" name="TO_SERVICE">
@@ -246,7 +232,7 @@ if(
 
         </div>
         <div class="col-sm-11">
-          <input required type="text" class="form-control-sm" name="TO_BILLET" placeholder="Billet" value="<?php if(isset($_POST['TO_BILLET'])){echo "{$_POST['TO_BILLET']}";}?>"/>
+          <input type="text" class="form-control-sm" name="TO_BILLET" placeholder="Billet" value="<?php if(isset($_POST['TO_BILLET'])){echo "{$_POST['TO_BILLET']}";}?>"/>
           <br />
         </div>
       </div>
@@ -281,10 +267,10 @@ if(
             </select>
             </div>
             <div class="col-sm-4">
-              <input required type="text" class="form-control-sm" name="FROM_FIRST_NAME" placeholder="First Name" size="15" value="<?php if(isset($_POST['FROM_FIRST_NAME'])){echo "{$_POST['FROM_FIRST_NAME']}";}?>"/>
+              <input type="text" class="form-control-sm" name="FROM_FIRST_NAME" placeholder="First Name" size="15" value="<?php if(isset($_POST['FROM_FIRST_NAME'])){echo "{$_POST['FROM_FIRST_NAME']}";}?>"/>
             </div>
             <div class="col-sm-4">
-              <input required type="text" class="form-control-sm" name="FROM_LAST_NAME" placeholder="Last Name" size="15" value="<?php if(isset($_POST['FROM_LAST_NAME'])){echo "{$_POST['FROM_LAST_NAME']}";}?>"/>
+              <input type="text" class="form-control-sm" name="FROM_LAST_NAME" placeholder="Last Name" size="15" value="<?php if(isset($_POST['FROM_LAST_NAME'])){echo "{$_POST['FROM_LAST_NAME']}";}?>"/>
             </div>
           </div>
         </div>
@@ -296,7 +282,7 @@ if(
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <input required type="text" class="form-control-sm" name="FROM_ALPHA" placeholder="Alpha" maxlength="6" size="6" value="<?php if(isset($_POST['FROM_ALPHA'])){echo "{$_POST['FROM_ALPHA']}";}?>"/>
+              <input type="text" class="form-control-sm" name="FROM_ALPHA" placeholder="Alpha" maxlength="6" size="6" value="<?php if(isset($_POST['FROM_ALPHA'])){echo "{$_POST['FROM_ALPHA']}";}?>"/>
             </div>
           </div>
         </div>
@@ -331,7 +317,7 @@ if(
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <input required type="text" class="form-control-sm" name="FROM_CLASS_YEAR" placeholder="20XX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_CLASS_YEAR'])){echo "{$_POST['FROM_CLASS_YEAR']}";}?>"/>
+                    <input type="text" class="form-control-sm" name="FROM_CLASS_YEAR" placeholder="20XX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_CLASS_YEAR'])){echo "{$_POST['FROM_CLASS_YEAR']}";}?>"/>
                   </div>
                 </div>
               </div>
@@ -343,7 +329,7 @@ if(
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <input required type="text" class="form-control-sm" name="FROM_COMPANY" placeholder="XX" size="2" maxlength="2" value="<?php if(isset($_POST['FROM_COMPANY'])){echo "{$_POST['FROM_COMPANY']}";}?>"/>
+                    <input type="text" class="form-control-sm" name="FROM_COMPANY" placeholder="XX" size="2" maxlength="2" value="<?php if(isset($_POST['FROM_COMPANY'])){echo "{$_POST['FROM_COMPANY']}";}?>"/>
                   </div>
                 </div>
               </div>
@@ -355,7 +341,7 @@ if(
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <input required type="text" class="form-control-sm" name="FROM_ROOM_NUMBER" placeholder="XXXX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_ROOM_NUMBER'])){echo "{$_POST['FROM_ROOM_NUMBER']}";}?>"/>
+                    <input type="text" class="form-control-sm" name="FROM_ROOM_NUMBER" placeholder="XXXX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_ROOM_NUMBER'])){echo "{$_POST['FROM_ROOM_NUMBER']}";}?>"/>
                   </div>
                 </div>
               </div>
@@ -419,7 +405,7 @@ if(
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <input required type="text" name="REFERENCE" class="form-control-sm" placeholder="(a) COMDTMIDNINST 5400.6N (16 Aug 11)" size="40" value="<?php if(isset($_POST['REFERENCE'])){echo "{$_POST['REFERENCE']}";}?>">
+                <input type="text" name="REFERENCE" class="form-control-sm" placeholder="(a) COMDTMIDNINST 5400.6N (16 Aug 11)" size="40" value="<?php if(isset($_POST['REFERENCE'])){echo "{$_POST['REFERENCE']}";}?>">
               </div>
             </div>
           </div>
@@ -436,7 +422,7 @@ if(
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input required type="text" name="SQPR" class="form-control-sm" placeholder="X.XX" size="4" value="<?php if(isset($_POST['SQPR'])){echo "{$_POST['SQPR']}";}?>">
+                        <input type="text" name="SQPR" class="form-control-sm" placeholder="X.XX" size="4" value="<?php if(isset($_POST['SQPR'])){echo "{$_POST['SQPR']}";}?>">
                       </div>
                     </div>
                   </div>
@@ -448,7 +434,7 @@ if(
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input required type="text" name="CQPR" class="form-control-sm" placeholder="X.XX" size="4"  value="<?php if(isset($_POST['CQPR'])){echo "{$_POST['CQPR']}";}?>">
+                        <input type="text" name="CQPR" class="form-control-sm" placeholder="X.XX" size="4"  value="<?php if(isset($_POST['CQPR'])){echo "{$_POST['CQPR']}";}?>">
                       </div>
                     </div>
                   </div>
@@ -530,31 +516,31 @@ if(
   <div class="row" style="border-left: 1px solid #000000; border-right:1px solid #000000; border-bottom:1px solid #000000;">
     <div class="col-sm-2">
       Weekend Liberty:
-      <input required class="form-check-input" name="REQUEST_TYPE" type="radio" name="WEEKEND_LIBERTY" value="WEEKEND_LIBERTY" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "WEEKEND_LIBERTY"){echo "checked";}?>>
+      <input class="form-check-input" name="REQUEST_TYPE" type="radio" name="WEEKEND_LIBERTY" value="WEEKEND_LIBERTY" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "WEEKEND_LIBERTY"){echo "checked";}?>>
     </div>
     <div class="col-sm-1">
 
     </div>
     <div class="col-sm-2">
       Dining Out:
-      <input required class="form-check-input" name="REQUEST_TYPE" type="radio" name="DINING_OUT" value="DINING_OUT" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "DINING_OUT"){echo "checked";}?>>
+      <input class="form-check-input" name="REQUEST_TYPE" type="radio" name="DINING_OUT" value="DINING_OUT" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "DINING_OUT"){echo "checked";}?>>
     </div>
     <div class="col-sm-1">
 
     </div>
     <div class="col-sm-2">
       Leave:
-      <input required class="form-check-input" name="REQUEST_TYPE" type="radio" name="LEAVE" value="LEAVE" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "LEAVE"){echo "checked";}?>>
+      <input class="form-check-input" name="REQUEST_TYPE" type="radio" name="LEAVE" value="LEAVE" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "LEAVE"){echo "checked";}?>>
     </div>
     <div class="col-sm-1">
 
     </div>
     <div class="col-sm-1">
       Other:
-      <input required class="form-check-input" name="REQUEST_TYPE" type="radio" name="OTHER" value="OTHER" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "OTHER"){echo "checked";}?>>
+      <input class="form-check-input" name="REQUEST_TYPE" type="radio" name="OTHER" value="OTHER" <?php if(isset($_POST['REQUEST_TYPE']) && $_POST['REQUEST_TYPE'] == "OTHER"){echo "checked";}?>>
     </div>
     <div class="col-sm-2">
-      <input required type="text" name="OTHER_DESCRIPTION" class="form-control-sm" placeholder="" size="10"  value="<?php if(isset($_POST['OTHER_DESCRIPTION'])){echo "{$_POST['OTHER_DESCRIPTION']}";}?>">
+      <input type="text" name="OTHER_DESCRIPTION" class="form-control-sm" placeholder="" size="10"  value="<?php if(isset($_POST['OTHER_DESCRIPTION'])){echo "{$_POST['OTHER_DESCRIPTION']}";}?>">
     </div>
   </div>
   </div>
@@ -574,16 +560,16 @@ if(
   </div>
   <div class="row" style="border-left: 1px solid #000000; border-right:1px solid #000000; border-bottom:1px solid #000000;">
     <div class="col-sm-3">
-      <input required type="text" name="ADDRESS_1" class="form-control-sm" placeholder="" size="10"  value="<?php if(isset($_POST['ADDRESS_1'])){echo "{$_POST['ADDRESS_1']}";}?>">
+      <input type="text" name="ADDRESS_1" class="form-control-sm" placeholder="" size="10"  value="<?php if(isset($_POST['ADDRESS_1'])){echo "{$_POST['ADDRESS_1']}";}?>">
     </div>
     <div class="col-sm-3">
-      <input required type="text" name="ADDRESS_2" class="form-control-sm" placeholder="" size="10" value="<?php if(isset($_POST['ADDRESS_2'])){echo "{$_POST['ADDRESS_2']}";}?>">
+      <input type="text" name="ADDRESS_2" class="form-control-sm" placeholder="" size="10" value="<?php if(isset($_POST['ADDRESS_2'])){echo "{$_POST['ADDRESS_2']}";}?>">
     </div>
     <div class="col-sm-3">
 
     </div>
     <div class="col-sm-3">
-      <input required type="text" name="ADDRESS_3" class="form-control-sm" placeholder="" size="20" value="<?php if(isset($_POST['ADDRESS_3'])){echo "{$_POST['ADDRESS_3']}";}?>">
+      <input type="text" name="ADDRESS_3" class="form-control-sm" placeholder="" size="20" value="<?php if(isset($_POST['ADDRESS_3'])){echo "{$_POST['ADDRESS_3']}";}?>">
     </div>
   </div>
   <div class="row" style="border-left: 1px solid #000000; border-right:1px solid #000000;">
@@ -610,7 +596,7 @@ if(
               Signature (Midshipman)
             </div>
             <div class="col-sm-12">
-              <input required type="submit" class="btn btn-primary" value="Submit Chit">
+              <input type="submit" class="btn btn-primary" value="Submit Chit">
             </div>
           </div>
         </div>
@@ -620,7 +606,7 @@ if(
               Date
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="DATE" class="form-control-sm" placeholder="01DEC17" size="9" value="<?php if(isset($_POST['DATE'])){echo "{$_POST['DATE']}";}?>">
+              <input type="text" name="DATE" class="form-control-sm" placeholder="01DEC17" size="9" value="<?php if(isset($_POST['DATE'])){echo "{$_POST['DATE']}";}?>">
             </div>
           </div>
         </div>
@@ -632,20 +618,20 @@ if(
           <div class="row">
             <div class="col-sm-12">
               Beginning (Time & Date)
-            </diMIDN ENSv>
+              </div>
             <div class="col-sm-12">
-              <input required type="text" name="BEGIN_DATE_TIME" class="form-control-sm" placeholder="1745 01DEC17" size="15" value="<?php if(isset($_POST['BEGIN_DATE_TIME'])){echo "{$_POST['BEGIN_DATE_TIME']}";}?>">
+              <input type="text" name="BEGIN_DATE_TIME" class="form-control-sm" placeholder="1745 01DEC17" size="15" value="<?php if(isset($_POST['BEGIN_DATE_TIME'])){echo "{$_POST['BEGIN_DATE_TIME']}";}?>">
 
             </div>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="row" style="border-left: 1px solid #000000;">
-            <div cMIDN ENSlass="col-sm-12">
+            <div class="col-sm-12">
               Ending (Time & Date)
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="END_DATE_TIME" class="form-control-sm" placeholder="2230 01DEC17" size="15" value="<?php if(isset($_POST['END_DATE_TIME'])){echo "{$_POST['END_DATE_TIME']}";}?>">
+              <input type="text" name="END_DATE_TIME" class="form-control-sm" placeholder="2230 01DEC17" size="15" value="<?php if(isset($_POST['END_DATE_TIME'])){echo "{$_POST['END_DATE_TIME']}";}?>">
             </div>
           </div>
         </div>
@@ -671,7 +657,7 @@ if(
         </div>
         <div class="col-sm-2" style="border-right: 1px solid #000000;">
           <div class="row" style="text-align: center; ">
-            <div cMIDN ENSlass="col-sm-12">
+            <div class="col-sm-12">
               <br />
             </div>
             <div class="col-sm-12">
@@ -681,7 +667,7 @@ if(
               <br>
             </div>
           </div>
-        </div>MIDN ENS
+        </div>
         <div class="col-sm-3" >
           <div class="row" style="text-align: center; border-right: 1px solid #000000;">
             <div class="col-sm-12">
@@ -700,7 +686,7 @@ if(
             <div class="col-sm-12">
               <em>CoC's Initials</em>
             </div>
-            <div cMIDN ENSlass="col-sm-12">
+            <div class="col-sm-12">
               RECOMMEND
             </div>
             <div class="col-sm-12">
@@ -776,13 +762,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_1_BILLET" placeholder="Billet--'Squad Leader'" value="<?php if(isset($_POST['COC_1_BILLET'])){echo "{$_POST['COC_1_BILLET']}";}?>"/>
+              <input type="text" name="COC_1_BILLET" placeholder="Billet--'Squad Leader'" value="<?php if(isset($_POST['COC_1_BILLET'])){echo "{$_POST['COC_1_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_1_NAME" placeholder="MIDN ENS Lastname, USN" value="<?php if(isset($_POST['COC_1_NAME'])){echo "{$_POST['COC_1_NAME']}";}?>"/>
+              <input type="text" name="COC_1_NAME" placeholder="MIDN ENS Lastname, USN" value="<?php if(isset($_POST['COC_1_NAME'])){echo "{$_POST['COC_1_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_1_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_1_USERNAME'])){echo "{$_POST['COC_1_USERNAME']}";}?>"/>
+              <input type="text" name="COC_1_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_1_USERNAME'])){echo "{$_POST['COC_1_USERNAME']}";}?>"/>
             </div>
           </div>
         </div>
@@ -888,13 +874,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input  type="text" name="COC_2_BILLET" placeholder="Billet--'Platoon Commander'" value="<?php if(isset($_POST['COC_2_BILLET'])){echo "{$_POST['COC_2_BILLET']}";}?>"/>
+              <input type="text" name="COC_2_BILLET" placeholder="Billet--'Platoon Commander'" value="<?php if(isset($_POST['COC_2_BILLET'])){echo "{$_POST['COC_2_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_2_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_2_NAME'])){echo "{$_POST['COC_2_NAME']}";}?>"/>
+              <input type="text" name="COC_2_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_2_NAME'])){echo "{$_POST['COC_2_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_2_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_2_USERNAME'])){echo "{$_POST['COC_2_USERNAME']}";}?>"/>
+              <input type="text" name="COC_2_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_2_USERNAME'])){echo "{$_POST['COC_2_USERNAME']}";}?>"/>
             </div>
           </div>
         </div>
@@ -940,13 +926,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input  type="text" name="COC_3_BILLET" placeholder="Billet--'Company XO'" value="<?php if(isset($_POST['COC_3_BILLET'])){echo "{$_POST['COC_3_BILLET']}";}?>"/>
+              <input type="text" name="COC_3_BILLET" placeholder="Billet--'Company XO'" value="<?php if(isset($_POST['COC_3_BILLET'])){echo "{$_POST['COC_3_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_3_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_3_NAME'])){echo "{$_POST['COC_3_NAME']}";}?>"/>
+              <input type="text" name="COC_3_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_3_NAME'])){echo "{$_POST['COC_3_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_3_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_3_USERNAME'])){echo "{$_POST['COC_3_USERNAME']}";}?>"/>
+              <input type="text" name="COC_3_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_3_USERNAME'])){echo "{$_POST['COC_3_USERNAME']}";}?>"/>
             </div>
           </div>
         </div>
@@ -991,13 +977,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input  type="text" name="COC_4_BILLET" placeholder="Billet--'Company Commander'" value="<?php if(isset($_POST['COC_4_BILLET'])){echo "{$_POST['COC_4_BILLET']}";}?>"/>
+              <input type="text" name="COC_4_BILLET" placeholder="Billet--'Company Commander'" value="<?php if(isset($_POST['COC_4_BILLET'])){echo "{$_POST['COC_4_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_4_NAME" placeholder="MIDN LT Lastname, USN" value="<?php if(isset($_POST['COC_4_NAME'])){echo "{$_POST['COC_4_NAME']}";}?>"/>
+              <input type="text" name="COC_4_NAME" placeholder="MIDN LT Lastname, USN" value="<?php if(isset($_POST['COC_4_NAME'])){echo "{$_POST['COC_4_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_4_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_4_USERNAME'])){echo "{$_POST['COC_4_USERNAME']}";}?>"/>
+              <input type="text" name="COC_4_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_4_USERNAME'])){echo "{$_POST['COC_4_USERNAME']}";}?>"/>
 
             </div>
           </div>
@@ -1074,13 +1060,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input  type="text" name="COC_5_BILLET" placeholder="Senior Enlisted" value="<?php if(isset($_POST['COC_5_BILLET'])){echo "{$_POST['COC_5_BILLET']}";}?>"/>
+              <input type="text" name="COC_5_BILLET" placeholder="Senior Enlisted" value="<?php if(isset($_POST['COC_5_BILLET'])){echo "{$_POST['COC_5_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_5_NAME" placeholder="GySgt Lastname, USMC"  value="<?php if(isset($_POST['COC_5_NAME'])){echo "{$_POST['COC_5_NAME']}";}?>"/>
+              <input type="text" name="COC_5_NAME" placeholder="GySgt Lastname, USMC"  value="<?php if(isset($_POST['COC_5_NAME'])){echo "{$_POST['COC_5_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_5_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_5_USERNAME'])){echo "{$_POST['COC_5_USERNAME']}";}?>"/>
+              <input type="text" name="COC_5_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_5_USERNAME'])){echo "{$_POST['COC_5_USERNAME']}";}?>"/>
 
             </div>
           </div>
@@ -1129,7 +1115,7 @@ if(
               <input type="text" name="COC_6_BILLET" placeholder="Company Officer" value="<?php if(isset($_POST['COC_6_BILLET'])){echo "{$_POST['COC_6_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input  type="text" name="COC_6_NAME" placeholder="LT Lastname, USN"  value="<?php if(isset($_POST['COC_6_NAME'])){echo "{$_POST['COC_6_NAME']}";}?>"/>
+              <input type="text" name="COC_6_NAME" placeholder="LT Lastname, USN"  value="<?php if(isset($_POST['COC_6_NAME'])){echo "{$_POST['COC_6_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
               <input type="text" name="COC_6_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_6_USERNAME'])){echo "{$_POST['COC_6_USERNAME']}";}?>"/>
@@ -1178,13 +1164,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_7_BILLET" placeholder="Battalion Officer" value="<?php if(isset($_POST['COC_7_BILLET'])){echo "{$_POST['COC_5_BILLET']}";}?>"/>
+              <input type="text" name="COC_7_BILLET" placeholder="Battalion Officer" value="<?php if(isset($_POST['COC_7_BILLET'])){echo "{$_POST['COC_5_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_7_NAME" placeholder="CDR Lastname, USN" value="<?php if(isset($_POST['COC_7_NAME'])){echo "{$_POST['COC_7_NAME']}";}?>"/>
+              <input type="text" name="COC_7_NAME" placeholder="CDR Lastname, USN" value="<?php if(isset($_POST['COC_7_NAME'])){echo "{$_POST['COC_7_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_7_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_7_USERNAME'])){echo "{$_POST['COC_7_USERNAME']}";}?>"/>
+              <input type="text" name="COC_7_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_7_USERNAME'])){echo "{$_POST['COC_7_USERNAME']}";}?>"/>
 
             </div>
           </div>
@@ -1230,13 +1216,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_8_BILLET" placeholder="Deputy Commandant" value="<?php if(isset($_POST['COC_8_BILLET'])){echo "{$_POST['COC_8_BILLET']}";}?>"/>
+              <input type="text" name="COC_8_BILLET" placeholder="Deputy Commandant" value="<?php if(isset($_POST['COC_8_BILLET'])){echo "{$_POST['COC_8_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_8_NAME" placeholder="CAPT Lastname, USN" value="<?php if(isset($_POST['COC_8_NAME'])){echo "{$_POST['COC_8_NAME']}";}?>"/>
+              <input type="text" name="COC_8_NAME" placeholder="CAPT Lastname, USN" value="<?php if(isset($_POST['COC_8_NAME'])){echo "{$_POST['COC_8_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_8_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_8_USERNAME'])){echo "{$_POST['COC_8_USERNAME']}";}?>"/>
+              <input type="text" name="COC_8_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_8_USERNAME'])){echo "{$_POST['COC_8_USERNAME']}";}?>"/>
 
             </div>
           </div>
@@ -1282,13 +1268,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_9_BILLET" placeholder="Commandant" value="<?php if(isset($_POST['COC_9_BILLET'])){echo "{$_POST['COC_9_BILLET']}";}?>"/>
+              <input type="text" name="COC_9_BILLET" placeholder="Commandant" value="<?php if(isset($_POST['COC_9_BILLET'])){echo "{$_POST['COC_9_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_9_NAME" placeholder="CAPT Lastname, USN" value="<?php if(isset($_POST['COC_9_NAME'])){echo "{$_POST['COC_9_NAME']}";}?>"/>
+              <input type="text" name="COC_9_NAME" placeholder="CAPT Lastname, USN" value="<?php if(isset($_POST['COC_9_NAME'])){echo "{$_POST['COC_9_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_9_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_9_USERNAME'])){echo "{$_POST['COC_9_USERNAME']}";}?>"/>
+              <input type="text" name="COC_9_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_9_USERNAME'])){echo "{$_POST['COC_9_USERNAME']}";}?>"/>
             </div>
           </div>
         </div>
