@@ -189,6 +189,8 @@ if(
       }
       $_SESSION['submitted']=0;
       echo "<div class=\"alert alert-success\">Success! Chit has been submitted!</div>";
+      $_SESSION['filename']=$_SESSION['username'] . "_chit" . $count . ".txt";
+      echo "<script type='text/javascript'>redirect(" . json_encode($_SESSION['filename']).") </script>";
     }
     else{
       if(!($_SESSION['submitted']==0)){
