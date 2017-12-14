@@ -125,7 +125,7 @@ if($debug){
 
 
 if(
-    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
+    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) && validateCOC() ){
 
       if(!is_file("./chits/directory.txt")){
 
@@ -150,7 +150,7 @@ if(
 
       chmod("./chits/directory.txt", 0777);
       $fp = fopen("./chits/directory.txt", "a");
-      if($fp && validateCOC()){
+      if($fp){
         $out = $_SESSION['username'] . "," . $_SESSION['username'] . "_chit" . $count . ".txt,";
 
         if(isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])){
