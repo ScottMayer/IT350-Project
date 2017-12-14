@@ -886,13 +886,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_2_BILLET" placeholder="Billet--'Platoon Commander'" value="<?php if(isset($_POST['COC_2_BILLET'])){echo "{$_POST['COC_2_BILLET']}";}?>"/>
+              <input  type="text" name="COC_2_BILLET" placeholder="Billet--'Platoon Commander'" value="<?php if(isset($_POST['COC_2_BILLET'])){echo "{$_POST['COC_2_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_2_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_2_NAME'])){echo "{$_POST['COC_2_NAME']}";}?>"/>
+              <input  type="text" name="COC_2_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_2_NAME'])){echo "{$_POST['COC_2_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_2_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_2_USERNAME'])){echo "{$_POST['COC_2_USERNAME']}";}?>"/>
+              <input  type="text" name="COC_2_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_2_USERNAME'])){echo "{$_POST['COC_2_USERNAME']}";}?>"/>
             </div>
           </div>
         </div>
@@ -938,13 +938,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_3_BILLET" placeholder="Billet--'Company XO'" value="<?php if(isset($_POST['COC_3_BILLET'])){echo "{$_POST['COC_3_BILLET']}";}?>"/>
+              <input  type="text" name="COC_3_BILLET" placeholder="Billet--'Company XO'" value="<?php if(isset($_POST['COC_3_BILLET'])){echo "{$_POST['COC_3_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_3_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_3_NAME'])){echo "{$_POST['COC_3_NAME']}";}?>"/>
+              <input  type="text" name="COC_3_NAME" placeholder="MIDN LTJG Lastname, USN" value="<?php if(isset($_POST['COC_3_NAME'])){echo "{$_POST['COC_3_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_3_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_3_USERNAME'])){echo "{$_POST['COC_3_USERNAME']}";}?>"/>
+              <input  type="text" name="COC_3_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_3_USERNAME'])){echo "{$_POST['COC_3_USERNAME']}";}?>"/>
             </div>
           </div>
         </div>
@@ -989,13 +989,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_4_BILLET" placeholder="Billet--'Company Commander'" value="<?php if(isset($_POST['COC_4_BILLET'])){echo "{$_POST['COC_4_BILLET']}";}?>"/>
+              <input  type="text" name="COC_4_BILLET" placeholder="Billet--'Company Commander'" value="<?php if(isset($_POST['COC_4_BILLET'])){echo "{$_POST['COC_4_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_4_NAME" placeholder="MIDN LT Lastname, USN" value="<?php if(isset($_POST['COC_4_NAME'])){echo "{$_POST['COC_4_NAME']}";}?>"/>
+              <input  type="text" name="COC_4_NAME" placeholder="MIDN LT Lastname, USN" value="<?php if(isset($_POST['COC_4_NAME'])){echo "{$_POST['COC_4_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_4_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_4_USERNAME'])){echo "{$_POST['COC_4_USERNAME']}";}?>"/>
+              <input  type="text" name="COC_4_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_4_USERNAME'])){echo "{$_POST['COC_4_USERNAME']}";}?>"/>
 
             </div>
           </div>
@@ -1072,13 +1072,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_5_BILLET" placeholder="Senior Enlisted" value="<?php if(isset($_POST['COC_5_BILLET'])){echo "{$_POST['COC_5_BILLET']}";}?>"/>
+              <input  type="text" name="COC_5_BILLET" placeholder="Senior Enlisted" value="<?php if(isset($_POST['COC_5_BILLET'])){echo "{$_POST['COC_5_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_5_NAME" placeholder="GySgt Lastname, USMC"  value="<?php if(isset($_POST['COC_5_NAME'])){echo "{$_POST['COC_5_NAME']}";}?>"/>
+              <input  type="text" name="COC_5_NAME" placeholder="GySgt Lastname, USMC"  value="<?php if(isset($_POST['COC_5_NAME'])){echo "{$_POST['COC_5_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_5_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_5_USERNAME'])){echo "{$_POST['COC_5_USERNAME']}";}?>"/>
+              <input  type="text" name="COC_5_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_5_USERNAME'])){echo "{$_POST['COC_5_USERNAME']}";}?>"/>
 
             </div>
           </div>
@@ -1124,13 +1124,13 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input required type="text" name="COC_6_BILLET" placeholder="Company Officer" value="<?php if(isset($_POST['COC_6_BILLET'])){echo "{$_POST['COC_6_BILLET']}";}?>"/>
+              <input type="text" name="COC_6_BILLET" placeholder="Company Officer" value="<?php if(isset($_POST['COC_6_BILLET'])){echo "{$_POST['COC_6_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_6_NAME" placeholder="LT Lastname, USN"  value="<?php if(isset($_POST['COC_6_NAME'])){echo "{$_POST['COC_6_NAME']}";}?>"/>
+              <input  type="text" name="COC_6_NAME" placeholder="LT Lastname, USN"  value="<?php if(isset($_POST['COC_6_NAME'])){echo "{$_POST['COC_6_NAME']}";}?>"/>
             </div>
             <div class="col-sm-12">
-              <input required type="text" name="COC_6_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_6_USERNAME'])){echo "{$_POST['COC_6_USERNAME']}";}?>"/>
+              <input type="text" name="COC_6_USERNAME" placeholder="username" value="<?php if(isset($_POST['COC_6_USERNAME'])){echo "{$_POST['COC_6_USERNAME']}";}?>"/>
 
             </div>
           </div>
