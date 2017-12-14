@@ -44,7 +44,7 @@
   <body>
 <?php
 require('nav.inc.php');
-require('includes/myCSVlib.php');
+require('includes/php/myCSVlib.php');
 require_once("nimitz.php");
 require_once("error.inc.php");
 nav();
@@ -66,13 +66,7 @@ else{
 ?>
 <div class="container">
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="page-header">
-        <h1><em>Make Chit</em></h1>
-      </div>
-    </div>
-  </div>
+
 
 
   <div id="banner">
