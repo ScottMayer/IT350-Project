@@ -52,9 +52,9 @@
         <input type=password class=form-control name=password placeholder="Password" required>
 
         <!-- <a href=login.php><button type=button>Login</button></a> -->
-        <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button>
+        <!-- <button type=button class="btn btn-default" onclick="window.location.href='./login.php'">Login</button> -->
         <button type=submit class="btn btn-default" id=register-button form=reg-form value=Register>Register</button>
-        <button type=button class="btn btn-default" onclick="window.location.href='./change.php'">Change password</button> <br><br>
+        <!-- <button type=button class="btn btn-default" onclick="window.location.href='./change.php'">Change password</button> -->
       </div>
       <?php
         session_start();
@@ -62,7 +62,7 @@
           echo "<div class=\"alert alert-danger\" id=error>" . $_SESSION['error'] . "</div>";
           unset($_SESSION['error']);
         } else if(isset($_SESSION['success'])) {
-          echo "<br><br><div class=\"alert alert-success\">".$_SESSION['success']."</div>";
+          echo "<div class=\"alert alert-success\">".$_SESSION['success']."</div>";
           unset($_SESSION['success']);
         }
        ?>
