@@ -63,6 +63,7 @@ else{
   $_SESSION['visit'] = false;
 }
 
+$_SESSION['submitted']=0;
 ?>
 <div class="container">
 
@@ -73,6 +74,49 @@ else{
 
   </div>
 
+  <?php
+    function validateusername($username){
+      //get user file
+      //read in the csv serverside(security) as a 2D array
+      //uname is first item on line so, if !isset(users[$uname])=> user does not exist
+      $filename="login/en-42.csv";
+      $users=read_csv($filename);
+      if (!isset($users[$username])) {
+        echo "<div class=\"alert alert-warning\">WARNING <em>$username IS NOT A REGISTERED USER</em></div>";
+        return False;
+      }
+      else {
+        return True;
+      }
+    }
+
+    function validateCOC(){
+      //validates given usernames
+      //IF THE USERNAME IS SET, THE NAME IS NOT EMPTY, AND NONE OF THE OTHER NAMES HAVE FAILED
+        if (isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])) {
+          $success=validateusername($_POST['COC_1_USERNAME']);
+        }if (isset($_POST['COC_2_USERNAME']) && !empty($_POST['COC_2_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_2_USERNAME']);
+        }if (isset($_POST['COC_3_USERNAME']) && !empty($_POST['COC_3_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_3_USERNAME']);
+        }if (isset($_POST['COC_4_USERNAME']) && !empty($_POST['COC_4_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_4_USERNAME']);
+        }if (isset($_POST['COC_5_USERNAME']) && !empty($_POST['COC_5_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_5_USERNAME']);
+        }if (isset($_POST['COC_6_USERNAME']) && !empty($_POST['COC_6_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_6_USERNAME']);
+        }if (isset($_POST['COC_7_USERNAME']) && !empty($_POST['COC_7_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_7_USERNAME']);
+        }if (isset($_POST['COC_8_USERNAME']) && !empty($_POST['COC_8_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_8_USERNAME']);
+        }if (isset($_POST['COC_9_USERNAME']) && !empty($_POST['COC_9_USERNAME']) && $success) {
+          $success=validateusername($_POST['COC_9_USERNAME']);
+        }
+        return $success;
+    }
+
+  ?>
+
 <?php
 if($debug){
   echo "<pre>";
@@ -82,14 +126,13 @@ if($debug){
 
 
 if(
-    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
+    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) && validateCOC() ){
 
       if(!is_file("./chits/directory.txt")){
 
         $contents = '';
 
         file_put_contents("./chits/directory.txt", $contents);
-        chmod("./chits/directory.txt", 0777);
 
       }
 
@@ -105,7 +148,6 @@ if(
       $data = serialize($_POST);
       file_put_contents($filename, $data);
 
-      chmod("./chits/directory.txt", 0777);
       $fp = fopen("./chits/directory.txt", "a");
       if($fp){
         $out = $_SESSION['username'] . "," . $_SESSION['username'] . "_chit" . $count . ".txt,";
@@ -144,54 +186,23 @@ if(
 
         fclose($fp);
       }
-
-
-
-
-
+      $_SESSION['submitted']=0;
       echo "<div class=\"alert alert-success\">Success! Chit has been submitted!</div>";
+      $_SESSION['filename']=$_SESSION['username'] . "_chit" . $count . ".txt";
 
-
+      //THIS ECHOS A JAVASCRIPT FUNCTION INVOCATION TO REDIRECT TO A READ-ONLY COPY OF THE SUBMITTED CHIT
+      echo "<script type='text/javascript'>redirect(" . json_encode($_SESSION['filename']).") </script>";
     }
     else{
-      echo "<div class=\"alert alert-warning\">All fields must be filled out!</div>";
+      if(!($_SESSION['submitted']==0)){
+        echo "<div class=\"alert alert-warning\">All fields must be filled out!</div>";
+      }
+      $_SESSION['submitted']=1;
     }
 
     ?>
 
-  <?php
-    function validateusername($username){
-      //get user file
-      //read in the csv serverside(security) as a 2D array
-      //uname is first item on line so, if !isset(users[$uname])=> user does not exist
-      $filename="login/en-42.csv";
-      $users=read_csv($filename);
-      if (!isset($users[$username])) {
-        echo "<div class=\"alert alert-warning\">WARNING <em>$username IS NOT A REGISTERED USER</em></div>";
-      }
-    }
 
-    //validates given usernames
-      if (isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])) {
-        validateusername($_POST['COC_1_USERNAME']);
-      }if (isset($_POST['COC_2_USERNAME']) && !empty($_POST['COC_2_USERNAME'])) {
-        validateusername($_POST['COC_2_USERNAME']);
-      }if (isset($_POST['COC_3_USERNAME']) && !empty($_POST['COC_3_USERNAME'])) {
-        validateusername($_POST['COC_3_USERNAME']);
-      }if (isset($_POST['COC_4_USERNAME']) && !empty($_POST['COC_4_USERNAME'])) {
-        validateusername($_POST['COC_4_USERNAME']);
-      }if (isset($_POST['COC_5_USERNAME']) && !empty($_POST['COC_5_USERNAME'])) {
-        validateusername($_POST['COC_5_USERNAME']);
-      }if (isset($_POST['COC_6_USERNAME']) && !empty($_POST['COC_6_USERNAME'])) {
-        validateusername($_POST['COC_6_USERNAME']);
-      }if (isset($_POST['COC_7_USERNAME']) && !empty($_POST['COC_7_USERNAME'])) {
-        validateusername($_POST['COC_7_USERNAME']);
-      }if (isset($_POST['COC_8_USERNAME']) && !empty($_POST['COC_8_USERNAME'])) {
-        validateusername($_POST['COC_8_USERNAME']);
-      }if (isset($_POST['COC_9_USERNAME']) && !empty($_POST['COC_9_USERNAME'])) {
-        validateusername($_POST['COC_9_USERNAME']);
-      }
-     ?>
 
   <form  class="courier" role="form" action="?" method="post">
 
@@ -1550,7 +1561,7 @@ if(
           <div class="col-sm-6" style="border-right: 1px solid #000000;">
             <div class="row">
               <div class="col-sm-12">
-                Retruned (Time & Date)
+                Returned (Time & Date)
               </div>
               <div class="col-sm-12">
                 <br />
