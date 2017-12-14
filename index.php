@@ -158,7 +158,7 @@ if ($mychitspresent){
 		}
 
 		if($chit[1] == 2){
-			echo "<td>PENDING</td>";
+			echo "<td>DENIED</td>";
 		}
 
 
@@ -212,7 +212,7 @@ if ($subordinatechitspresent){
 			}
 
 			if($chit[1] == 2){
-				echo "<td>PENDING</td>";
+				echo "<td>DENIED</td>";
 			}
 
 		//if approved...
