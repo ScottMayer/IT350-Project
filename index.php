@@ -212,6 +212,8 @@ if ($subordinatechitspresent){
 		// echo "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"location.href='generate_pdf.php';\">Print Chit</button></td>";
 
 		//if pending
+		echo "<td><form action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"></form></td>";
+
 		echo "<td><form method=\"post\" action=\"update-chit.php\">
 		<input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" />
 		<input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>
