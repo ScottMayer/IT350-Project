@@ -44,19 +44,21 @@ function print_chit_table($table)
 }
 
 function read_users(){
-	$fp = fopen("./admin/users.txt", 'r');
+	$fp = fopen("./login/en-42.csv", 'r');
 
 	if($fp) {
 		while(($line = fgets($fp)) !== false){
-			if(!isset($_SESSION['users'])){
-				$_SESSION['users'] = array($line);
+      $split = explode(";", $line);
+
+    	if(!isset($_SESSION['users'])){
+				$_SESSION['users'] = array($split[0]);
 			}
 			else{
-				if(in_array($line, $_SESSION['users'])){
+				if(in_array($split[0], $_SESSION['users'])){
 					//duplicate user`
 				}
 				else{
-					array_push($_SESSION['users'], $line);
+					array_push($_SESSION['users'], $split[0]);
 				}
 			}
 
@@ -66,6 +68,20 @@ function read_users(){
 		fclose($fp);
 	}
 
+}
+
+function get_name($username){
+  $fp = fopen("./login/en-42.csv", "r");
+  if($fp){
+    while(($line = fgets($fp)) !== false){
+			$split = explode(";", $line);
+      if($split[0] == $username){
+        $name = $split[4] . " " . $split[5];
+        fclose($fp);
+        return $name;
+      }
+    }
+  }
 }
 
 function read_chits(){

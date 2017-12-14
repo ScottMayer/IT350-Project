@@ -1,13 +1,8 @@
+<?php include 'myCSVlib.php'; ?>
 <?php
-  // function storeChit($Chit){
-  //   $serialString=serialize($Chit);
-  //   $author=$Chit['MIDNName'];
-  //
-  //   if(!(fopen("chits/{$Chit['name']}", 'x'))){
-  //     alert("")
-  //   }
-  // }
 
+
+  #Opens a given file in read mode
   function writeChit($author, $name, $chit){
     //Variables from the Chit to write
     $filename=$name . ".txt";
@@ -15,10 +10,14 @@
     //COC string
     $coc="";
     $i=1;
+
+    //I want to take the name of the COC and search the user list for the username
+    $userfile="../../admin/users.txt";
+    $users=read_CSV($userfile);
+
     while(isset($chit["toName".$i])){
-      $cocName=$chit["toName".$i];
-      $cocRank=$chit["toRank".$i];
-      $cocPerson=$cocRank.$cocName."-0 ";
+
+      $cocPerson=$users[$name]["uname"]."-0 ";
       $coc=$coc.$cocPerson;
       $i++;
     }

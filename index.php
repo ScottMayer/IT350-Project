@@ -13,6 +13,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="./imgs/icon.ico"/>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chits-USNA</title>
@@ -29,7 +31,7 @@
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
   </head>
   <body>
-<?php 
+<?php
 require('nav.inc.php');
 nav();
 ?>
@@ -55,7 +57,7 @@ nav();
           <div class="col-md-4 col-sm-6 col-md-offset-1 col-sm-offset-2">
             <form class="form-inline" action="#" method="post">
               <input type="button" class="form-control" name="View a Chit" value="View Chits" onclick="redirect('viewchits.php')">
-              <input type="button" class="form-control" name="Make a New Chit" value="Make a New Chit" onclick="redirect('newChit.php')">
+              <input type="button" class="form-control" name="Make a New Chit" value="Make a New Chit" onclick="redirect('makechit.php')">
             </form>
           </div>
         </div>

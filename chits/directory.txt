@@ -1,4 +1,5 @@
-m183990, chit001.txt
-m183990, chit002.txt
-m197116, example.txt
-m183990, , a:0:{}m183990, Test, a:16:{s:8:"ChitName";s:4:"Test";s:6:"toName";s:5:"mayer";s:8:"toBillet";s:3:"1/C";s:8:"MIDNname";s:11:"Scott Mayer";s:8:"MIDNrank";s:1:"1";s:9:"MIDNalpha";s:6:"183990";s:11:"MIDNclassyr";s:4:"2018";s:11:"MIDNcompany";s:1:"1";s:8:"MIDNroom";s:4:"1026";s:8:"MIDNSQPR";s:1:"4";s:8:"MIDNCQPR";s:1:"3";s:8:"MIDNPerf";s:1:"A";s:4:"MIDN";s:1:"A";s:11:"MIDNremarks";s:12:"Testing test";s:3:"Ref";s:0:"";s:6:"submit";s:6:"Submit";}m183990, .txt, default, Test.txt, , 0, Test
+m183990,m183990_chit1.txt,M190000-0,0,testing
+m183990,m183990_chit2.txt,M190000-0,0,testing
+m183990,m183990_chit3.txt,M190000-0,0,testing
+m183990,m183990_chit4.txt,m190001-0,0,sdf
+m190001,m190001_chit1.txt,m183990-0,0,asdf
