@@ -133,7 +133,7 @@ if(
         $contents = '';
 
         file_put_contents("./chits/directory.txt", $contents);
-        chmod("./chits/directory.txt", 0777);
+        chmod("./chits/directory.txt", 665);
 
       }
 
@@ -149,7 +149,7 @@ if(
       $data = serialize($_POST);
       file_put_contents($filename, $data);
 
-      chmod("./chits/directory.txt", 0777);
+      chmod("./chits/directory.txt", 665);
       $fp = fopen("./chits/directory.txt", "a");
       if($fp){
         $out = $_SESSION['username'] . "," . $_SESSION['username'] . "_chit" . $count . ".txt,";
