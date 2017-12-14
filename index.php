@@ -214,8 +214,8 @@ if ($subordinatechitspresent){
 		//if pending
 		echo "<td><form method=\"post\" action=\"update-chit.php\">
 		<input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" />
-		<input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"approve\"/>
-		<input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"approve\"/>
+		<input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>
+		<input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
 		</form></td>";
 		echo "</tr>";
 	}
