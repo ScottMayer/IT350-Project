@@ -64,6 +64,8 @@ else{
 
 ?>
 <div class="container">
+<<<<<<< HEAD
+=======
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
@@ -71,6 +73,7 @@ else{
       </div>
     </div>
   </div>
+>>>>>>> c733f30202b172e2efded39d6d3bfc3067ea5ac6
 
   <div id="banner">
 
