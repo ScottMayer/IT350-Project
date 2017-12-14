@@ -44,6 +44,7 @@
   <body>
 <?php
 require('nav.inc.php');
+require('includes/myCSVlib.php');
 require_once("nimitz.php");
 require_once("error.inc.php");
 nav();
@@ -163,6 +164,40 @@ if(
     }
 
     ?>
+
+  <?php
+    function validateusername($username){
+      //get user file
+      //read in the csv serverside(security) as a 2D array
+      //uname is first item on line so, if !isset(users[$uname])=> user does not exist
+      $filename="login/en-42.csv";
+      $users=read_csv($filename);
+      if (!isset($users[$username])) {
+        echo "<div class=\"alert alert-warning\">WARNING <em>$username IS NOT A REGISTERED USER</em></div>";
+      }
+    }
+
+    //validates given usernames
+      if (isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])) {
+        validateusername($_POST['COC_1_USERNAME']);
+      }if (isset($_POST['COC_2_USERNAME']) && !empty($_POST['COC_2_USERNAME'])) {
+        validateusername($_POST['COC_2_USERNAME']);
+      }if (isset($_POST['COC_3_USERNAME']) && !empty($_POST['COC_3_USERNAME'])) {
+        validateusername($_POST['COC_3_USERNAME']);
+      }if (isset($_POST['COC_4_USERNAME']) && !empty($_POST['COC_4_USERNAME'])) {
+        validateusername($_POST['COC_4_USERNAME']);
+      }if (isset($_POST['COC_5_USERNAME']) && !empty($_POST['COC_5_USERNAME'])) {
+        validateusername($_POST['COC_5_USERNAME']);
+      }if (isset($_POST['COC_6_USERNAME']) && !empty($_POST['COC_6_USERNAME'])) {
+        validateusername($_POST['COC_6_USERNAME']);
+      }if (isset($_POST['COC_7_USERNAME']) && !empty($_POST['COC_7_USERNAME'])) {
+        validateusername($_POST['COC_7_USERNAME']);
+      }if (isset($_POST['COC_8_USERNAME']) && !empty($_POST['COC_8_USERNAME'])) {
+        validateusername($_POST['COC_8_USERNAME']);
+      }if (isset($_POST['COC_9_USERNAME']) && !empty($_POST['COC_9_USERNAME'])) {
+        validateusername($_POST['COC_9_USERNAME']);
+      }
+     ?>
 
   <form  class="courier" role="form" action="?" method="post">
 
