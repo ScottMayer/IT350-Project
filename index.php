@@ -97,10 +97,17 @@ $subordinatechits = [];
 $fp = fopen("./chits/directory.txt", "r");
 if($fp){
 	while(($line = fgets($fp)) !== false){
+        #FILTERING
+        if(isset($_POST['FILTER']) && strlen($_POST['FILTER']) >0){
+            if((stripos($line, $_POST['FILTER']) === false)){     
+                continue;
+            }
+        }
+        #END FILTERING
 		$split = explode(",", $line);
 
 		if($split[0] == $_SESSION['username']){
-			$mychitspresent = true;
+            $mychitspresent = true;
 			$thischit = [$split[1], $split[3], $split[4]];
 			array_push($mychits, $thischit);
 		}
@@ -151,7 +158,7 @@ if ($mychitspresent){
 		}
 
 		if($chit[1] == 2){
-			echo "<td>PENDING</td>";
+			echo "<td>DENIED</td>";
 		}
 
 
@@ -205,7 +212,7 @@ if ($subordinatechitspresent){
 			}
 
 			if($chit[1] == 2){
-				echo "<td>PENDING</td>";
+				echo "<td>DENIED</td>";
 			}
 
 		//if approved...

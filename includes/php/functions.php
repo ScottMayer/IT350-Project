@@ -38,6 +38,16 @@
   //   fclose($newchit);
   // }
 
-  function validateUname($username)
+  //Check to see if username exists
+  function validateusername($username){
+    //get user file
+    //read in the csv serverside(security) as a 2D array
+    //uname is first item on line so, if !isset(users[$uname])=> user does not exist
+    $filename="../../login/en-42.csv";
+    $users=read_csv($filename);
+    if (!isset($users[$username])) {
+      echo "<div class=\"alert alert-warning\">WARNING <em>$username IS NOT A REGISTERED USER</em></div>";
+    }
+  }
 
  ?>

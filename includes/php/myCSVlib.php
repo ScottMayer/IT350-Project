@@ -1,4 +1,9 @@
 <?php
+  //Yes I know this isn't teacher's
+
+
+
+
   #Opens a given file in read mode
     function openFile($filename){
       $fp=fopen($filename,'r');
@@ -12,7 +17,7 @@
 
   #converts CSV file to 2-D array
   function CSV_to_array($file){
-    while ($line = fgetcsv($file)) {
+    while ($line = fgetcsv($file,0,';')) {
       if (!isset($headers)){
         $headers = $line;
       }else {
