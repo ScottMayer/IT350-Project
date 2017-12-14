@@ -89,7 +89,47 @@ if($debug){
   echo "</pre>";
 }
 
-if (isset($_SESSION['chits'][$_SESSION['username']])){
+$mychitspresent = false;
+$mychits = [];
+$subordinatechitspresent = false;
+$subordinatechits = [];
+
+$fp = fopen("./chits/directory.txt", "r");
+if($fp){
+	while(($line = fgets($fp)) !== false){
+		$split = explode(",", $line);
+
+		if($split[0] == $_SESSION['username']){
+			$mychitspresent = true;
+			$thischit = [$split[1], $split[3], $split[4]];
+			array_push($mychits, $thischit);
+		}
+
+		$coc_all = $split[2];
+		$coc = explode(" ", $coc_all);
+		foreach ($coc as $member) {
+			$member = substr($member, 0, -2);
+
+			if($member == $_SESSION['username']){
+				$subordinatechitspresent = true;
+				$thischit = [$split[1], $split[3], $split[4]];
+				array_push($subordinatechits, $thischit);
+			}
+			// echo "$member";
+		}
+
+
+
+	}
+
+	fclose($fp);
+}
+
+
+
+
+
+if ($mychitspresent){
 	// TODO print as table all chits associated with username
 	//TODO only display chits where filter does not apply
 	echo "<div class='row'>";
@@ -97,12 +137,22 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 	echo "</div>";
 	echo "<div class='col-md-8'>";
 	echo "<table class='table table-hover'>";
-	echo "<thead><tr><th>{$_SESSION['name']}'s chits</th></tr></thead>";
-	foreach ($_SESSION['chits'][$_SESSION['username']] as $chit ){
-		echo "<tr><td>$chit</td><td>TODO: Description</td>";
+	echo "<thead><tr><th>Your chits</th></tr></thead>";
+	foreach ($mychits as $chit){
+		echo "<tr><td>{$chit[0]}</td><td>{$chit[2]}</td>";
 
-		echo "<td>TODO: STATUS</td>";
+		if($chit[1] == 0){
+			echo "<td>PENDING</td>";
 
+		}
+
+		if($chit[1] == 1){
+			echo "<td>APPROVED</td>";
+		}
+
+		if($chit[1] == 2){
+			echo "<td>PENDING</td>";
+		}
 
 
 		//if approved...
@@ -110,7 +160,7 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 
 		//if pending
 
-		echo "<td><form action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"$chit\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"></form></td>";
+		echo "<td><form action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"></form></td>";
 
 		echo "</tr>";
 	}
@@ -126,7 +176,10 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 
 //subordinate Chits
 
-if (isset($_SESSION['chits'][$_SESSION['username']])){
+
+
+
+if ($subordinatechitspresent){
 // if (isset($_SESSION['chits']['subordinates'][$_SESSION['username']])){
 	// TODO print as table all chits associated with username
 	//TODO only display chits where filter does not apply
@@ -135,20 +188,35 @@ if (isset($_SESSION['chits'][$_SESSION['username']])){
 	echo "</div>";
 	echo "<div class='col-md-8'>";
 	echo "<table class='table table-hover'>";
-	echo "<thead><tr><th cospan=2>{$_SESSION['name']}'s subordinates' chits</th></tr></thead>";
-	foreach ($_SESSION['chits'][$_SESSION['username']] as $chit ){
-		echo "<tr><td>$chit</td><td>TODO: Description</td>";
-
-		echo "<td>TODO: STATUS</td>";
+	echo "<thead><tr><th cospan=2>Subordinate chits</th></tr></thead>";
 
 
+	foreach ($subordinatechits as $chit){
+
+			echo "<tr><td>{$chit[0]}</td><td>{$chit[2]}</td>";
+
+			if($chit[1] == 0){
+				echo "<td>PENDING</td>";
+
+			}
+
+			if($chit[1] == 1){
+				echo "<td>APPROVED</td>";
+			}
+
+			if($chit[1] == 2){
+				echo "<td>PENDING</td>";
+			}
 
 		//if approved...
 		// echo "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"location.href='generate_pdf.php';\">Print Chit</button></td>";
 
 		//if pending
-		echo "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"approve(this);\">Approve</button></td>";
-		echo "<td><button type=\"button\" class=\"btn btn-danger\" onclick=\"deny(this);\">Deny</button></td>";
+		echo "<td><form method=\"post\" action=\"update-chit.php\">
+		<input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" />
+		<input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"approve\"/>
+		<input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"approve\"/>
+		</form></td>";
 		echo "</tr>";
 	}
 
