@@ -97,13 +97,14 @@ $subordinatechits = [];
 $fp = fopen("./chits/directory.txt", "r");
 if($fp){
 	while(($line = fgets($fp)) !== false){
-		$split = explode(",", $line);
         #FILTERING
-        if(isset($_POST['FILTER'])){
-            if(!(strpos($split[0], $_POST['FILTER']) !== false ||strpos($split[2], $_POST['FILTER']) !== false ||strpos($split[3], $_POST['FILTER']) !== false )){
-                 continue;
+        if(isset($_POST['FILTER']) && strlen($_POST['FILTER']) >0){
+            if((stripos($line, $_POST['FILTER']) === false)){     
+                continue;
             }
+        }
         #END FILTERING
+		$split = explode(",", $line);
 
 		if($split[0] == $_SESSION['username']){
             $mychitspresent = true;
