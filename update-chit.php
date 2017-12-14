@@ -53,6 +53,12 @@
         *      - if every # in "MXXXXXX-#" is 1 (every user has approved)
         *        - change $line[3] to 1 (chit is approved)
         */
+
+      echo $SESSION['username'] . ' ' . $_POST['filename'];
+      echo "<pre>";
+      print_r($_POST);
+      echo "</pre>";
+
      ?>
 
   </body>
