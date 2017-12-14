@@ -79,6 +79,7 @@ $_SESSION['submitted']=0;
       //get user file
       //read in the csv serverside(security) as a 2D array
       //uname is first item on line so, if !isset(users[$uname])=> user does not exist
+      //STATUS: THIS WORKS AS OF 1830 14DEC17
       $filename="login/en-42.csv";
       $users=read_csv($filename);
       if (!isset($users[$username])) {
@@ -93,6 +94,7 @@ $_SESSION['submitted']=0;
     function validateCOC(){
       //validates given usernames
       //IF THE USERNAME IS SET, THE NAME IS NOT EMPTY, AND NONE OF THE OTHER NAMES HAVE FAILED
+      //STATUS: THIS WORKS AS OF 1830 14DEC17
         if (isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])) {
           $success=validateusername($_POST['COC_1_USERNAME']);
         }if (isset($_POST['COC_2_USERNAME']) && !empty($_POST['COC_2_USERNAME']) && $success) {
@@ -124,7 +126,8 @@ if($debug){
   echo "</pre>";
 }
 
-
+//IF EVERYTHING IS SET AND COC VALIDATES
+//STATUS: FUCKY PERMISSIONS
 if(
     isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) && validateCOC() ){
 
@@ -149,6 +152,7 @@ if(
       file_put_contents($filename, $data);
 
       $fp = fopen("./chits/directory.txt", "a");
+
       if($fp){
         $out = $_SESSION['username'] . "," . $_SESSION['username'] . "_chit" . $count . ".txt,";
 
@@ -191,7 +195,7 @@ if(
       $_SESSION['filename']=$_SESSION['username'] . "_chit" . $count . ".txt";
 
       //THIS ECHOS A JAVASCRIPT FUNCTION INVOCATION TO REDIRECT TO A READ-ONLY COPY OF THE SUBMITTED CHIT
-      echo "<script type='text/javascript'>redirect(" . json_encode($_SESSION['filename']).") </script>";
+      echo "<script type='text/javascript'>redirect('viewchit.php')</script>";
     }
     else{
       if(!($_SESSION['submitted']==0)){
@@ -282,15 +286,15 @@ if(
 
     <div class="col-sm-6" style="border-right: 1px solid #000000; border-top: 1px solid #000000; ">
       <div class="row">
-        <div class="col-sm-9"  style="border-left: 1px solid #000000;">
+        <div class="col-sm-9"  style="border-left: 1px solid #000000;">FUCKY
           <div class="row">
             <div class="col-sm-12">
               From:
-            </div>
+            </div>FUCKY
           </div>
           <div class="row">
             <div class="col-sm-1">
-              MIDN
+              MIDNFUCKY
             </div>
             <div class="col-sm-2">
               <select type="text" class="form-control-sm" name="FROM_CLASS">
