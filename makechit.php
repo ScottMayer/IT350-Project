@@ -64,8 +64,7 @@ else{
 
 ?>
 <div class="container">
-<<<<<<< HEAD
-=======
+
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
@@ -73,7 +72,7 @@ else{
       </div>
     </div>
   </div>
->>>>>>> c733f30202b172e2efded39d6d3bfc3067ea5ac6
+
 
   <div id="banner">
 
@@ -235,7 +234,7 @@ if(
 
         </div>
         <div class="col-sm-11">
-          <input type="text" class="form-control-sm" name="TO_BILLET" placeholder="Billet" value="<?php if(isset($_POST['TO_BILLET'])){echo "{$_POST['TO_BILLET']}";}?>"/>
+          <input required type="text" class="form-control-sm" name="TO_BILLET" placeholder="Billet" value="<?php if(isset($_POST['TO_BILLET'])){echo "{$_POST['TO_BILLET']}";}?>"/>
           <br />
         </div>
       </div>
@@ -270,10 +269,10 @@ if(
             </select>
             </div>
             <div class="col-sm-4">
-              <input type="text" class="form-control-sm" name="FROM_FIRST_NAME" placeholder="First Name" size="15" value="<?php if(isset($_POST['FROM_FIRST_NAME'])){echo "{$_POST['FROM_FIRST_NAME']}";}?>"/>
+              <input required type="text" class="form-control-sm" name="FROM_FIRST_NAME" placeholder="First Name" size="15" value="<?php if(isset($_POST['FROM_FIRST_NAME'])){echo "{$_POST['FROM_FIRST_NAME']}";}?>"/>
             </div>
             <div class="col-sm-4">
-              <input type="text" class="form-control-sm" name="FROM_LAST_NAME" placeholder="Last Name" size="15" value="<?php if(isset($_POST['FROM_LAST_NAME'])){echo "{$_POST['FROM_LAST_NAME']}";}?>"/>
+              <input required type="text" class="form-control-sm" name="FROM_LAST_NAME" placeholder="Last Name" size="15" value="<?php if(isset($_POST['FROM_LAST_NAME'])){echo "{$_POST['FROM_LAST_NAME']}";}?>"/>
             </div>
           </div>
         </div>
@@ -285,7 +284,7 @@ if(
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <input type="text" class="form-control-sm" name="FROM_ALPHA" placeholder="Alpha" maxlength="6" size="6" value="<?php if(isset($_POST['FROM_ALPHA'])){echo "{$_POST['FROM_ALPHA']}";}?>"/>
+              <input required type="text" class="form-control-sm" name="FROM_ALPHA" placeholder="Alpha" maxlength="6" size="6" value="<?php if(isset($_POST['FROM_ALPHA'])){echo "{$_POST['FROM_ALPHA']}";}?>"/>
             </div>
           </div>
         </div>
@@ -320,7 +319,7 @@ if(
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control-sm" name="FROM_CLASS_YEAR" placeholder="20XX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_CLASS_YEAR'])){echo "{$_POST['FROM_CLASS_YEAR']}";}?>"/>
+                    <input required type="text" class="form-control-sm" name="FROM_CLASS_YEAR" placeholder="20XX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_CLASS_YEAR'])){echo "{$_POST['FROM_CLASS_YEAR']}";}?>"/>
                   </div>
                 </div>
               </div>
@@ -332,7 +331,7 @@ if(
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control-sm" name="FROM_COMPANY" placeholder="XX" size="2" maxlength="2" value="<?php if(isset($_POST['FROM_COMPANY'])){echo "{$_POST['FROM_COMPANY']}";}?>"/>
+                    <input required type="text" class="form-control-sm" name="FROM_COMPANY" placeholder="XX" size="2" maxlength="2" value="<?php if(isset($_POST['FROM_COMPANY'])){echo "{$_POST['FROM_COMPANY']}";}?>"/>
                   </div>
                 </div>
               </div>
@@ -344,7 +343,7 @@ if(
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control-sm" name="FROM_ROOM_NUMBER" placeholder="XXXX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_ROOM_NUMBER'])){echo "{$_POST['FROM_ROOM_NUMBER']}";}?>"/>
+                    <input required type="text" class="form-control-sm" name="FROM_ROOM_NUMBER" placeholder="XXXX" size="4" maxlength="4" value="<?php if(isset($_POST['FROM_ROOM_NUMBER'])){echo "{$_POST['FROM_ROOM_NUMBER']}";}?>"/>
                   </div>
                 </div>
               </div>
@@ -408,7 +407,7 @@ if(
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <input type="text" name="REFERENCE" class="form-control-sm" placeholder="(a) COMDTMIDNINST 5400.6N (16 Aug 11)" size="40" value="<?php if(isset($_POST['REFERENCE'])){echo "{$_POST['REFERENCE']}";}?>">
+                <input required type="text" name="REFERENCE" class="form-control-sm" placeholder="(a) COMDTMIDNINST 5400.6N (16 Aug 11)" size="40" value="<?php if(isset($_POST['REFERENCE'])){echo "{$_POST['REFERENCE']}";}?>">
               </div>
             </div>
           </div>
@@ -425,7 +424,7 @@ if(
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input type="text" name="SQPR" class="form-control-sm" placeholder="X.XX" size="4" value="<?php if(isset($_POST['SQPR'])){echo "{$_POST['SQPR']}";}?>">
+                        <input required type="text" name="SQPR" class="form-control-sm" placeholder="X.XX" size="4" value="<?php if(isset($_POST['SQPR'])){echo "{$_POST['SQPR']}";}?>">
                       </div>
                     </div>
                   </div>
@@ -437,7 +436,7 @@ if(
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input type="text" name="CQPR" class="form-control-sm" placeholder="X.XX" size="4"  value="<?php if(isset($_POST['CQPR'])){echo "{$_POST['CQPR']}";}?>">
+                        <input required type="text" name="CQPR" class="form-control-sm" placeholder="X.XX" size="4"  value="<?php if(isset($_POST['CQPR'])){echo "{$_POST['CQPR']}";}?>">
                       </div>
                     </div>
                   </div>
