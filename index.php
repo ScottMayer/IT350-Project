@@ -98,9 +98,15 @@ $fp = fopen("./chits/directory.txt", "r");
 if($fp){
 	while(($line = fgets($fp)) !== false){
 		$split = explode(",", $line);
+        #FILTERING
+        if(isset($_POST['FILTER'])){
+            if(!(strpos($split[0], $_POST['FILTER']) !== false ||strpos($split[2], $_POST['FILTER']) !== false ||strpos($split[3], $_POST['FILTER']) !== false )){
+                 continue;
+            }
+        #END FILTERING
 
 		if($split[0] == $_SESSION['username']){
-			$mychitspresent = true;
+            $mychitspresent = true;
 			$thischit = [$split[1], $split[3], $split[4]];
 			array_push($mychits, $thischit);
 		}

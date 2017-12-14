@@ -19,10 +19,10 @@ function nav($i=0){
 
         if($i==0){
             echo "
-    <li><form class='navbar-form navbar-right' action='#' method='POST'>
+    <li><form class='navbar-form navbar-right' action='./' method='POST'>
             <button type=button class='btn btn-default' onclick=\"window.location.href='./makechit.php'\">Make Chit</button>
             <div class='form-group'>
-              <input type='text' class='form-control' placeholder='Search'>
+              <input type='text' class='form-control' name='FILTER' placeholder='Search'>
             </div>
             <button type='submit' class='btn btn-default'>Find Chit</button>
           </form>
