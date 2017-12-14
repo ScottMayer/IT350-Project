@@ -92,6 +92,7 @@ $_SESSION['submitted']=0;
 
     function validateCOC(){
       //validates given usernames
+      //IF THE USERNAME IS SET, THE NAME IS NOT EMPTY, AND NONE OF THE OTHER NAMES HAVE FAILED
         if (isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])) {
           $success=validateusername($_POST['COC_1_USERNAME']);
         }if (isset($_POST['COC_2_USERNAME']) && !empty($_POST['COC_2_USERNAME']) && $success) {
@@ -190,6 +191,8 @@ if(
       $_SESSION['submitted']=0;
       echo "<div class=\"alert alert-success\">Success! Chit has been submitted!</div>";
       $_SESSION['filename']=$_SESSION['username'] . "_chit" . $count . ".txt";
+
+      //THIS ECHOS A JAVASCRIPT FUNCTION INVOCATION TO REDIRECT TO A READ-ONLY COPY OF THE SUBMITTED CHIT
       echo "<script type='text/javascript'>redirect(" . json_encode($_SESSION['filename']).") </script>";
     }
     else{
