@@ -1558,7 +1558,7 @@ if(
           <div class="col-sm-6" style="border-right: 1px solid #000000;">
             <div class="row">
               <div class="col-sm-12">
-                Retruned (Time & Date)
+                Returned (Time & Date)
               </div>
               <div class="col-sm-12">
                 <br />
