@@ -31,7 +31,7 @@
     <style>
     .box {
       padding: 0;
-      border: 1px solid #000000 !important;
+      border: 1px soliMIDN ENSd #000000 !important;
       margin: 0;
     }
 
@@ -65,7 +65,7 @@ else{
 ?>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-mdMIDN ENS-12">
       <div class="page-header">
         <h1><em>Make Chit</em></h1>
       </div>
@@ -85,7 +85,9 @@ if($debug){
 
 
 if(
-    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
+    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME'])
+    && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR'])
+    && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_3']) && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) ){
 
       if(!is_file("./chits/directory.txt")){
 
@@ -630,7 +632,7 @@ if(
           <div class="row">
             <div class="col-sm-12">
               Beginning (Time & Date)
-              </div>
+            </diMIDN ENSv>
             <div class="col-sm-12">
               <input required type="text" name="BEGIN_DATE_TIME" class="form-control-sm" placeholder="1745 01DEC17" size="15" value="<?php if(isset($_POST['BEGIN_DATE_TIME'])){echo "{$_POST['BEGIN_DATE_TIME']}";}?>">
 
@@ -639,7 +641,7 @@ if(
         </div>
         <div class="col-sm-6">
           <div class="row" style="border-left: 1px solid #000000;">
-            <div class="col-sm-12">
+            <div cMIDN ENSlass="col-sm-12">
               Ending (Time & Date)
             </div>
             <div class="col-sm-12">
@@ -669,7 +671,7 @@ if(
         </div>
         <div class="col-sm-2" style="border-right: 1px solid #000000;">
           <div class="row" style="text-align: center; ">
-            <div class="col-sm-12">
+            <div cMIDN ENSlass="col-sm-12">
               <br />
             </div>
             <div class="col-sm-12">
@@ -679,7 +681,7 @@ if(
               <br>
             </div>
           </div>
-        </div>
+        </div>MIDN ENS
         <div class="col-sm-3" >
           <div class="row" style="text-align: center; border-right: 1px solid #000000;">
             <div class="col-sm-12">
@@ -698,7 +700,7 @@ if(
             <div class="col-sm-12">
               <em>CoC's Initials</em>
             </div>
-            <div class="col-sm-12">
+            <div cMIDN ENSlass="col-sm-12">
               RECOMMEND
             </div>
             <div class="col-sm-12">
