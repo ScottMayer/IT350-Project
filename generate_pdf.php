@@ -1,5 +1,6 @@
 <?php
 #DEBUG
+session_start();
 
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfReader;
@@ -33,19 +34,22 @@ if(isset($_SESSION['filename'])){
 
   }
   else{
-    //file doesn't exist
+      //file doesn't exist
+  echo "FILE NOT THERE";
+  die;
   }
 
 }
 else{
   //filename is not set
+  echo "FILENAME NOT SET";
+  die;
 }
 
 #DEBUG
-$fname = "./chits/m183990_chit1.txt";
-
-$raw_data = file_get_contents($fname);
-$data = unserialize($raw_data);
+#$fname = "./chits/m183990_chit1.txt";
+#$raw_data = file_get_contents($fname);
+#$data = unserialize($raw_data);
 #END DEBUG
     
 $filename='./blank_chit.pdf';
