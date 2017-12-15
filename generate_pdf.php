@@ -15,22 +15,119 @@ if(isset($_SESSION['filename'])){
     $raw_data = file_get_contents($fname);
     $data = unserialize($raw_data);
 
-    if($debug){
+    $coc_data = [];
+    $fp = fopen("./chits/directory.txt", "r");
+    if($fp){
+      while(($line = fgets($fp)) !== false){
 
-      echo "<pre>";
-      print_r($data);
-      echo "</pre>";
+        $split = explode(",", $line);
 
+        if($split[1] == $_SESSION['filename']){
+          $coc_all = $split[2];
+          $coc = explode(" ", $coc_all);
+          foreach ($coc as $member) {
+            $member = explode("-", $member);
+
+            // print_r($member);
+            // echo "$member[1]";
+
+            if(empty($member[0])){
+              continue;
+            }
+
+
+            if($member[0] == $data['COC_1_USERNAME'] && $member[1] == 1){
+              $data['COC_1_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_2_USERNAME'] && $member[1] == 1){
+              $data['COC_2_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_3_USERNAME'] && $member[1] == 1){
+              $data['COC_3_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_4_USERNAME'] && $member[1] == 1){
+              $data['COC_4_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_5_USERNAME'] && $member[1] == 1){
+              $data['COC_5_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_6_USERNAME'] && $member[1] == 1){
+              $data['COC_6_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_7_USERNAME'] && $member[1] == 1){
+              $data['COC_7_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_8_USERNAME'] && $member[1] == 1){
+              $data['COC_8_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_9_USERNAME'] && $member[1] == 1){
+              $data['COC_9_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_1_USERNAME'] && $member[1] == 2){
+              $data['COC_1_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_2_USERNAME'] && $member[1] == 2){
+              $data['COC_2_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_3_USERNAME'] && $member[1] == 2){
+              $data['COC_3_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_4_USERNAME'] && $member[1] == 2){
+              $data['COC_4_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_5_USERNAME'] && $member[1] == 2){
+              $data['COC_5_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_6_USERNAME'] && $member[1] == 2){
+              $data['COC_6_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_7_USERNAME'] && $member[1] == 2){
+              $data['COC_7_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_8_USERNAME'] && $member[1] == 2){
+              $data['COC_8_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_9_USERNAME'] && $member[1] == 2){
+              $data['COC_9_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_1_USERNAME'] && $member[1] == 0){
+              $data['COC_1_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_2_USERNAME'] && $member[1] == 0){
+              $data['COC_2_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_3_USERNAME'] && $member[1] == 0){
+              $data['COC_3_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_4_USERNAME'] && $member[1] == 0){
+              $data['COC_4_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_5_USERNAME'] && $member[1] == 0){
+              $data['COC_5_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_6_USERNAME'] && $member[1] == 0){
+              $data['COC_6_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_7_USERNAME'] && $member[1] == 0){
+              $data['COC_7_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_8_USERNAME'] && $member[1] == 0){
+              $data['COC_8_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_9_USERNAME'] && $member[1] == 0){
+              $data['COC_9_STATUS'] = "PENDING";
+            }
+
+            // echo "$member";
+          }
+        }
+
+      }
+
+      fclose($fp);
     }
 
 
-    if($debug){
-
-      echo "<pre>";
-      print_r($_SESSION);
-      echo "</pre>";
-
-    }
 
   }
   else{
@@ -165,49 +262,162 @@ $template_pdf->Write(0, "".$data['COC_1_NAME']);
 $template_pdf->SetXY(5,138);
 $template_pdf->Write(0, "".$data['COC_1_BILLET']);
 
+if( isset($data['COC_1_USERNAME']) && isset($data['COC_1_STATUS']) && $data['COC_1_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,137);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_1_USERNAME']) && isset($data['COC_1_STATUS']) && $data['COC_1_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,137);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_1_USERNAME'])  && !empty($data['COC_1_USERNAME'])){
+  $template_pdf->SetXY(37,137);
+  $template_pdf->Write(0, "PENDING");
+}
+
 
 $template_pdf->SetXY(5,143);
 $template_pdf->Write(0, "".$data['COC_2_NAME']);
 $template_pdf->SetXY(5,145);
 $template_pdf->Write(0, "".$data['COC_2_BILLET']);
+if( isset($data['COC_2_USERNAME']) && isset($data['COC_2_STATUS']) && $data['COC_2_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,144);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_2_USERNAME']) && isset($data['COC_2_STATUS']) && $data['COC_2_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,144);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_2_USERNAME'])  && !empty($data['COC_2_USERNAME'])){
+  $template_pdf->SetXY(37,144);
+  $template_pdf->Write(0, "PENDING");
+}
+
+
 
 $template_pdf->SetXY(5,150);
 $template_pdf->Write(0, "".$data['COC_3_NAME']);
 $template_pdf->SetXY(5,152);
 $template_pdf->Write(0, "".$data['COC_3_BILLET']);
+if( isset($data['COC_3_USERNAME']) && isset($data['COC_3_STATUS']) && $data['COC_3_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,151);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_3_USERNAME']) && isset($data['COC_3_STATUS']) && $data['COC_3_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,151);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_3_USERNAME'])  && !empty($data['COC_3_USERNAME'])){
+  $template_pdf->SetXY(37,151);
+  $template_pdf->Write(0, "PENDING");
+}
 
 
 $template_pdf->SetXY(5,157);
 $template_pdf->Write(0, "".$data['COC_4_NAME']);
 $template_pdf->SetXY(5,159);
 $template_pdf->Write(0, "".$data['COC_4_BILLET']);
-
+if( isset($data['COC_4_USERNAME']) && isset($data['COC_4_STATUS']) && $data['COC_4_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,158);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_4_USERNAME']) && isset($data['COC_4_STATUS']) && $data['COC_4_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,158);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_4_USERNAME'])  && !empty($data['COC_4_USERNAME'])){
+  $template_pdf->SetXY(37,158);
+  $template_pdf->Write(0, "PENDING");
+}
 
 $template_pdf->SetXY(5,170);
 $template_pdf->Write(0, "".$data['COC_5_NAME']);
 $template_pdf->SetXY(5,172);
 $template_pdf->Write(0, "".$data['COC_5_BILLET']);
+if( isset($data['COC_5_USERNAME']) && isset($data['COC_5_STATUS']) && $data['COC_5_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,171);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_5_USERNAME']) && isset($data['COC_5_STATUS']) && $data['COC_5_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,171);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_5_USERNAME']) && !empty($data['COC_5_USERNAME'])){
+  $template_pdf->SetXY(37,171);
+  $template_pdf->Write(0, "PENDING");
+}
 
 
 $template_pdf->SetXY(5,177);
 $template_pdf->Write(0, "".$data['COC_6_NAME']);
 $template_pdf->SetXY(5,179);
 $template_pdf->Write(0, "".$data['COC_6_BILLET']);
+if( isset($data['COC_6_USERNAME']) && isset($data['COC_6_STATUS']) && $data['COC_6_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,178);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_6_USERNAME']) && isset($data['COC_6_STATUS']) && $data['COC_6_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,178);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_6_USERNAME']) && !empty($data['COC_6_USERNAME'])){
+  $template_pdf->SetXY(37,178);
+  $template_pdf->Write(0, "PENDING");
+}
+
 
 $template_pdf->SetXY(5,185);
 $template_pdf->Write(0, "".$data['COC_7_NAME']);
 $template_pdf->SetXY(5,187);
 $template_pdf->Write(0, "".$data['COC_7_BILLET']);
+if( isset($data['COC_7_USERNAME']) && isset($data['COC_7_STATUS']) && $data['COC_7_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,186);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_7_USERNAME']) && isset($data['COC_7_STATUS']) && $data['COC_7_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,186);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_7_USERNAME']) && !empty($data['COC_7_USERNAME'])){
+  $template_pdf->SetXY(37,186);
+  $template_pdf->Write(0, "PENDING");
+}
 
 $template_pdf->SetXY(5,191);
 $template_pdf->Write(0, "".$data['COC_8_NAME']);
 $template_pdf->SetXY(5,193);
 $template_pdf->Write(0, "".$data['COC_8_BILLET']);
+if( isset($data['COC_8_USERNAME']) && isset($data['COC_8_STATUS']) && $data['COC_8_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,192);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_8_USERNAME']) && isset($data['COC_8_STATUS']) && $data['COC_8_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,192);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_8_USERNAME']) && !empty($data['COC_8_USERNAME'])){
+  $template_pdf->SetXY(37,192);
+  $template_pdf->Write(0, "PENDING");
+}
 
 $template_pdf->SetXY(5,198);
 $template_pdf->Write(0, "".$data['COC_9_NAME']);
 $template_pdf->SetXY(5,200);
 $template_pdf->Write(0, "".$data['COC_9_BILLET']);
+if( isset($data['COC_9_USERNAME']) && isset($data['COC_9_STATUS']) && $data['COC_9_STATUS'] == "APPROVED"){
+  $template_pdf->SetXY(62,199);
+  $template_pdf->Write(0, "APPROVED");
+}
+elseif(isset($data['COC_9_USERNAME']) && isset($data['COC_9_STATUS']) && $data['COC_9_STATUS'] == "DENIED"){
+  $template_pdf->SetXY(89,199);
+  $template_pdf->Write(0, "DENIED");
+}
+elseif(isset($data['COC_9_USERNAME']) && !empty($data['COC_9_USERNAME'])){
+  $template_pdf->SetXY(37,199);
+  $template_pdf->Write(0, "PENDING");
+}
+
+
 $template_pdf->Output("D","Chit.pdf");
 
 ?>

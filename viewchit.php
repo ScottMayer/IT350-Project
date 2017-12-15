@@ -1721,7 +1721,7 @@ else{
   <div class="col-sm-4 text-center">
 
 
-    <div class="col-xs-6 text-left">
+    <div class="col-xs-4 text-left">
       <div class="previous">
         <form action="editchit.php" method="post">
           <input type="hidden" value="<?php echo "{$_SESSION['filename']}"; ?>" name="filename">
@@ -1729,7 +1729,13 @@ else{
         </form>
       </div>
     </div>
-    <div class="col-xs-6 text-right">
+    <div class="col-xs-4 text-center">
+      <form action="print.script.php" method="post">
+        <input type="hidden" name="filename" value="<?php echo "{$_SESSION['filename']}"; ?>"/>
+        <input type="submit" class="btn btn-default" name="viewbutton" value="Print Chit">
+      </form>
+    </div>
+    <div class="col-xs-4 text-right">
       <div class="next">
 
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Chit</button>

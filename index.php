@@ -181,7 +181,7 @@ if ($mychitspresent ){
 		echo "<td><form style=\"float: left; \" action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"></form>";
 
 
-    if($chit[1] == 1 || $chit[1] == 0){
+    if($chit[1] == 1 || $chit[1] == 0 || $chit[1] == 2){
       echo "<form action=\"print.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"Print Chit\"></form>";
     }
 
