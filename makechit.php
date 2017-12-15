@@ -298,16 +298,16 @@ if(
             </div>
             <div class="col-sm-2">
               <select type="text" class="form-control-sm" name="FROM_CLASS">
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "1/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 1/C"){echo "selected";}?>>
                   1/C
                 </option>
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "2/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 2/C"){echo "selected";}?>>
                   2/C
                 </option>
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "3/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 3/C"){echo "selected";}?>>
                   3/C
                 </option>
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "4/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 4/C"){echo "selected";}?>>
                   4/C
                 </option>
             </select>
