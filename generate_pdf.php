@@ -42,7 +42,7 @@ else{
 }
 
 #DEBUG
-$fname = "./chits/m180594_chit1.txt";
+$fname = "./chits/m183990_chit1.txt";
 
 $raw_data = file_get_contents($fname);
 $data = unserialize($raw_data);
@@ -59,6 +59,14 @@ $template_pdf->SetMargins(0,0,0);
 $template_pdf->SetFont('Courier');
 $template_pdf->SetFontSize(8);
 $template_pdf->SetTextColor(0,0,0);
+
+
+$template_pdf->SetXY(5, 29);
+$template_pdf->Write(0, "".$data['TO_RANK']." ".$data['TO_NAME']." ".$data['TO_SERVICE']);
+
+$template_pdf->SetXY(5, 32);
+$template_pdf->Write(0, "".$data['TO_BILLET']);
+
 $template_pdf->SetXY(120, 32);
 $template_pdf->Write(0, "".$data['FROM_CLASS']." ".$data['FROM_FIRST_NAME']." ".$data['FROM_LAST_NAME']);
 
@@ -68,6 +76,9 @@ $template_pdf->Write(0, "".$data['FROM_ALPHA']);
 
 $template_pdf->SetXY(20, 40);
 $template_pdf->Write(0, "Chain-of-Command");
+
+$template_pdf->SetXY(20, 50);
+$template_pdf->Write(0, "".$data['REFERENCE']);
 
 $template_pdf->SetXY(120, 42);
 $template_pdf->Write(0, "".$data['FROM_CLASS_YEAR']);
@@ -125,47 +136,56 @@ $template_pdf->SetXY(165, 123);
 $template_pdf->Write(0, "".$data['END_DATE_TIME']);
 
 
+$template_pdf->SetFontSize(6);
+
 $template_pdf->SetXY(5,136);
 $template_pdf->Write(0, "".$data['COC_1_BILLET']);
 $template_pdf->SetXY(5,138);
 $template_pdf->Write(0, "".$data['COC_1_NAME']);
 
 
-$template_pdf->SetXY(5,140);
+$template_pdf->SetXY(5,145);
 $template_pdf->Write(0, "".$data['COC_2_BILLET']);
-$template_pdf->SetXY(5,142);
+$template_pdf->SetXY(5,147);
 $template_pdf->Write(0, "".$data['COC_2_NAME']);
 
-$template_pdf->SetXY(5,146);
+$template_pdf->SetXY(5,154);
 $template_pdf->Write(0, "".$data['COC_3_BILLET']);
-$template_pdf->SetXY(5,148);
+$template_pdf->SetXY(5,156);
 $template_pdf->Write(0, "".$data['COC_3_NAME']);
 
 
-$template_pdf->SetXY(5,152);
-$template_pdf->Write(0, "".$data['COC_1_BILLET']);
-
-$template_pdf->SetXY(5,156);
-$template_pdf->Write(0, "".$data['COC_1_NAME']);
-
-$template_pdf->SetXY(5,152);
-$template_pdf->Write(0, "".$data['COC_1_BILLET']);
-
-$template_pdf->SetXY(5,156);
-$template_pdf->Write(0, "".$data['COC_1_NAME']);
-$template_pdf->SetXY(5,152);
-$template_pdf->Write(0, "".$data['COC_1_BILLET']);
-
-$template_pdf->SetXY(5,156);
-$template_pdf->Write(0, "".$data['COC_1_NAME']);
-$template_pdf->SetXY(5,152);
-$template_pdf->Write(0, "".$data['COC_1_BILLET']);
-
-$template_pdf->SetXY(5,156);
-$template_pdf->Write(0, "".$data['COC_1_NAME']);
+$template_pdf->SetXY(5,163);
+$template_pdf->Write(0, "".$data['COC_4_BILLET']);
+$template_pdf->SetXY(5,165);
+$template_pdf->Write(0, "".$data['COC_4_NAME']);
 
 
+$template_pdf->SetXY(5,170);
+$template_pdf->Write(0, "".$data['COC_5_NAME']);
+$template_pdf->SetXY(5,172);
+$template_pdf->Write(0, "".$data['COC_5_BILLET']);
 
+
+$template_pdf->SetXY(5,178);
+$template_pdf->Write(0, "".$data['COC_6_NAME']);
+$template_pdf->SetXY(5,180);
+$template_pdf->Write(0, "".$data['COC_6_BILLET']);
+
+$template_pdf->SetXY(5,186);
+$template_pdf->Write(0, "".$data['COC_7_NAME']);
+$template_pdf->SetXY(5,188);
+$template_pdf->Write(0, "".$data['COC_7_BILLET']);
+
+$template_pdf->SetXY(5,188);
+$template_pdf->Write(0, "".$data['COC_8_NAME']);
+$template_pdf->SetXY(5,190);
+$template_pdf->Write(0, "".$data['COC_8_BILLET']);
+
+$template_pdf->SetXY(5,194);
+$template_pdf->Write(0, "".$data['COC_9_NAME']);
+$template_pdf->SetXY(5,196);
+$template_pdf->Write(0, "".$data['COC_9_BILLET']);
 $template_pdf->Output("D","Chit.pdf");            
 
 ?>
