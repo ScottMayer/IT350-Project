@@ -124,7 +124,7 @@ if($fp){
 
 			if($member == $_SESSION['username']){
 				$subordinatechitspresent = true;
-				$thischit = [$split[1], $split[3], $split[4]];
+				$thischit = [$split[1], $split[3], $split[4], $split[0]];
 				array_push($subordinatechits, $thischit);
 			}
 			// echo "$member";
@@ -206,7 +206,7 @@ if ($subordinatechitspresent){
 
 	foreach ($subordinatechits as $chit){
 
-			echo "<tr><td>{$chit[0]}</td><td>{$chit[2]}</td>";
+			echo "<tr><td>".get_name($chit[3])."</td><td>{$chit[2]}</td>";
 
 			if($chit[1] == 0){
 				echo "<td>PENDING</td>";
