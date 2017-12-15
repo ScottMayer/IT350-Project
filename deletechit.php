@@ -9,6 +9,13 @@ if(!isset($_SESSION['username'])){
 require_once("nimitz.php");
 require_once("error.inc.php");
 
+$debug = false;
+if($debug){
+	echo "<pre>";
+	print_r($_SESSION);
+	echo "</pre>";
+}
+
 $fp = fopen("./chits/directory.txt", "r");
 $data_to_write_back = [];
 if($fp){
@@ -17,14 +24,17 @@ if($fp){
 		$split = explode(",", $line);
 
 		if($split[1] == $_SESSION['filename']){
-			if(is_file($_SESSION['filename'])){
+			// echo "here";
+			if(is_file("./chits/" . $_SESSION['filename'])){
+				// echo "here2";
+				unlink("./chits/" . $split[1] );
 
-				if(!unlink("./chits/" . $split[1] )){
-					//error, file could not be deleted
-				}
 			}
 		}
-		array_push($data_to_write_back, $line);
+		else {
+			array_push($data_to_write_back, $line);
+
+		}
 
 	}
 
@@ -37,6 +47,7 @@ if($fp){
 $fp = fopen("./chits/directory.txt", "w");
 if($fp){
 	foreach($data_to_write_back as $line){
+		// echo "{$line}\n";
 
 		fwrite($fp, $line);
 
@@ -44,7 +55,7 @@ if($fp){
 
 	fclose($fp);
 
-	// redirect("./index.php");
+	redirect("./index.php");
 }
 
 

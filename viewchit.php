@@ -102,6 +102,122 @@ if(isset($_SESSION['filename'])){
 
     }
 
+    $coc_data = [];
+    $fp = fopen("./chits/directory.txt", "r");
+    if($fp){
+    	while(($line = fgets($fp)) !== false){
+
+    		$split = explode(",", $line);
+
+    		if($split[1] == $_SESSION['filename']){
+          $coc_all = $split[2];
+      		$coc = explode(" ", $coc_all);
+      		foreach ($coc as $member) {
+            $member = explode("-", $member);
+
+            // print_r($member);
+            // echo "$member[1]";
+
+            if(empty($member[0])){
+              continue;
+            }
+
+
+            if($member[0] == $data['COC_1_USERNAME'] && $member[1] == 1){
+              $data['COC_1_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_2_USERNAME'] && $member[1] == 1){
+              $data['COC_2_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_3_USERNAME'] && $member[1] == 1){
+              $data['COC_3_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_4_USERNAME'] && $member[1] == 1){
+              $data['COC_4_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_5_USERNAME'] && $member[1] == 1){
+              $data['COC_5_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_6_USERNAME'] && $member[1] == 1){
+              $data['COC_6_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_7_USERNAME'] && $member[1] == 1){
+              $data['COC_7_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_8_USERNAME'] && $member[1] == 1){
+              $data['COC_8_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_9_USERNAME'] && $member[1] == 1){
+              $data['COC_9_STATUS'] = "APPROVED";
+            }
+            elseif($member[0] == $data['COC_1_USERNAME'] && $member[1] == 2){
+              $data['COC_1_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_2_USERNAME'] && $member[1] == 2){
+              $data['COC_2_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_3_USERNAME'] && $member[1] == 2){
+              $data['COC_3_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_4_USERNAME'] && $member[1] == 2){
+              $data['COC_4_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_5_USERNAME'] && $member[1] == 2){
+              $data['COC_5_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_6_USERNAME'] && $member[1] == 2){
+              $data['COC_6_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_7_USERNAME'] && $member[1] == 2){
+              $data['COC_7_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_8_USERNAME'] && $member[1] == 2){
+              $data['COC_8_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_9_USERNAME'] && $member[1] == 2){
+              $data['COC_9_STATUS'] = "DENIED";
+            }
+            elseif($member[0] == $data['COC_1_USERNAME'] && $member[1] == 0){
+              $data['COC_1_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_2_USERNAME'] && $member[1] == 0){
+              $data['COC_2_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_3_USERNAME'] && $member[1] == 0){
+              $data['COC_3_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_4_USERNAME'] && $member[1] == 0){
+              $data['COC_4_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_5_USERNAME'] && $member[1] == 0){
+              $data['COC_5_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_6_USERNAME'] && $member[1] == 0){
+              $data['COC_6_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_7_USERNAME'] && $member[1] == 0){
+              $data['COC_7_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_8_USERNAME'] && $member[1] == 0){
+              $data['COC_8_STATUS'] = "PENDING";
+            }
+            elseif($member[0] == $data['COC_9_USERNAME'] && $member[1] == 0){
+              $data['COC_9_STATUS'] = "PENDING";
+            }
+
+      			// echo "$member";
+      		}
+    		}
+
+    	}
+
+    	fclose($fp);
+    }
+
+
+
+
+
   }
   else{
     //file doesn't exist
@@ -111,7 +227,10 @@ if(isset($_SESSION['filename'])){
 else{
   //filename is not set
 }
-
+//
+// echo "<pre>";
+// print_r($data);
+// echo "</pre>";
 
 
 ?>
@@ -389,10 +508,10 @@ else{
     <div class="col-sm-3">
       (Street, P.O. Box, RFD)
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-1">
 
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-5 text-right">
       (City) (State) (Zip Code) (Phone)
     </div>
   </div>
@@ -403,11 +522,14 @@ else{
     <div class="col-sm-3">
       <?php if(isset($data['ADDRESS_2'])){echo "{$data['ADDRESS_2']}";}?>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-1">
 
     </div>
-    <div class="col-sm-3">
-      <?php if(isset($data['ADDRESS_3'])){echo "{$data['ADDRESS_3']}";}?>
+    <div class="col-sm-5 text-right">
+      <?php if(isset($data['ADDRESS_CITY'])){echo "{$data['ADDRESS_CITY']}";}?>,
+      <?php if(isset($data['ADDRESS_STATE'])){echo "{$data['ADDRESS_STATE']}";}?>,
+      <?php if(isset($data['ADDRESS_ZIP'])){echo "{$data['ADDRESS_ZIP']}";}?>,
+      <?php if(isset($data['PHONE'])){echo "{$data['PHONE']}";}?>
     </div>
   </div>
   <div class="row" style="border-left: 1px solid #000000; border-right:1px solid #000000;">
@@ -616,14 +738,19 @@ else{
               <?php if(isset($data['COC_1_NAME'])&& !empty($data['COC_1_NAME'])){echo "{$data['COC_1_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_1_USERNAME'])&& !empty($data['COC_1_USERNAME'])){echo "{$data['COC_1_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_1_USERNAME'])&& !empty($data['COC_1_USERNAME'])){echo "{$data['COC_1_USERNAME']}";}else{echo "<br>";}?>
             </div>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-            <br>
+            <?php
+            if(isset($data['COC_1_USERNAME']) && isset($data['COC_1_STATUS']) && $data['COC_1_STATUS'] == "PENDING" ){
+              echo "<br><strong>PENDING</strong>";
+            }
+             ?>
             </div>
             <div class="col-sm-12">
               <br>
@@ -632,28 +759,38 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-              <?php if(isset($data['COC_1_USERNAME']) && !empty($data['COC_1_USERNAME'])){
-                      echo "<form method=\"post\" action=\"update-chit.php\">
-                      <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
-                      <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>
-                      <input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
-                      </form>";} ?>
-            <div class="col-sm-12">
-              <br>
+
+          <div class="col-sm-12 text-center">
+              <?php
+                if(isset($data['COC_1_USERNAME']) && $data['COC_1_USERNAME'] == $_SESSION['username'] && isset($data['COC_1_STATUS']) && $data['COC_1_STATUS'] == "PENDING"){
+                  echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+              		<input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+              		<input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                }
+                elseif(isset($data['COC_1_USERNAME']) && isset($data['COC_1_STATUS']) && $data['COC_1_STATUS'] == "APPROVED"){
+                  echo "<br><strong>APPROVED</strong>";
+                }
+                ?>
+
             </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
+
           </div>
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_1_USERNAME']) && $data['COC_1_USERNAME'] == $_SESSION['username'] && isset($data['COC_1_STATUS']) && $data['COC_1_STATUS'] == "PENDING"){
+                    echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                		</form>";
+                  }
+                  elseif(isset($data['COC_1_USERNAME']) && isset($data['COC_1_STATUS']) && $data['COC_1_STATUS'] == "DENIED"){
+                    echo "<br><strong>DENIED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             <div class="col-sm-12">
               <br>
             </div>
@@ -734,14 +871,19 @@ else{
               <?php if(isset($data['COC_2_NAME'])&& !empty($data['COC_2_NAME'])){echo "{$data['COC_2_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_2_USERNAME'])&& !empty($data['COC_2_USERNAME'])){echo "{$data['COC_2_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_2_USERNAME'])&& !empty($data['COC_2_USERNAME'])){echo "{$data['COC_2_USERNAME']}";}else{echo "<br>";}?>
             </div>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+              if(isset($data['COC_2_USERNAME']) && isset($data['COC_2_STATUS']) && $data['COC_2_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
             </div>
             <div class="col-sm-12">
               <br>
@@ -750,22 +892,36 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_2_USERNAME']) && $data['COC_2_USERNAME'] == $_SESSION['username'] && isset($data['COC_2_STATUS']) && $data['COC_2_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_2_USERNAME']) && isset($data['COC_2_STATUS']) && $data['COC_2_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                  <?php
+                    if(isset($data['COC_2_USERNAME']) && $data['COC_2_USERNAME'] == $_SESSION['username'] && isset($data['COC_2_STATUS']) && $data['COC_2_STATUS'] == "PENDING"){
+                      echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";
+                    }
+                    elseif(isset($data['COC_2_USERNAME']) && isset($data['COC_2_STATUS']) && $data['COC_2_STATUS'] == "DENIED"){
+                      echo "<br><strong>DENIED</strong>";
+                    }
+                    ?>
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -786,25 +942,42 @@ else{
               <?php if(isset($data['COC_3_NAME'])&& !empty($data['COC_3_NAME'])){echo "{$data['COC_3_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_3_USERNAME']) && !empty($data['COC_3_USERNAME'])){echo "{$data['COC_3_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_3_USERNAME']) && !empty($data['COC_3_USERNAME'])){echo "{$data['COC_3_USERNAME']}";}else{echo "<br>";}?>
             </div>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+              <?php
+              if(isset($data['COC_3_USERNAME']) && isset($data['COC_3_STATUS']) && $data['COC_3_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
+
+
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_3_USERNAME']) && $data['COC_3_USERNAME'] == $_SESSION['username'] && isset($data['COC_3_STATUS']) && $data['COC_3_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_3_USERNAME']) && isset($data['COC_3_STATUS']) && $data['COC_3_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -816,14 +989,20 @@ else{
         <div class="col-sm-3">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+                if(isset($data['COC_3_USERNAME']) && $data['COC_3_USERNAME'] == $_SESSION['username'] && isset($data['COC_3_STATUS']) && $data['COC_3_STATUS'] == "PENDING"){
+                  echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                  </form>";
+                }
+                elseif(isset($data['COC_3_USERNAME']) && isset($data['COC_3_STATUS']) && $data['COC_3_STATUS'] == "DENIED"){
+                  echo "<br><strong>DENIED</strong>";
+                }
+                ?>
             </div>
             <div class="col-sm-12">
               <br>
             </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
+
           </div>
         </div>
       </div>
@@ -837,7 +1016,8 @@ else{
               <?php if(isset($data['COC_4_NAME'])&& !empty($data['COC_4_NAME'])){echo "{$data['COC_4_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_4_USERNAME'])&& !empty($data['COC_4_USERNAME'])){echo "{$data['COC_4_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_4_USERNAME'])&& !empty($data['COC_4_USERNAME'])){echo "{$data['COC_4_USERNAME']}";}else{echo "<br>";}?>
 
             </div>
           </div>
@@ -845,7 +1025,13 @@ else{
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+              if(isset($data['COC_4_USERNAME']) && isset($data['COC_4_STATUS']) && $data['COC_4_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
+
+
             </div>
             <div class="col-sm-12">
               <br>
@@ -854,22 +1040,36 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_4_USERNAME']) && $data['COC_4_USERNAME'] == $_SESSION['username'] && isset($data['COC_4_STATUS']) && $data['COC_4_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_4_USERNAME']) && isset($data['COC_4_STATUS']) && $data['COC_4_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                  <?php
+                    if(isset($data['COC_4_USERNAME']) && $data['COC_4_USERNAME'] == $_SESSION['username'] && isset($data['COC_4_STATUS']) && $data['COC_4_STATUS'] == "PENDING"){
+                      echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";
+                    }
+                    elseif(isset($data['COC_4_USERNAME']) && isset($data['COC_4_STATUS']) && $data['COC_4_STATUS'] == "DENIED"){
+                      echo "<br><strong>DENIED</strong>";
+                    }
+                    ?>
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -920,7 +1120,8 @@ else{
               <?php if(isset($data['COC_5_NAME'])&& !empty($data['COC_5_NAME'])){echo "{$data['COC_5_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_5_USERNAME']) && !empty($data['COC_5_USERNAME'])){echo "{$data['COC_5_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_5_USERNAME']) && !empty($data['COC_5_USERNAME'])){echo "{$data['COC_5_USERNAME']}";}else{echo "<br>";}?>
 
             </div>
           </div>
@@ -928,7 +1129,13 @@ else{
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+              if(isset($data['COC_5_USERNAME']) && isset($data['COC_5_STATUS']) && $data['COC_5_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
+
+
             </div>
             <div class="col-sm-12">
               <br>
@@ -937,22 +1144,36 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_5_USERNAME']) && $data['COC_5_USERNAME'] == $_SESSION['username'] && isset($data['COC_5_STATUS']) && $data['COC_5_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_5_USERNAME']) && isset($data['COC_5_STATUS']) && $data['COC_5_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                  <?php
+                    if(isset($data['COC_5_USERNAME']) && $data['COC_5_USERNAME'] == $_SESSION['username'] && isset($data['COC_5_STATUS']) && $data['COC_5_STATUS'] == "PENDING"){
+                      echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";
+                    }
+                    elseif(isset($data['COC_5_USERNAME']) && isset($data['COC_5_STATUS']) && $data['COC_5_STATUS'] == "DENIED"){
+                      echo "<br><strong>DENIED</strong>";
+                    }
+                    ?>
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -972,7 +1193,8 @@ else{
               <?php if(isset($data['COC_6_NAME'])&& !empty($data['COC_6_NAME'])){echo "{$data['COC_6_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_6_USERNAME'])&& !empty($data['COC_6_USERNAME'])){echo "{$data['COC_6_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_6_USERNAME'])&& !empty($data['COC_6_USERNAME'])){echo "{$data['COC_6_USERNAME']}";}else{echo "<br>";}?>
 
             </div>
           </div>
@@ -980,7 +1202,11 @@ else{
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+              if(isset($data['COC_6_USERNAME']) && isset($data['COC_6_STATUS']) && $data['COC_6_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
             </div>
             <div class="col-sm-12">
               <br>
@@ -989,22 +1215,36 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_6_USERNAME']) && $data['COC_6_USERNAME'] == $_SESSION['username'] && isset($data['COC_6_STATUS']) && $data['COC_6_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_6_USERNAME']) && isset($data['COC_6_STATUS']) && $data['COC_6_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                  <?php
+                    if(isset($data['COC_6_USERNAME']) && $data['COC_6_USERNAME'] == $_SESSION['username'] && isset($data['COC_6_STATUS']) && $data['COC_6_STATUS'] == "PENDING"){
+                      echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";
+                    }
+                    elseif(isset($data['COC_6_USERNAME']) && isset($data['COC_6_STATUS']) && $data['COC_6_STATUS'] == "DENIED"){
+                      echo "<br><strong>DENIED</strong>";
+                    }
+                    ?>
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -1018,13 +1258,14 @@ else{
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <?php if(isset($data['COC_7_BILLET']) && !empty($data['COC_7_BILLET'])){echo "{$data['COC_5_BILLET']}";}else{echo "<br>";}?>
+              <?php if(isset($data['COC_7_BILLET']) && !empty($data['COC_7_BILLET'])){echo "{$data['COC_7_BILLET']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
               <?php if(isset($data['COC_7_NAME']) && !empty($data['COC_7_NAME'])){echo "{$data['COC_7_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_7_USERNAME']) && !empty($data['COC_7_USERNAME'])){echo "{$data['COC_7_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_7_USERNAME']) && !empty($data['COC_7_USERNAME'])){echo "{$data['COC_7_USERNAME']}";}else{echo "<br>";}?>
 
             </div>
           </div>
@@ -1032,7 +1273,11 @@ else{
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+              if(isset($data['COC_7_USERNAME']) && isset($data['COC_7_STATUS']) && $data['COC_7_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
             </div>
             <div class="col-sm-12">
               <br>
@@ -1041,22 +1286,36 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_7_USERNAME']) && $data['COC_7_USERNAME'] == $_SESSION['username'] && isset($data['COC_7_STATUS']) && $data['COC_7_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_7_USERNAME']) && isset($data['COC_7_STATUS']) && $data['COC_7_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                  <?php
+                    if(isset($data['COC_7_USERNAME']) && $data['COC_7_USERNAME'] == $_SESSION['username'] && isset($data['COC_7_STATUS']) && $data['COC_7_STATUS'] == "PENDING"){
+                      echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";
+                    }
+                    elseif(isset($data['COC_7_USERNAME']) && isset($data['COC_7_STATUS']) && $data['COC_7_STATUS'] == "DENIED"){
+                      echo "<br><strong>DENIED</strong>";
+                    }
+                    ?>
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -1076,7 +1335,8 @@ else{
               <?php if(isset($data['COC_8_NAME']) && !empty($data['COC_8_NAME'])){echo "{$data['COC_8_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_8_USERNAME']) && !empty($data['COC_8_USERNAME'])){echo "{$data['COC_8_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_8_USERNAME']) && !empty($data['COC_8_USERNAME'])){echo "{$data['COC_8_USERNAME']}";}else{echo "<br>";}?>
 
             </div>
           </div>
@@ -1084,7 +1344,11 @@ else{
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+              if(isset($data['COC_8_USERNAME']) && isset($data['COC_8_STATUS']) && $data['COC_8_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
             </div>
             <div class="col-sm-12">
               <br>
@@ -1093,22 +1357,36 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_8_USERNAME']) && $data['COC_8_USERNAME'] == $_SESSION['username'] && isset($data['COC_8_STATUS']) && $data['COC_8_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_8_USERNAME']) && isset($data['COC_8_STATUS']) && $data['COC_8_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                  <?php
+                    if(isset($data['COC_8_USERNAME']) && $data['COC_8_USERNAME'] == $_SESSION['username'] && isset($data['COC_8_STATUS']) && $data['COC_8_STATUS'] == "PENDING"){
+                      echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";
+                    }
+                    elseif(isset($data['COC_8_USERNAME']) && isset($data['COC_8_STATUS']) && $data['COC_8_STATUS'] == "DENIED"){
+                      echo "<br><strong>DENIED</strong>";
+                    }
+                    ?>
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -1128,14 +1406,19 @@ else{
               <?php if(isset($data['COC_9_NAME']) && !empty($data['COC_9_NAME'])){echo "{$data['COC_9_NAME']}";}else{echo "<br>";}?>
             </div>
             <div class="col-sm-12">
-              <?php if(isset($data['COC_9_USERNAME']) && !empty($data['COC_9_USERNAME'])){echo "{$data['COC_9_USERNAME']}";}else{echo "<br>";}?>
+              <?php
+              // if(isset($data['COC_9_USERNAME']) && !empty($data['COC_9_USERNAME'])){echo "{$data['COC_9_USERNAME']}";}else{echo "<br>";}?>
             </div>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+              <?php
+              if(isset($data['COC_9_USERNAME']) && isset($data['COC_9_STATUS']) && $data['COC_9_STATUS'] == "PENDING" ){
+                echo "<br><strong>PENDING</strong>";
+              }
+               ?>
             </div>
             <div class="col-sm-12">
               <br>
@@ -1144,22 +1427,36 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
-            </div>
-            <div class="col-sm-12">
-              <br>
+            <div class="col-sm-12 text-center">
+                <?php
+                  if(isset($data['COC_9_USERNAME']) && $data['COC_9_USERNAME'] == $_SESSION['username'] && isset($data['COC_9_STATUS']) && $data['COC_9_STATUS'] == "PENDING"){
+                    echo "<br><form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
+                    <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                    <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>";
+                  }
+                  elseif(isset($data['COC_9_USERNAME']) && isset($data['COC_9_STATUS']) && $data['COC_9_STATUS'] == "APPROVED"){
+                    echo "<br><strong>APPROVED</strong>";
+                  }
+                  ?>
+
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-              <br>
-            </div>
+          <div class="col-sm-3">
+            <div class="row" style="text-align: center; border-right: 1px solid #000000;">
+              <div class="col-sm-12 text-center">
+                  <?php
+                    if(isset($data['COC_9_USERNAME']) && $data['COC_9_USERNAME'] == $_SESSION['username'] && isset($data['COC_9_STATUS']) && $data['COC_9_STATUS'] == "PENDING"){
+                      echo "<br><input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";
+                    }
+                    elseif(isset($data['COC_9_USERNAME']) && isset($data['COC_9_STATUS']) && $data['COC_9_STATUS'] == "DENIED"){
+                      echo "<br><strong>DENIED</strong>";
+                    }
+                    ?>
+
+                </div>
             <div class="col-sm-12">
               <br>
             </div>
@@ -1373,7 +1670,7 @@ else{
           <div class="col-sm-6" style="border-right: 1px solid #000000;">
             <div class="row">
               <div class="col-sm-12">
-                Retruned (Time & Date)
+                Returned (Time & Date)
               </div>
               <div class="col-sm-12">
                 <br />
@@ -1422,7 +1719,27 @@ else{
   <div class="col-sm-4">
   </div>
   <div class="col-sm-4 text-center">
-		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete</button>
+
+
+    <div class="col-xs-6 text-left">
+      <div class="previous">
+        <form action="editchit.php" method="post">
+          <input type="hidden" value="<?php echo "{$_SESSION['filename']}"; ?>" name="filename">
+          <input type="submit" class="btn btn-secondary" value="Edit Chit" />
+        </form>
+      </div>
+    </div>
+    <div class="col-xs-6 text-right">
+      <div class="next">
+
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Chit</button>
+
+      </div>
+    </div>
+
+
+
+
 
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">

@@ -40,9 +40,9 @@
       nav();
     ?>
 
-    <?php 
+    <?php
        /****** approve and deny should only edit ./chit/directory.txt *******
-        *  Description: when approving/denying a chit, 
+        *  Description: when approving/denying a chit,
         *
         *  find the name of the chit in column [1].
         *  then find the user's username in $line[2].
@@ -55,86 +55,20 @@
         *      - if every # in "MXXXXXX-#" is 1 (every user has approved)
         *        - change $line[3] to 1 (chit is approved)
         */
-      
+
       $chitname = $_POST['filename'];
       $action = $_POST['update'];
 
-      /////$fp = fopen("./chits/directory.txt", "r");
-      /////if($fp){
-      /////  while(($line = fgets($fp)) !== false){
-      /////    $split = explode(",", $line);
-      /////    $coc_all = $split[2];
-
-
-      /////    if($split[1] == $chitname && ($index = strpos($coc_all, $_SESSION['username']) !== false) ) {
-      /////      if($action == "Approve") {
-      /////        $res = 1;
-      /////      } elseif($action == "Deny") {
-      /////        $res = 2;
-      /////      } else {
-      /////        // ERROR
-      /////        $res = "ERROR";
-      /////      }
-      /////      $coc_all = substr_replace($coc_all, $_SESSION['username'] . '-' . $res, $index, strlen($_SESSION['username'])+2);
-
-      /////      
-      /////      echo $split[2] . "<br>";
-      /////      echo $coc_all . "<br>";
-      /////      echo "index : $index";
-
-      /////      echo "<pre>";
-      /////      print_r($split);
-      /////      echo "</pre>";
-      /////    }
-
-      /////    // $coc = explode(" ", $coc_all);
-
-      /////    // foreach ($coc as $member) {
-      /////    //   $uname = substr($member, 0, -2);
-
-      /////    //   if($uname == $_SESSION['username']){
-      /////    //     if($action == "Approve") {
-      /////    //       // Change "MXXXXXX-0" to "MXXXXXX-1"
-      /////    //       //
-      /////    //       // if ( every USER-# is USER-1 ) {
-      /////    //       //   change overall status of chit to "1" for
-      /////    //       //   approved
-      /////    //       // }
-      /////    //       $member = substr($member, 0, -1) . 1;
-      /////    //       echo $member;
-      /////    //       $break = true;
-      /////    //     } elseif($action == "Deny") {
-      /////    //       // Change "MXXXXXX-0" to "MXXXXXX-2"
-      /////    //       // Change overall status of chit to "2" for denied
-      /////    //       $member = substr($member, 0, -1) . 2;
-      /////    //       echo $member;
-      /////    //       $break = true;
-      /////    //     } else {
-      /////    //       // error
-      /////    //       // print to the web page and scream that there's an error
-      /////    //     }
-      /////    //   }
-      /////    //   // echo "$member";
-      /////    // }
-
-      /////    // echo "<pre>";
-      /////    // print_r($split);
-      /////    // echo "</pre>";
-
-      /////    // if($break) break;
-      /////  }
-      /////  fclose($fp);
-      /////}
-      //redirect to viewchit.php for this chit, aka $chitname
 
       // IGNORE FOLLOWING DEBUGGING {
-      //   echo $SESSION['username'] . ' ' . $_POST['filename'];
-      //   echo "<pre>";
-      //   print_r($_POST);
-      //   echo "</pre>";
+        // echo $SESSION['username'] . ' ' . $_POST['filename'];
+        // echo "<pre>";
+        // print_r($_POST);
+        // echo "</pre>";
       // }
 
-      $fp = fopen("./chits/directory.txt", "r+");
+      $fp = fopen("./chits/directory.txt", "r");
+      $data_to_write_back = [];
       if($fp){
         while(($line = fgets($fp)) !== false){
           $split = explode(",", $line);
@@ -144,50 +78,90 @@
             $coc_all = $split[2];
             $coc = explode(" ", $coc_all);
 
-            $newcoc = "";
+            $updated_coc = "";
+
+            // echo "$newcoc";
 
             foreach ($coc as $member) {
               $member = explode("-", $member);
               if($member[0] == $_SESSION['username']){
                 if($action == "Approve") {
-                  $member[1] = 1;
 
-                  $status = true;
-                  $temp = explode(" ", $coc_all);
-                  foreach ($temp as $uname) {
-                    $uname = explode("-", $uname);
-                    if($uname[0] == $_SESSION['username']) {
-                      continue;
-                    } elseif($uname[1] !== 1) {
-                      $status = false;
-                      break;
-                    }
-                  }
+                  $updated_coc = $updated_coc . $member[0] . "-1 ";
 
-                  // if every $member[1] other than you is 1, then set overall chit status $split[3] to 1
-                  if($status) { $split[3] = 1; }
-
-                } elseif($action == "Deny") {
-                  $member[1] = 2;
+                }
+                elseif($action == "Deny") {
+                  $updated_coc = $updated_coc . $member[0] . "-2 ";
                   $split[3] = 2;
-                } else {
-                  // error
+                  // echo "here";
                 }
               }
-              // echo "$member";
-              $newcoc .= $member[0] . '-' . $member[1] . ' ';
+              else{
+                if(!empty($member[0])){
+                  $updated_coc = $updated_coc . $member[0] . "-" . $member[1] . " ";
+                }
+              }
+
             }
 
-            fseek($fp, -strlen($line), SEEK_CUR);
-            $line = $split[0] . ',' . $split[1] . ',' . substr($newcoc, 0, -1) . ',' . $split[3] . ',' . $split[4];
-            fwrite($fp, $line);
-          }
+            $count = 1;
+            $updated_coc_array = explode(" ", $updated_coc);
 
-          // write back to directory.txt
-          // fwrite($fp, $line);
+            foreach ($updated_coc_array as $member){
+              $member = explode("-", $member);
+              // echo "$member[1]";
+              if($member[1] == 1){
+                // echo "here";
+                $count = $count + 1;
+              }
+            }
+
+            if($count == count($updated_coc_array) && $action == "Approve"){
+              $split[3] = 1;
+            }
+            elseif($count != count($updated_coc_array) && $action == "Approve"){
+              $split[3] = 0;
+            }
+
+            // print_r($updated_coc_array);
+            end($updated_coc_array);
+            $last = prev($updated_coc_array);
+
+            $last = explode("-", $last);
+
+            // print_r($last);
+
+            if($last[1] == 1){
+              // echo "here";
+              $split[3] = 1;
+            }
+
+
+            //
+            // echo "<pre>";
+            // print_r($coc);
+            // echo "</pre>";
+
+            $line = $split[0] . ',' . $split[1] . ',' . $updated_coc . ',' . $split[3] . ',' . $split[4];
+            array_push($data_to_write_back, $line);
+            // echo "Updated: $line";
+          }
+          else{
+            array_push($data_to_write_back, $line);
+            // echo "Not alterned: $line";
+          }
         }
         fclose($fp);
       }
+
+      $fp = fopen("./chits/directory.txt", "w");
+      if($fp){
+        foreach($data_to_write_back as $line){
+
+          fwrite($fp, $line);
+        }
+      }
+
 
       header("Location: ./index.php");
       die();

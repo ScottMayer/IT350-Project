@@ -93,6 +93,8 @@ $mychitspresent = false;
 $mychits = [];
 $subordinatechitspresent = false;
 $subordinatechits = [];
+$chitsfiltered = false;
+
 
 if(!is_file("./chits/directory.txt")){
 	$contents = "";
@@ -105,7 +107,8 @@ if($fp){
         #FILTERING
         if(isset($_POST['FILTER']) && strlen($_POST['FILTER']) >0){
             if((stripos($line, $_POST['FILTER']) === false)){
-                continue;
+              $chitsfiltered = true;
+              continue;
             }
         }
         #END FILTERING
@@ -141,29 +144,32 @@ if($fp){
 
 
 
-if ($mychitspresent){
+if ($mychitspresent ){
 	// TODO print as table all chits associated with username
 	//TODO only display chits where filter does not apply
 	echo "<div class='row'>";
 	echo "<div class='col-md-2'>";
 	echo "</div>";
 	echo "<div class='col-md-8'>";
+  echo "<h4 style=\"padding: 8px;\"><strong>Your Chits</strong></h4>";
 	echo "<table class='table table-hover'>";
-	echo "<thead><tr><th>Your chits</th></tr></thead>";
+	echo "<thead>";
+  echo "<tr><th>Description</th><th>Status</th><th>Actions</th></tr></thead>";
+
 	foreach ($mychits as $chit){
-		echo "<tr><td>{$chit[0]}</td><td>{$chit[2]}</td>";
+		echo "<tr><td>{$chit[2]}</td>";
 
 		if($chit[1] == 0){
-			echo "<td>PENDING</td>";
+      echo "<td><button style=\"cursor: auto !important\" type=\"button\" class=\"btn btn-secondary\" disabled>Pending</button></td>";
 
 		}
 
 		if($chit[1] == 1){
-			echo "<td>APPROVED</td>";
+			echo "<td><button style=\"cursor: auto !important\" type=\"button\" class=\"btn btn-success\" disabled>Approved</button></td>";
 		}
 
 		if($chit[1] == 2){
-			echo "<td>DENIED</td>";
+      echo "<td><button  style=\"cursor: auto !important\" type=\"button\" class=\"btn btn-danger\" disabled>Denied</button></td>";
 		}
 
 
@@ -172,8 +178,14 @@ if ($mychitspresent){
 
 		//if pending
 
-		echo "<td><form action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"></form></td>";
-		echo "<td><form action=\"print.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"Print Chit\"></form></td>";
+		echo "<td><form style=\"float: left; \" action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"></form>";
+
+
+    if($chit[1] == 1 || $chit[1] == 0){
+      echo "<form action=\"print.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"Print Chit\"></form>";
+    }
+
+    echo "</td>";
 
 		echo "</tr>";
 	}
@@ -188,46 +200,44 @@ if ($mychitspresent){
 
 
 //subordinate Chits
-
-
-
-
 if ($subordinatechitspresent){
 // if (isset($_SESSION['chits']['subordinates'][$_SESSION['username']])){
-	// TODO print as table all chits associated with username
-	//TODO only display chits where filter does not apply
+
 	echo "<div class='row'>";
 	echo "<div class='col-md-2'>";
 	echo "</div>";
 	echo "<div class='col-md-8'>";
+  echo "<h4 style=\"padding: 8px;\"><strong>Subordinate Chits</strong></h4>";
 	echo "<table class='table table-hover'>";
-	echo "<thead><tr><th cospan=2>Subordinate chits</th></tr></thead>";
+	echo "<thead>";
+  echo "<tr><th>Owner</th><th>Description</th><th>Overall Status</th><th>Actions</th></tr></thead>";
 
 
 	foreach ($subordinatechits as $chit){
 
 			echo "<tr><td>".get_name($chit[3])."</td><td>{$chit[2]}</td>";
 
-			if($chit[1] == 0){
-				echo "<td>PENDING</td>";
+      if($chit[1] == 0){
+        echo "<td><button style=\"cursor: auto !important\" type=\"button\" class=\"btn btn-secondary\" disabled>Pending</button></td>";
 
-			}
+  		}
 
-			if($chit[1] == 1){
-				echo "<td>APPROVED</td>";
-			}
+  		if($chit[1] == 1){
+  			echo "<td><button style=\"cursor: auto !important\" type=\"button\" class=\"btn btn-success\" disabled>Approved</button></td>";
+  		}
 
-			if($chit[1] == 2){
-				echo "<td>DENIED</td>";
-			}
+  		if($chit[1] == 2){
+        echo "<td><button  style=\"cursor: auto !important\" type=\"button\" class=\"btn btn-danger\" disabled>Denied</button></td>";
+  		}
+
 
 		//if approved...
 		// echo "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"location.href='generate_pdf.php';\">Print Chit</button></td>";
 
 		//if pending
-		echo "<td><form action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"></form></td>";
+		echo "<td><form style=\"float: left;\" action=\"view.script.php\" method=\"post\"><input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" /><input type=\"submit\" class=\"btn btn-default\" name=\"viewbutton\" value=\"View Chit\"> </form>";
 
-		echo "<td><form method=\"post\" action=\"update-chit.php\">
+		echo "<form style=\"float: left; \" method=\"post\" action=\"update-chit.php\">
 		<input type=\"hidden\" name=\"filename\" value=\"{$chit[0]}\" />
 		<input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>
 		<input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
@@ -240,6 +250,21 @@ if ($subordinatechitspresent){
 	echo "<div class='col-md-2'>";
 	echo "</div>";
 	echo "</div>";
+
+}
+
+if(!$mychitspresent && !$subordinatechitspresent && !$chitsfiltered){
+
+  echo "<div class='row'>";
+  echo "<div class='col-md-2'>";
+  echo "</div>";
+  echo "<div class='col-md-8 text-center'>";
+  echo "<h3>Welcome to eChits!</h3>";
+  echo "<button type=button class='btn btn-default' onclick=\"window.location.href='./makechit.php'\">Make Chit</button>";
+  echo "</div>";
+  echo "<div class='col-md-2'>";
+  echo "</div>";
+  echo "</div>";
 
 }
 

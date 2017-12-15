@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Make Chit</title>
+    <title>Edit Chit</title>
     <link rel="icon" href="./imgs/icon.ico"/>
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -131,14 +131,14 @@ if($debug){
   echo "</pre>";
 }
 
+
+
 //IF EVERYTHING IS SET AND COC VALIDATES
 //STATUS:  PERMISSIONS are weird
 if(
-    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_CITY']) && isset($_POST['ADDRESS_STATE']) && isset($_POST['ADDRESS_ZIP']) && isset($_POST['PHONE'])   && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) && validateCOC() ){
-
+    isset($_POST['SHORT_DESCRIPTION']) && isset($_POST['TO_RANK']) && isset($_POST['TO_NAME']) && isset($_POST['TO_SERVICE']) && isset($_POST['TO_BILLET']) && isset($_POST['FROM_CLASS']) && isset($_POST['FROM_FIRST_NAME']) && isset($_POST['FROM_LAST_NAME']) && isset($_POST['FROM_ALPHA']) && isset($_POST['FROM_CLASS_YEAR']) && isset($_POST['FROM_COMPANY']) && isset($_POST['FROM_ROOM_NUMBER']) && isset($_POST['FROM_RANK']) && isset($_POST['REFERENCE']) && isset($_POST['SQPR']) && isset($_POST['CQPR']) && isset($_POST['APTITUDE_GRADE']) && isset($_POST['CONDUCT_GRADE']) && isset($_POST['REQUEST_TYPE']) && isset($_POST['ADDRESS_1']) && isset($_POST['ADDRESS_2']) && isset($_POST['ADDRESS_CITY']) && isset($_POST['ADDRESS_STATE']) && isset($_POST['ADDRESS_ZIP']) && isset($_POST['PHONE'])   && isset($_POST['REMARKS']) && isset($_POST['DATE']) && isset($_POST['BEGIN_DATE_TIME']) && isset($_POST['END_DATE_TIME']) && isset($_POST['COC_1_BILLET']) && isset($_POST['COC_1_NAME']) && isset($_POST['COC_1_USERNAME']) && validateCOC() ){
 
       $_POST['SHORT_DESCRIPTION'] = str_replace(",", "", $_POST['SHORT_DESCRIPTION']);
-
 
       if(!is_file("./chits/directory.txt")){
 
@@ -148,64 +148,121 @@ if(
 
       }
 
-      $count = 1;
-      $filename = "./chits/" . $_SESSION['username'] . "_chit" . $count . ".txt";
+      // $count = 1;
+      // $filename = "./chits/" . $_SESSION['username'] . "_chit" . $count . ".txt";
 
-      while(is_file($filename)){
-        $count += 1;
-        $filename = "./chits/" . $_SESSION['username'] . "_chit" . $count . ".txt";
+      $filename = "./chits/" . $_SESSION['editfilename'];
 
-      }
+      // while(is_file($filename)){
+      //   $count += 1;
+      //   $filename = "./chits/" . $_SESSION['username'] . "_chit" . $count . ".txt";
+      //
+      // }
 
       $data = serialize($_POST);
       file_put_contents($filename, $data);
 
-      $fp = fopen("./chits/directory.txt", "a");
+      $fp = fopen("./chits/directory.txt", "r");
+      $data_to_write_back = [];
+      /////////////
 
       if($fp){
-        $out = $_SESSION['username'] . "," . $_SESSION['username'] . "_chit" . $count . ".txt,";
+        while(($line = fgets($fp)) !== false){
+          $split = explode(",", $line);
 
-        if(isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])){
-          $out = $out . "{$_POST['COC_1_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_2_USERNAME']) && !empty($_POST['COC_2_USERNAME'])){
-          $out = $out . "{$_POST['COC_2_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_3_USERNAME']) && !empty($_POST['COC_3_USERNAME'])){
-          $out = $out . "{$_POST['COC_3_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_4_USERNAME']) && !empty($_POST['COC_4_USERNAME'])){
-          $out = $out . "{$_POST['COC_4_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_5_USERNAME']) && !empty($_POST['COC_5_USERNAME'])){
-          $out = $out . "{$_POST['COC_5_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_6_USERNAME']) && !empty($_POST['COC_6_USERNAME'])){
-          $out = $out . "{$_POST['COC_6_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_7_USERNAME']) && !empty($_POST['COC_7_USERNAME'])){
-          $out = $out . "{$_POST['COC_7_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_8_USERNAME']) && !empty($_POST['COC_8_USERNAME'])){
-          $out = $out . "{$_POST['COC_8_USERNAME']}" . "-0 ";
-        }
-        if(isset($_POST['COC_9_USERNAME']) && !empty($_POST['COC_9_USERNAME'])){
-          $out = $out . "{$_POST['COC_9_USERNAME']}" . "-0 ";
-        }
+          if($split[1] == $_SESSION['editfilename']){
+            $out = $_SESSION['username'] . "," . $_SESSION['editfilename'] . ",";
 
-        $out = $out . ",0," . "{$_POST['SHORT_DESCRIPTION']}" . "\n";
+            if(isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])){
+              $out = $out . "{$_POST['COC_1_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_2_USERNAME']) && !empty($_POST['COC_2_USERNAME'])){
+              $out = $out . "{$_POST['COC_2_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_3_USERNAME']) && !empty($_POST['COC_3_USERNAME'])){
+              $out = $out . "{$_POST['COC_3_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_4_USERNAME']) && !empty($_POST['COC_4_USERNAME'])){
+              $out = $out . "{$_POST['COC_4_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_5_USERNAME']) && !empty($_POST['COC_5_USERNAME'])){
+              $out = $out . "{$_POST['COC_5_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_6_USERNAME']) && !empty($_POST['COC_6_USERNAME'])){
+              $out = $out . "{$_POST['COC_6_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_7_USERNAME']) && !empty($_POST['COC_7_USERNAME'])){
+              $out = $out . "{$_POST['COC_7_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_8_USERNAME']) && !empty($_POST['COC_8_USERNAME'])){
+              $out = $out . "{$_POST['COC_8_USERNAME']}" . "-0 ";
+            }
+            if(isset($_POST['COC_9_USERNAME']) && !empty($_POST['COC_9_USERNAME'])){
+              $out = $out . "{$_POST['COC_9_USERNAME']}" . "-0 ";
+            }
 
-        fwrite($fp, $out);
+            $out = $out . ",0," . "{$_POST['SHORT_DESCRIPTION']}" . "\n";
 
+            array_push($data_to_write_back, $out);
+            // echo "Updated: $line";
+          }
+          else{
+            array_push($data_to_write_back, $line);
+            // echo "Not alterned: $line";
+          }
+        }
         fclose($fp);
       }
+
+      //////////////////////
+
+      $fp = fopen("./chits/directory.txt", "w");
+      if($fp){
+        foreach($data_to_write_back as $line){
+
+          fwrite($fp, $line);
+        }
+      }
+
       //this session var acts as a bool check to display field warnings
       $_SESSION['submitted']=0;
       // echo "<div class=\"alert alert-success\">Success! Chit has been submitted!</div>";
-      $_SESSION['filename']=$_SESSION['username'] . "_chit" . $count . ".txt";
+      $_SESSION['filename']= $_SESSION['editfilename'];
 
       //THIS ECHOS A JAVASCRIPT FUNCTION INVOCATION TO REDIRECT TO A READ-ONLY COPY OF THE SUBMITTED CHIT
       echo "<script type='text/javascript'>redirect('viewchit.php')</script>";
+    }
+    elseif(isset($_POST['filename'])){
+
+
+      $_SESSION['editfilename'] = $_POST['filename'];
+
+
+      $filename = "./chits/" . $_SESSION['editfilename'];
+
+      if(is_file($filename)){
+        $raw_data = file_get_contents($filename);
+        $_POST = unserialize($raw_data);
+
+        if($debug){
+
+          echo "<pre>";
+          print_r($data);
+          echo "</pre>";
+
+        }
+
+
+        if($debug){
+
+          echo "<pre>";
+          print_r($_SESSION);
+          echo "</pre>";
+
+        }
+
+      }
+
     }
     else{
       if(!($_SESSION['submitted']==0)){
