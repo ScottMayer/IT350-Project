@@ -9,30 +9,42 @@ if(!isset($_SESSION['username'])){
 require_once("nimitz.php");
 require_once("error.inc.php");
 
-$fp = fopen("./chits/directory.txt", "r+");
+$fp = fopen("./chits/directory.txt", "r");
+$data_to_write_back = [];
 if($fp){
 	while(($line = fgets($fp)) !== false){
 
 		$split = explode(",", $line);
 
 		if($split[1] == $_SESSION['filename']){
-			if(!unlink("./chits/" . $split[1] )){
-				//error, file could not be deleted
+			if(is_file($_SESSION['filename'])){
+
+				if(!unlink("./chits/" . $split[1] )){
+					//error, file could not be deleted
+				}
 			}
-
 		}
-		else{
-			fwrite($fp, $line);
-		}
-
-
-
+		array_push($data_to_write_back, $line);
 
 	}
 
 	fclose($fp);
 
-	redirect("./index.php");
+	// redirect("./index.php");
+}
+
+
+$fp = fopen("./chits/directory.txt", "w");
+if($fp){
+	foreach($data_to_write_back as $line){
+
+		fwrite($fp, $line);
+
+	}
+
+	fclose($fp);
+
+	// redirect("./index.php");
 }
 
 

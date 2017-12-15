@@ -184,7 +184,7 @@ if(
           $out = $out . "{$_POST['COC_9_USERNAME']}" . "-0 ";
         }
 
-        $out = $out . "0," . "{$_POST['SHORT_DESCRIPTION']}" . "\n";
+        $out = $out . ",0," . "{$_POST['SHORT_DESCRIPTION']}" . "\n";
 
         fwrite($fp, $out);
 

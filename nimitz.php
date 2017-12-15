@@ -43,6 +43,15 @@ function print_chit_table($table)
 	echo "</table>";
 }
 
+function redirect($url)
+{
+    $string = '<script type="text/javascript">';
+    $string .= 'window.location = "' . $url . '"';
+    $string .= '</script>';
+
+    echo $string;
+}
+
 function read_users(){
 	$fp = fopen("./login/en-42.csv", 'r');
 

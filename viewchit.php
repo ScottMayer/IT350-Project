@@ -1439,7 +1439,7 @@ else{
 							<div class="next">
 
 								<form action="deletechit.php" method="post">
-									<input type="submit" class="btn btn-danger" data-dismiss="modal" value="Delete">
+									<input type="submit" class="btn btn-danger" value="Delete">
 								</form>
 							</div>
 						</div>
