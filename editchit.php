@@ -87,10 +87,6 @@ $_SESSION['submitted']=0;
         echo "<div class=\"alert alert-warning\">WARNING <em>$username IS NOT A REGISTERED USER</em></div>";
         return False;
       }
-      elseif($username == $_SESSION['username']){
-        echo "<div class=\"alert alert-warning\">WARNING <em>You cannot be in your own Chain of Command!</em></div>";
-        return False;
-      }
       else {
         return True;
       }
@@ -171,7 +167,7 @@ if(
           $split = explode(",", $line);
 
           if($split[1] == $_SESSION['editfilename']){
-            $out = $_SESSION['username'] . "," . $_SESSION['editfilename'] . ",";
+            $out = $split[0] . "," . $_SESSION['editfilename'] . ",";
 
             if(isset($_POST['COC_1_USERNAME']) && !empty($_POST['COC_1_USERNAME'])){
               $out = $out . "{$_POST['COC_1_USERNAME']}" . "-0 ";
@@ -365,16 +361,16 @@ if(
             </div>
             <div class="col-sm-2">
               <select type="text" class="form-control-sm" name="FROM_CLASS">
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 1/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "1/C"){echo "selected";}?>>
                   1/C
                 </option>
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 2/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "2/C"){echo "selected";}?>>
                   2/C
                 </option>
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 3/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "3/C"){echo "selected";}?>>
                   3/C
                 </option>
-                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == " 4/C"){echo "selected";}?>>
+                <option <?php if(isset($_POST['FROM_CLASS']) && $_POST['FROM_CLASS'] == "4/C"){echo "selected";}?>>
                   4/C
                 </option>
             </select>
@@ -1282,7 +1278,7 @@ if(
         <div class="col-sm-4">
           <div class="row" style="border-right: 1px solid #000000;">
             <div class="col-sm-12">
-              <input type="text" name="COC_7_BILLET" placeholder="Battalion Officer" value="<?php if(isset($_POST['COC_7_BILLET'])){echo "{$_POST['COC_5_BILLET']}";}?>"/>
+              <input type="text" name="COC_7_BILLET" placeholder="Battalion Officer" value="<?php if(isset($_POST['COC_7_BILLET'])){echo "{$_POST['COC_7_BILLET']}";}?>"/>
             </div>
             <div class="col-sm-12">
               <input type="text" name="COC_7_NAME" placeholder="CDR Lastname, USN" value="<?php if(isset($_POST['COC_7_NAME'])){echo "{$_POST['COC_7_NAME']}";}?>"/>

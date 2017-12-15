@@ -226,7 +226,9 @@ $reference = str_split($data['REMARKS'], 115);
 $x = 6;
 $y = 74;
 foreach ($reference as $string) {
-	
+
+	//Dream feature - split so that the end of lines isn't weird.
+
 	$template_pdf->SetXY($x, $y);
 	$template_pdf->Write(0, "".$string);
 	$y += 3;

@@ -1,1 +1,3 @@
-m183990,m183990_chit1.txt,m190001-0 m190003-0 m190108-0 m191314-0 m197116-0 m200000-0 m201656-0 m190002-1 ,1,I would like to route a chit to the Commandant
+m210001,m210001_chit1.txt,m190001-0 m180001-0 m180002-0 m180003-0 skhan-0 egarcia-0 ,0,3 Day Weekend
+m210002,m210002_chit1.txt,m190001-0 m180001-0 m180002-0 m180003-0 skhan-2 egarcia-1 ,1,Beat Army Weekend
+m190001,m190001_chit1.txt,m180001-0 m180002-0 m180003-0 skhan-0 egarcia-0 ,0,Squad Outing

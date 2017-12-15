@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function nav($i=0){
     echo "
     <nav class='navbar navbar-default'>
@@ -28,6 +30,7 @@ function nav($i=0){
           </form>
     </li>
             <li><a href='./about.php'>About Us</a></li>
+						<li><a href='#'>{$_SESSION['username']}</a></li>
             <li><a href='./logout.php'>Logout</a></li>";
         }else{
             echo "<li><a href='./about.php'>About Us</a></li>";

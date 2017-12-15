@@ -76,7 +76,7 @@ unset($_SESSION['success']);
       $arr[4] = $first;
       $arr[5] = $last;
     //}
-    fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3] .';'.$arr[4].';'.$arr[5]);
+    fwrite($fp, $arr[0].';'.$arr[1].';'.$pass.';'.$arr[3] .';'.$arr[4].';'.$arr[5] ."\n");
 
     $_SESSION['success'] = "Registration success!";
     header("Location:.");

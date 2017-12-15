@@ -1,13 +1,13 @@
 username;perm;chit;email;fname;lname
 inst;admin;$2y$10$i99ShTYRBcQDEz5oDnop2eA.9WEGubaaZSXcVPW6nsYFN15aw.UGO;kenney@usna.edu;LCDR;Kenney
-m183990;admin;$2y$10$El5x1Y1N9N0493aA7sv3/.ZebW/Bot8HemKRSPwS6xIBVBU.5KyhW;m183990@usna.edu;Scott;Mayer
-m190001;other;$2y$10$NqeubUoQxp2UlYEPBHBZHubnh5ollhyedMgfJPoZU5HNYqTyXBP.W;m190001@usna.edu;David;Trierweiler
-m190003;other;$2y$10$qFtmf6oMVs03PtmiP6TZ/OHaGt2w/Hw11VMNvN985ZhCSApSZTEtm;m190003@usna.edu;Mike;Holder
-m190108;admin;$2y$10$8/5BWfesQS6P2qAQLxFjiOdkjaD6/QcQgjjnGpKJPtJhYoAlQjeUu;m190108@usna.edu;Doug;Alpuche
-m191314;other;$2y$10$KELETXxn1gXVrckIBt9wgeECiFBB8d2GDLvNAyp4xsxy7tl/.AzYm;m191314@usna.edu;Adam;Decherd
-m197116;admin;$2y$10$7fVwtAZZkra4IfS8AEL6guwjwfKSiE1A7Dqs6RgCE4rrh7l2Nf8jO;m197116@usna.edu;Vincent;Xu
-m199999;other;$2y$10$Q6CXn1Wks9cVLCiwN3nvzez8sOiMEp8fjumFfgKUERTaPfJKwgLVu;m199999@usna.edu;W.T.;Door
-m200000;other;$2y$10$EAKZDkE374Qhg/GZZjA7uuF3w2QR2cq87U16usK50JJ2ov.p0mdCK;m200000@usna.edu;J.P.;Jones
-m201656;admin;$2y$10$C.9F5Y9n0p4iHicyjXDNVejErsqEUsOzVLzMhIWzVDfor8msNdUCS;m201656@usna.edu;Ryan;Eilers
-laniiii;other;$2y$10$rcEt810t0m8VFVtC4NlDrO8KFsapk.zmYxtDf9gjP768FDs4bIwbe;m201368@usna.edu;Lani;Davis
-m190002;other;$2y$10$GrqeDkl6fOF7hB2x0mLnBeALI9yMvOvcaLOUBN7XsYkj77GnXHDJq;skhan@usna.edu;Sidorak;Khan
+m210001;other;$2y$10$ncTvY/0hT/VPRJ0q3tS70uBqLdaDLkCWoWjJkHA3tM73LXkIm46b2;m210001@usna.edu;Plebe;One
+m210002;other;$2y$10$ProosWWlHouqgkrBLTBEDuCj/idJi94ofZN4q4Q59BTVSv..WLqxa;m210002@usna.edu;Plebe;Two
+m210003;other;$2y$10$/AnBVqOUe4YnUJd8lhCTMO6puVUvE/wcJ.xHzrfuc1n.wjjkuRyWS;m210003@usna.edu;Plebe;Three
+m190001;other;$2y$10$6lSzJiBsuJKTltZjr6.mbu1SmpBHMyqDYGc1dMbbb84VosoZUMlt6;m190001@usna.edu;Squad;Leader
+m190002;other;$2y$10$DxvCkto5LPzCjgCQEXRYYORLI5bqAbLeIlUxZ4J3a9hHvqUYmIQW.;m190002@usna.edu;Squad Leader;Two
+m180001;other;$2y$10$rKH9fmr6YJXtBIcaBTT87O/u.5IDS9I9X2wSxzy3Qgeef8hY9RHGW;m180001@usna.edu;Platoon;Commander
+m180002;other;$2y$10$slbp0ijK.PvIYr39eUbKu.wpFEXJ6n0k8mlQYkYPfil5m5WMB1rWe;m180002@usna.edu;Company;XO
+m180003;other;$2y$10$7jgF/XhsrYbHEBvD4WBZZunHoLge/jqpU8S9SJhIdY8fc.YYp8EPq;m180003@usna.edu;Company;Commander
+skhan;other;$2y$10$6gH2h562ZcWuN0Z75jV7WuzYx.3KAy8gI4qoCSEsHpnIud1ShYNDy;skhan@usna.edu;Senior;Enlisted
+egarcia;other;$2y$10$lAdNYy.ECouBXyYJEJoGCOE8PnH2N.e6TY.22lFgmTWx5fhoFMTaW;egarcia@usna.edu;Company;Officer
+m183990;other;$2y$10$BhmHEUm6Di5LFqQSOiIs4uH/5xuLQoaIHRBqqqA8d/Qn.6c9YArva;m183990@usna.edu;Scott;Mayer
