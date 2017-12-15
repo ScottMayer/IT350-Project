@@ -623,7 +623,7 @@ else{
         <div class="col-sm-2">
           <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-              <br>
+            <br>
             </div>
             <div class="col-sm-12">
               <br>
@@ -632,6 +632,12 @@ else{
         </div>
         <div class="col-sm-3">
           <div class="row" style="text-align: center;border-left: 1px solid #000000; border-right: 1px solid #000000;">
+              <?php if(isset($data['COC_1_USERNAME']) && !empty($data['COC_1_USERNAME'])){
+                      echo "<form method=\"post\" action=\"update-chit.php\">
+                      <input type=\"hidden\" name=\"filename\" value=\"{$_SESSION['filename']}\" />
+                      <input class=\"btn btn-success\" type=\"submit\" value=\"Approve\" Name=\"update\"/>
+                      <input class=\"btn btn-danger\" type=\"submit\" value=\"Deny\" Name=\"update\"/>
+                      </form>";} ?>
             <div class="col-sm-12">
               <br>
             </div>
