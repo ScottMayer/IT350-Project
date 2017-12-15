@@ -28,6 +28,7 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <!-- This CSS is how we mimic the appearance of the chit -->
     <style>
     .box {
       padding: 0;
@@ -190,6 +191,7 @@ if(
 
         fclose($fp);
       }
+      //this session var acts as a bool check to display field warnings
       $_SESSION['submitted']=0;
       echo "<div class=\"alert alert-success\">Success! Chit has been submitted!</div>";
       $_SESSION['filename']=$_SESSION['username'] . "_chit" . $count . ".txt";
