@@ -94,12 +94,17 @@ $mychits = [];
 $subordinatechitspresent = false;
 $subordinatechits = [];
 
+if(!is_file("./chits/directory.txt")){
+	$contents = "";
+	file_put_contents("./chits/directory.txt", $contents);
+}
+
 $fp = fopen("./chits/directory.txt", "r");
 if($fp){
 	while(($line = fgets($fp)) !== false){
         #FILTERING
         if(isset($_POST['FILTER']) && strlen($_POST['FILTER']) >0){
-            if((stripos($line, $_POST['FILTER']) === false)){     
+            if((stripos($line, $_POST['FILTER']) === false)){
                 continue;
             }
         }
