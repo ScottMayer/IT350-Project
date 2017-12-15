@@ -215,6 +215,22 @@ $template_pdf->Write(0, "".$data['ADDRESS_ZIP']);
 $template_pdf->SetXY(180, 67);
 $template_pdf->Write(0, "".$data['PHONE']);
 
+//
+// $template_pdf->SetXY(10, 73);
+// $template_pdf->Write(0, "".$data['REMARKS']);
+
+$reference = str_split($data['REMARKS'], 115);
+// $template_pdf->SetXY(10, 77);
+// $template_pdf->Write(0, "".$reference[0]);
+
+$x = 6;
+$y = 74;
+foreach ($reference as $string) {
+	
+	$template_pdf->SetXY($x, $y);
+	$template_pdf->Write(0, "".$string);
+	$y += 3;
+}
 
 
 $template_pdf->SetXY(135, 52);
